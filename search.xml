@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[git的使用]]></title>
-      <url>https%3A%2F%2Flmxy1990.github.io%2F2016%2F12%2F27%2Fgit%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+      <url>%2F2016%2F12%2F27%2Fgit%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
       <content type="text"><![CDATA[Git初次使用一般来说就5步. cd 你的目录 //进入你需要提交的目录. git init //初始化. git add * //添加需要提交的文件. git commit -m “第一次提交” //提交的说明. git remote add origin https://github.com/lmxy1990/test.git //添加远程仓库地址 git push -u origin master //提交 到主干]]></content>
     </entry>
 
