@@ -94,7 +94,16 @@
 
 
 
-bgMusic">
+bgMusic
+
+
+
+
+  
+      var timeid = window.setInterval(rodm, 100);
+      var i = -360;
+      var flag = true;
+      function rodm() {">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about me..">
 <meta property="og:url" content="https://lmxy1990.github.io/about/index.html">
@@ -107,9 +116,18 @@ bgMusic">
 
 
 
-bgMusic">
+bgMusic
+
+
+
+
+  
+      var timeid = window.setInterval(rodm, 100);
+      var i = -360;
+      var flag = true;
+      function rodm() {">
 <meta property="og:image" content="https://lmxy1990.github.io/img/aboutBg.jpg">
-<meta property="og:updated_time" content="2016-12-29T04:49:33.666Z">
+<meta property="og:updated_time" content="2016-12-29T06:57:28.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about me..">
 <meta name="twitter:description" content="love code,love freedom
@@ -120,7 +138,16 @@ bgMusic">
 
 
 
-bgMusic">
+bgMusic
+
+
+
+
+  
+      var timeid = window.setInterval(rodm, 100);
+      var i = -360;
+      var flag = true;
+      function rodm() {">
 <meta name="twitter:image" content="https://lmxy1990.github.io/img/aboutBg.jpg">
 
 
@@ -330,12 +357,39 @@ bgMusic">
 <h2 id="love-code-love-freedom"><a href="#love-code-love-freedom" class="headerlink" title="love code,love freedom"></a><center>love code,love freedom</center></h2><hr>
 <p><div style="text-align: left;">总是在失去才知道拥有的可贵.</div><br><br></p>
 <p><div style="text-align: right;">总是在伤害过才懂得自己的过失.</div><br><br></p>
-<p><center><img src="/img/aboutBg.jpg" alt="bgPic"></center></p>
+<p><img id="pic" style="text-align: center;" src="/img/aboutBg.jpg"></p>
 <center>
 
 
 <p></p></center><p></p>
 <audio class="hidden" hidden="hidden" src="/audio/小小.mp3" autoplay="true" loop="loop">bgMusic</audio>
+
+
+
+
+  <script type="text/javascript">
+      var timeid = window.setInterval(rodm, 100);
+      var i = -360;
+      var flag = true;
+      function rodm() {
+
+          if (flag) {
+              i += 10;
+          } else {
+              i -= 10;
+          }
+          document.getElementById("pic").setAttribute("style", "transform:rotateY(" + i + "deg)");
+          if (i ==360) {
+              flag = false;
+          }
+
+          if (i ==-360) {
+              flag = true;
+          }
+          console.log(i);
+      }
+
+  </script>
     
   </div>
 
