@@ -89,7 +89,9 @@
 <meta name="description" content="策略模式
 
 
-策略模式是用于解决面向对象中的抽象类与接口的局限性.">
+策略模式是用于解决面向对象中的抽象类与接口的局限性.即一般的对类别进行抽象,对行为进行抽象为接口.这种方式在代码复用上有一定的局限性.而策略模式可以提高代码的复用.
+eg://定义一个接口,用于在抽象类都能调用到.(里氏替换原则)interface Speak{
+void doSpeak() ;}// 实现接口1,其他类只要功能一样都可以采用它.class SpeakCn imple">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之策略模式">
 <meta property="og:url" content="https://lmxy1990.github.io/2016/12/28/设计模式之策略模式/index.html">
@@ -97,14 +99,18 @@
 <meta property="og:description" content="策略模式
 
 
-策略模式是用于解决面向对象中的抽象类与接口的局限性.">
-<meta property="og:updated_time" content="2016-12-29T04:21:15.249Z">
+策略模式是用于解决面向对象中的抽象类与接口的局限性.即一般的对类别进行抽象,对行为进行抽象为接口.这种方式在代码复用上有一定的局限性.而策略模式可以提高代码的复用.
+eg://定义一个接口,用于在抽象类都能调用到.(里氏替换原则)interface Speak{
+void doSpeak() ;}// 实现接口1,其他类只要功能一样都可以采用它.class SpeakCn imple">
+<meta property="og:updated_time" content="2016-12-29T14:10:13.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之策略模式">
 <meta name="twitter:description" content="策略模式
 
 
-策略模式是用于解决面向对象中的抽象类与接口的局限性.">
+策略模式是用于解决面向对象中的抽象类与接口的局限性.即一般的对类别进行抽象,对行为进行抽象为接口.这种方式在代码复用上有一定的局限性.而策略模式可以提高代码的复用.
+eg://定义一个接口,用于在抽象类都能调用到.(里氏替换原则)interface Speak{
+void doSpeak() ;}// 实现接口1,其他类只要功能一样都可以采用它.class SpeakCn imple">
 
 
 
@@ -357,7 +363,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2016-12-29T12:21:15+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2016-12-29T22:10:13+08:00">
                 2016-12-29
               </time>
             
@@ -424,7 +430,20 @@
         <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p><br></p>
 <hr>
 <ul>
-<li>策略模式是用于解决面向对象中的抽象类与接口的局限性.</li>
+<li>策略模式是用于解决面向对象中的抽象类与接口的局限性.即一般的对类别进行抽象,对行为进行抽象为接口.这种方式在代码复用上有一定的局限性.而策略模式可以提高代码的复用.</li>
+<li><p>eg:<br>//定义一个接口,用于在抽象类都能调用到.(里氏替换原则)<br>interface Speak{</p>
+<p>void doSpeak() ;<br>}<br>// 实现接口1,其他类只要功能一样都可以采用它.<br>class SpeakCn implements Speak{<br>@Override<br>public void doSpeak() {</p>
+<pre><code>System.out.println(&quot;中文&quot;);
+</code></pre><p>}<br>}<br>//实现接口2,其他类只要功能一样都可以采用它.<br>class SpeakEn implements Speak{<br>@Override<br>public void doSpeak() {</p>
+<pre><code>System.out.println(&quot;English&quot;);
+</code></pre><p>}<br>}<br>//抽象类 使用接口来实现.将具体实现放到子类来实现接口.<br>abstract class man{<br>Speak speak ;<br>void speak(){</p>
+<pre><code>speak.doSpeak();
+</code></pre><p>}<br>}<br>class CnMan extends man{<br>//初始化赋值父类接口的实现,也可以采用Spring的初始化加载实现.<br>public  CnMan() {</p>
+<pre><code>speak = new SpeakCn() ;
+</code></pre><p>}<br>}<br>//使用<br>class test{<br>public void main(String[] args) {</p>
+<pre><code>new CnMan().speak();
+</code></pre><p>}<br>}</p>
+<center>End</center></li>
 </ul>
 
       
