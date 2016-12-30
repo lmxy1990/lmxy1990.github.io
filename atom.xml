@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2016-12-29T13:18:21.121Z</updated>
+  <updated>2016-12-30T05:33:12.341Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式之观察者模式</title>
+    <link href="https://lmxy1990.github.io/2016/12/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://lmxy1990.github.io/2016/12/30/设计模式之观察者模式/</id>
+    <published>2016-12-30T04:30:42.000Z</published>
+    <updated>2016-12-30T05:33:12.341Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><hr>
+<ul>
+<li>观察者模式一般使用在订阅/推送功能下,数据提供方推送数据–&gt;数据接收方.其实在开发中该模式使用应该是很普遍的.例如站内信/信息中心/订阅都是用的是该设计模式.<br><br><ul>
+<li>方式1:数据推送方—&gt;查询订购对象—&gt;推送给订购对象.</li>
+<li>方式2:订购的对象 —&gt;查询订阅的数据—&gt;拉取需要的数据.<br><br></li>
+</ul>
+</li>
+<li>本质上其实就是发送方与接收方的依赖隔离,也就是说数据发送方发送数据,<br>不是直接发送给订购的对象,而是先查询哪些订购了.然后统一发送出<br><br></li>
+</ul>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;观察者模式&quot;&gt;&lt;a href=&quot;#观察者模式&quot; class=&quot;headerlink&quot; title=&quot;观察者模式&quot;&gt;&lt;/a&gt;观察者模式&lt;/h2&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;观察者模式一般使用在订阅/推送功能下,数据提供方推送数据–&amp;gt;数据接收方.其实在开发中该模
+    
+    </summary>
+    
+      <category term="设计模式" scheme="https://lmxy1990.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>java volatile 关键字</title>
