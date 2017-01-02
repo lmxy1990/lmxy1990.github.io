@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[去百度右侧推广方法]]></title>
       <url>%2F2017%2F01%2F02%2F%E5%8E%BB%E7%99%BE%E5%BA%A6%E6%8E%A8%E5%B9%BF%E6%96%B9%E6%B3%95%2F</url>
-      <content type="text"><![CDATA[百度越来越恶心了… 下面介绍一种简单的去百度推广方法,采用的是chrome浏览器. 安装adb去广告插件. 添加自定义规则. 右侧推广去掉的结果 但是还有搜索的推广 添加清除左侧推广规则 全部结果7.规则: ##div[class*=&quot;cr-content&quot;] ##div[class*=&quot;opr-recommends-merge-panel&quot;] ##div[id*=&quot;#con-ar&quot;] ##div[style*=&quot;!important&quot;] End]]></content>
+      <content type="text"><![CDATA[百度越来越恶心了… 下面介绍一种简单的去百度推广方法,采用的是chrome浏览器. 安装adb去广告插件. 添加自定义规则. 右侧推广去掉的结果 但是还有搜索的推广 添加清除左侧推广规则 全部结果7.规则: ##div[class*=&quot;cr-content&quot;] ##div[class*=&quot;opr-recommends-merge-panel&quot;] ##div[id*=&quot;con-ar&quot;] ##div[style*=&quot;!important&quot;] End]]></content>
     </entry>
 
     
