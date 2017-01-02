@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2016-12-30T05:33:12.341Z</updated>
+  <updated>2017-01-02T03:49:27.682Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>去百度右侧推广方法</title>
+    <link href="https://lmxy1990.github.io/2017/01/02/%E5%8E%BB%E7%99%BE%E5%BA%A6%E5%8F%B3%E4%BE%A7%E6%8E%A8%E5%B9%BF%E6%96%B9%E6%B3%95/"/>
+    <id>https://lmxy1990.github.io/2017/01/02/去百度右侧推广方法/</id>
+    <published>2017-01-02T03:19:12.000Z</published>
+    <updated>2017-01-02T03:49:27.682Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="百度越来越恶心了…"><a href="#百度越来越恶心了…" class="headerlink" title="百度越来越恶心了…"></a>百度越来越恶心了…</h2><hr>
+<h3 id="下面介绍一种简单的去百度推广方法-采用的是chrome浏览器"><a href="#下面介绍一种简单的去百度推广方法-采用的是chrome浏览器" class="headerlink" title="下面介绍一种简单的去百度推广方法,采用的是chrome浏览器."></a>下面介绍一种简单的去百度推广方法,采用的是chrome浏览器.</h3><hr>
+<ol>
+<li>安装adb去广告插件.<br><img src="/img/suggest/adb_plus.jpg" alt="添加adb_plus插件"></li>
+<li>添加自定义规则.<br><img src="/img/suggest/add_rude.jpg" alt="添加自定义规则"></li>
+<li>右侧推广去掉的结果<br><img src="/img/suggest/remove_result.jpg" alt="结果1"></li>
+<li>但是还有搜索的推广<br><img src="img/suggest/bad_ad.jpg" alt="左侧推广"></li>
+<li>添加清除左侧推广规则<br><img src="img/suggest/remove_result.jpg" alt="清除左侧推广"></li>
+<li>全部结果<br><img src="img/suggest/all_result.jpg" alt="结果"><br>7.规则:<ul>
+<li><code>##div.opr-recommends-merge-panel</code></li>
+<li><code>##div#con-ar</code></li>
+<li><code>##div[style=&quot;display:block !important;visibility:visible !important&quot;]</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;百度越来越恶心了…&quot;&gt;&lt;a href=&quot;#百度越来越恶心了…&quot; class=&quot;headerlink&quot; title=&quot;百度越来越恶心了…&quot;&gt;&lt;/a&gt;百度越来越恶心了…&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&quot;下面介绍一种简单的去百度推广方法-采用的是chrome浏览器&quot;&gt;
+    
+    </summary>
+    
+      <category term="小技巧" scheme="https://lmxy1990.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式之观察者模式</title>
