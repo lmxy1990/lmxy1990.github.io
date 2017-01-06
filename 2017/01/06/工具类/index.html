@@ -86,60 +86,19 @@
 
 
 
-<meta name="description" content="装饰者模式简述
-装饰者模式可以形象的比喻一所大房子,外面只有一个门.打开门里面还有门.打开门获取一点金钱.你可以无限的进门..
-
-
-Component（被装饰对象的基类）
-ConcreteComponent（具体被装饰对象）
-Decorator（装饰者抽象类）
-ConcreteDecorator（具体装饰者）
-
-
-类图
-
-代码
-定义一个抽象类(非必须)
-1234567891011121314151">
+<meta name="description" content="httpclient的简单封装
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式之装饰者模式">
-<meta property="og:url" content="https://lmxy1990.github.io/2017/01/04/设计模式之装饰者模式/index.html">
+<meta property="og:title" content="工具类">
+<meta property="og:url" content="https://lmxy1990.github.io/2017/01/06/工具类/index.html">
 <meta property="og:site_name" content="Lmxy1990 ' Blog">
-<meta property="og:description" content="装饰者模式简述
-装饰者模式可以形象的比喻一所大房子,外面只有一个门.打开门里面还有门.打开门获取一点金钱.你可以无限的进门..
-
-
-Component（被装饰对象的基类）
-ConcreteComponent（具体被装饰对象）
-Decorator（装饰者抽象类）
-ConcreteDecorator（具体装饰者）
-
-
-类图
-
-代码
-定义一个抽象类(非必须)
-1234567891011121314151">
-<meta property="og:image" content="https://lmxy1990.github.io/img/design_pattern/decorator.jpg">
-<meta property="og:updated_time" content="2017-01-05T13:55:36.759Z">
+<meta property="og:description" content="httpclient的简单封装
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969">
+<meta property="og:updated_time" content="2017-01-06T01:48:28.158Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式之装饰者模式">
-<meta name="twitter:description" content="装饰者模式简述
-装饰者模式可以形象的比喻一所大房子,外面只有一个门.打开门里面还有门.打开门获取一点金钱.你可以无限的进门..
-
-
-Component（被装饰对象的基类）
-ConcreteComponent（具体被装饰对象）
-Decorator（装饰者抽象类）
-ConcreteDecorator（具体装饰者）
-
-
-类图
-
-代码
-定义一个抽象类(非必须)
-1234567891011121314151">
-<meta name="twitter:image" content="https://lmxy1990.github.io/img/design_pattern/decorator.jpg">
+<meta name="twitter:title" content="工具类">
+<meta name="twitter:description" content="httpclient的简单封装
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969">
 
 
 
@@ -171,7 +130,7 @@ ConcreteDecorator（具体装饰者）
 
 
 
-  <title> 设计模式之装饰者模式 | Lmxy1990 ' Blog </title>
+  <title> 工具类 | Lmxy1990 ' Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -337,7 +296,7 @@ ConcreteDecorator（具体装饰者）
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://lmxy1990.github.io/2017/01/04/设计模式之装饰者模式/">
+  <link itemprop="mainEntityOfPage" href="https://lmxy1990.github.io/2017/01/06/工具类/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="lmxy1990">
@@ -361,7 +320,7 @@ ConcreteDecorator（具体装饰者）
             
             
               
-                设计模式之装饰者模式
+                工具类
               
             
           </h2>
@@ -376,8 +335,8 @@ ConcreteDecorator（具体装饰者）
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T09:30:19+08:00">
-                2017-01-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T09:46:54+08:00">
+                2017-01-06
               </time>
             
 
@@ -392,34 +351,12 @@ ConcreteDecorator（具体装饰者）
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-01-05T21:55:36+08:00">
-                2017-01-05
+              <time title="更新于" itemprop="dateModified" datetime="2017-01-06T09:48:28+08:00">
+                2017-01-06
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -429,8 +366,8 @@ ConcreteDecorator（具体装饰者）
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/04/设计模式之装饰者模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/设计模式之装饰者模式/" itemprop="commentCount"></span>
+                <a href="/2017/01/06/工具类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/06/工具类/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -456,44 +393,9 @@ ConcreteDecorator（具体装饰者）
       
 
       
-        <h2 id="装饰者模式简述"><a href="#装饰者模式简述" class="headerlink" title="装饰者模式简述"></a>装饰者模式简述</h2><ul>
-<li>装饰者模式可以形象的比喻一所大房子,外面只有一个门.打开门里面还有门.打开门获取一点金钱.你可以无限的进门..</li>
-</ul>
-<ul>
-<li>Component（被装饰对象的基类）</li>
-<li>ConcreteComponent（具体被装饰对象）</li>
-<li>Decorator（装饰者抽象类）</li>
-<li>ConcreteDecorator（具体装饰者）<br><br></li>
-</ul>
+        <h3 id="httpclient的简单封装"><a href="#httpclient的简单封装" class="headerlink" title="httpclient的简单封装"></a>httpclient的简单封装</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div></pre></td><td class="code"><pre><div class="line">public class IntelliHttpClientUtils &#123;</div><div class="line"></div><div class="line">    private static final Logger logger = LoggerFactory.getLogger(IntelliHttpClientUtils.class);</div><div class="line">    //HttpClient</div><div class="line">    private volatile static CloseableHttpClient httpClient;</div><div class="line">    //设置请求和传输超时时间 1000*6 秒</div><div class="line">    private static final RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(0b1011101110000).setConnectTimeout(0b1011101110000).build();</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * HTTP GET</div><div class="line">     *</div><div class="line">     * @param url</div><div class="line">     * @param encode</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static String httpGet(String url, String encode) &#123;</div><div class="line">        if (encode == null) encode = &quot;utf-8&quot;;</div><div class="line">        String resultStr = null;</div><div class="line">        CloseableHttpClient closeableHttpClient = getHttpClient();</div><div class="line">        HttpGet httpGet = new HttpGet(url);</div><div class="line">        httpGet.setConfig(requestConfig);</div><div class="line">        CloseableHttpResponse httpResponse = null;</div><div class="line">        try &#123;</div><div class="line">            httpResponse = closeableHttpClient.execute(httpGet);</div><div class="line">            if (httpResponse.getStatusLine().getStatusCode() &lt; HttpStatus.SC_BAD_REQUEST) &#123;</div><div class="line">                HttpEntity entity = httpResponse.getEntity();</div><div class="line">                resultStr = EntityUtils.toString(entity, encode);</div><div class="line">            &#125;</div><div class="line">            //请求失败 直接返回null</div><div class="line">        &#125; catch (Exception e) &#123;</div><div class="line">            logger.info(&quot;Intelli.IntelliHttpClientUtils.httpGet 产生异常:&#123;&#125;&quot;, e.getMessage());</div><div class="line">        &#125; finally &#123;</div><div class="line">            HttpClientUtils.closeQuietly(httpResponse);</div><div class="line">        &#125;</div><div class="line">        return resultStr;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * HTTP POST 请求</div><div class="line">     *</div><div class="line">     * @param url</div><div class="line">     * @param encode</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static String httpPost(String url, Map&lt;String, String&gt; params, String encode) &#123;</div><div class="line">        if (encode == null) &#123;</div><div class="line">            encode = &quot;utf-8&quot;;</div><div class="line">        &#125;</div><div class="line">        CloseableHttpClient closeableHttpClient = getHttpClient();</div><div class="line">        HttpPost httpPost = new HttpPost(url);</div><div class="line">        httpPost.setConfig(requestConfig);</div><div class="line">        //组织请求参数</div><div class="line">        List&lt;NameValuePair&gt; paramList = new ArrayList&lt;NameValuePair&gt;();</div><div class="line">        Set&lt;String&gt; keySet = params.keySet();</div><div class="line">        for (String key : keySet) &#123;</div><div class="line">            paramList.add(new BasicNameValuePair(key, params.get(key)));</div><div class="line">        &#125;</div><div class="line">        try &#123;</div><div class="line">            httpPost.setEntity(new UrlEncodedFormEntity(paramList, encode));</div><div class="line">        &#125; catch (UnsupportedEncodingException e1) &#123;</div><div class="line">            logger.info(&quot;Intelli.IntelliHttpClientUtils.httpPost (Map请求添加参数时)产生异常:&#123;&#125;&quot;, e1.getMessage());</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        String resultStr = getResponse2Str(encode, closeableHttpClient, httpPost);</div><div class="line"></div><div class="line">        return resultStr;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Http Post 请求</div><div class="line">     *</div><div class="line">     * @param url</div><div class="line">     * @param jsonStr</div><div class="line">     * @param encode</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static String httpPost(String url, String jsonStr, String encode) &#123;</div><div class="line">        if (encode == null) &#123;</div><div class="line">            encode = &quot;utf-8&quot;;</div><div class="line">        &#125;</div><div class="line">        CloseableHttpClient closeableHttpClient = HttpClients.createDefault();</div><div class="line">        HttpPost httpPost = new HttpPost(url);</div><div class="line">        httpPost.setConfig(requestConfig);</div><div class="line">        httpPost.setHeader(&quot;Content-type&quot;, &quot;application/json&quot;);</div><div class="line"></div><div class="line">        //组织请求参数</div><div class="line">        StringEntity stringEntity = new StringEntity(jsonStr, encode);</div><div class="line">        httpPost.setEntity(stringEntity);</div><div class="line">        String resultStr = getResponse2Str(encode, closeableHttpClient, httpPost);</div><div class="line"></div><div class="line">        return resultStr;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 获取 CloseableHttpClient</div><div class="line">     *</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    private static CloseableHttpClient getHttpClient() &#123;</div><div class="line">        if (httpClient == null) &#123;</div><div class="line">            synchronized (IntelliHttpClientUtils.class) &#123;</div><div class="line">                if (httpClient == null) &#123;</div><div class="line">                    HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();</div><div class="line">                    httpClientBuilder.setConnectionManager(new BasicHttpClientConnectionManager());</div><div class="line">                    httpClient = httpClientBuilder.build();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return httpClient;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 关闭httpClient</div><div class="line">     */</div><div class="line">    private void closeHttpClient() &#123;</div><div class="line">        if (IntelliHttpClientUtils.httpClient == null) return;</div><div class="line">        HttpClientUtils.closeQuietly(IntelliHttpClientUtils.httpClient);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /***</div><div class="line">     * 关闭httpClient</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    protected void finalize() throws Throwable &#123;</div><div class="line">        this.closeHttpClient();</div><div class="line">        super.finalize();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 执行 POST 请求</div><div class="line">     *</div><div class="line">     * @param encode</div><div class="line">     * @param closeableHttpClient</div><div class="line">     * @param httpPost</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    private static String getResponse2Str(String encode, CloseableHttpClient closeableHttpClient, HttpPost httpPost) &#123;</div><div class="line">        CloseableHttpResponse httpResponse = null;</div><div class="line">        String resultStr = null;</div><div class="line">        try &#123;</div><div class="line">            httpResponse = closeableHttpClient.execute(httpPost);</div><div class="line">            if (httpResponse.getStatusLine().getStatusCode() &lt; HttpStatus.SC_BAD_REQUEST) &#123;</div><div class="line">                HttpEntity entity = httpResponse.getEntity();</div><div class="line">                resultStr = EntityUtils.toString(entity, encode);</div><div class="line">            &#125;</div><div class="line">        &#125; catch (Exception e) &#123;</div><div class="line">            logger.info(&quot;Intelli.IntelliHttpClientUtils.getResponse2Str 产生异常:&#123;&#125;&quot;, e.getMessage());</div><div class="line">        &#125; finally &#123;</div><div class="line">            HttpClientUtils.closeQuietly(httpResponse);</div><div class="line">        &#125;</div><div class="line">        return resultStr;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="/img/design_pattern/decorator.jpg" alt="装饰者"></p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><ol>
-<li><p>定义一个抽象类(非必须)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package com.pan.component;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 抽象类</div><div class="line"> * </div><div class="line"> * @author xinyi.pan</div><div class="line"> *</div><div class="line"> */</div><div class="line">public abstract class Animal &#123;</div><div class="line"></div><div class="line">    private String name;</div><div class="line"></div><div class="line">    public Animal(String name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getName() &#123;</div><div class="line">        return name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>定义一个被装饰的接口(定义公共的方法).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.pan.component;</div><div class="line"></div><div class="line">public interface Fight &#123;</div><div class="line">    </div><div class="line">    //公共方法(门)</div><div class="line">    public String fightPower() ;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>单独类cat</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">package com.pan.component;</div><div class="line"></div><div class="line">public class Cat extends Animal implements Fight &#123;</div><div class="line"></div><div class="line">    public Cat(String name) &#123;</div><div class="line">        super(name);</div><div class="line">    &#125;</div><div class="line">    //基类的门,里面不再有门..</div><div class="line">    public String fightPower() &#123;</div><div class="line">        return super.getName() +&quot; fighting&quot; ;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>单独类cattle</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">package com.pan.component;</div><div class="line"></div><div class="line">public class Cattle extends Animal implements Fight &#123;</div><div class="line"></div><div class="line">    public Cattle(String name) &#123;</div><div class="line">        super(name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String fightPower() &#123;</div><div class="line">        return super.getName() + &quot; sleep&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>定义抽象装饰类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">package com.pan.decorator;</div><div class="line"></div><div class="line">import com.pan.component.Fight;</div><div class="line"></div><div class="line">public abstract class AnimalDecorator implements Fight &#123;</div><div class="line"></div><div class="line">    private Fight fight;</div><div class="line">    // 构造函数添加被装饰着对象</div><div class="line">    public AnimalDecorator(Fight fight) &#123;</div><div class="line">        this.fight = fight;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //拆包装饰者</div><div class="line">    public String fightPower() &#123;</div><div class="line">        //调用装饰者公共方法</div><div class="line">        doDecoratorFight();</div><div class="line">        //打开下一个门</div><div class="line">        return fight.fightPower();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //装饰者的公共方法.</div><div class="line">    public abstract void doDecoratorFight() ;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>cattle装饰类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">package com.pan.decorator;</div><div class="line"></div><div class="line">import com.pan.component.Fight;</div><div class="line"></div><div class="line">public class CattleDecorator extends AnimalDecorator &#123;</div><div class="line"></div><div class="line">    public CattleDecorator(Fight fight) &#123;</div><div class="line">        super(fight);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String fightPower() &#123;</div><div class="line">        return super.fightPower();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void doDecoratorFight() &#123;</div><div class="line">        System.out.println(&quot;cattle 打豆豆&quot;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>测试方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">package com.pan.test;</div><div class="line"></div><div class="line">import com.pan.component.Cat;</div><div class="line">import com.pan.decorator.CatDecorator;</div><div class="line">import com.pan.decorator.CattleDecorator;</div><div class="line"></div><div class="line">public class CalTest &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        </div><div class="line">        System.out.println(&quot;==================未装饰cat==================&quot;);</div><div class="line">        System.out.println(new Cat(&quot;cat&quot;).fightPower());</div><div class="line">        System.out.println(&quot;===================装饰cat======================&quot;);</div><div class="line">        CatDecorator catDecorator = new CatDecorator(new Cat(&quot;cat&quot;)) ;</div><div class="line">        System.out.println(catDecorator.fightPower());</div><div class="line">        CattleDecorator cattleDecorator = new CattleDecorator(catDecorator) ;</div><div class="line">        System.out.println(&quot;====================cattle装饰cat装饰=====================&quot;);</div><div class="line">        System.out.println(cattleDecorator.fightPower());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">==================未装饰cat==================</div><div class="line">cat fighting</div><div class="line">===================装饰cat======================</div><div class="line">cat 打豆豆</div><div class="line">cat fighting</div><div class="line">====================cattle装饰cat装饰=====================</div><div class="line">cattle 打豆豆</div><div class="line">cat 打豆豆</div><div class="line">cat fighting</div></pre></td></tr></table></figure>
-</li>
-</ol>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>
       
     </div>
@@ -541,8 +443,8 @@ ConcreteDecorator（具体装饰者）
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/02/去百度推广方法/" rel="next" title="去百度右侧推广方法">
-                <i class="fa fa-chevron-left"></i> 去百度右侧推广方法
+              <a href="/2017/01/05/http协议状态码/" rel="next" title="http协议状态码">
+                <i class="fa fa-chevron-left"></i> http协议状态码
               </a>
             
           </div>
@@ -550,10 +452,6 @@ ConcreteDecorator（具体装饰者）
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/05/http协议状态码/" rel="prev" title="http协议状态码">
-                http协议状态码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,8 +483,8 @@ ConcreteDecorator（具体装饰者）
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/04/设计模式之装饰者模式/"
-           data-title="设计模式之装饰者模式" data-url="https://lmxy1990.github.io/2017/01/04/设计模式之装饰者模式/">
+      <div class="ds-thread" data-thread-key="2017/01/06/工具类/"
+           data-title="工具类" data-url="https://lmxy1990.github.io/2017/01/06/工具类/">
       </div>
     
   </div>
@@ -722,7 +620,7 @@ ConcreteDecorator（具体装饰者）
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰者模式简述"><span class="nav-number">1.</span> <span class="nav-text">装饰者模式简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图"><span class="nav-number">2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number">4.</span> <span class="nav-text">End</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#httpclient的简单封装"><span class="nav-number">1.</span> <span class="nav-text">httpclient的简单封装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number"></span> <span class="nav-text">End</span></a></div>
             
 
           </div>
