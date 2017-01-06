@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-06T01:51:43.121Z</updated>
+  <updated>2017-01-06T03:21:43.051Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式之命令模式</title>
+    <link href="https://lmxy1990.github.io/2017/01/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://lmxy1990.github.io/2017/01/06/设计模式之命令模式/</id>
+    <published>2017-01-06T02:39:36.000Z</published>
+    <updated>2017-01-06T03:21:43.051Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><hr>
+<ul>
+<li>命令模式是对调用者与执行者的解耦.解耦之后,调用者需要添加新的功能或者执行者添加新的功能时,很容易实现.命令模式与代理模式有一定共性.但也有一定区别.都是对源对象的解耦.增加对需求变化的应变能力.</li>
+<li>命令模式调用者–&gt;发出命令–&gt;命令接收对象–&gt;具体执行者执行.需要对命令的跟踪,以方便对其暂停/结束之类的操作.代理模式无需保存具体执行的一些信息.只是作为中间件来调用具体的对象.进行一些处理.</li>
+</ul>
+<h3 id="成员"><a href="#成员" class="headerlink" title="成员"></a>成员</h3><hr>
+<ul>
+<li>命令接口</li>
+<li>命令接口的实现类</li>
+<li>命令接收接口</li>
+<li>命令接收的实现类</li>
+<li>命令执行接口</li>
+<li>命令执行实现类</li>
+</ul>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/img/design_pattern/commond_pattern.png" alt="类图"></h2><h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h3&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;命令模式是对调用者与执行者的解耦.解耦之后,调用者需要添加新的功能或者执行者添加新的功能时,很容易实现.命令模式与代理
+    
+    </summary>
+    
+      <category term="设计模式" scheme="https://lmxy1990.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>使用反射将Object转换为HashMap</title>

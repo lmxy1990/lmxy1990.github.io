@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[设计模式之命令模式]]></title>
+      <url>%2F2017%2F01%2F06%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%2F</url>
+      <content type="text"><![CDATA[概念 命令模式是对调用者与执行者的解耦.解耦之后,调用者需要添加新的功能或者执行者添加新的功能时,很容易实现.命令模式与代理模式有一定共性.但也有一定区别.都是对源对象的解耦.增加对需求变化的应变能力. 命令模式调用者–&gt;发出命令–&gt;命令接收对象–&gt;具体执行者执行.需要对命令的跟踪,以方便对其暂停/结束之类的操作.代理模式无需保存具体执行的一些信息.只是作为中间件来调用具体的对象.进行一些处理. 成员 命令接口 命令接口的实现类 命令接收接口 命令接收的实现类 命令执行接口 命令执行实现类 类图End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[使用反射将Object转换为HashMap]]></title>
       <url>%2F2017%2F01%2F06%2F%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E5%B0%86Object%E8%BD%AC%E6%8D%A2%E4%B8%BAHashMap%2F</url>
       <content type="text"><![CDATA[代码123456789101112131415161718192021222324252627282930313233public class MapUtils &#123; /** * 使用反射获取对象的成员名作为key,值作为value * * @param o * @return */ public static Map&lt;String, String&gt; objectField2Map(Object o) &#123; Map&lt;String, String&gt; result = new HashMap&lt;&gt;(); if (o == null) return result; Class oClass = o.getClass(); Field[] fields = oClass.getDeclaredFields() ; String key; String value; if (fields != null &amp;&amp; fields.length != 0) &#123; for (Field field : fields) &#123; try &#123; key = field.getName(); if (&quot;serialVersionUID&quot;.equalsIgnoreCase(key)) continue; field.setAccessible(true); Object o1 = field.get(o) ; value = o1.toString(); result.put(key, value); &#125; catch (IllegalAccessException e) &#123; continue; &#125; &#125; &#125; return result; &#125;&#125; End]]></content>
