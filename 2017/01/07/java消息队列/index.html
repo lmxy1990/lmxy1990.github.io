@@ -86,15 +86,25 @@
 
 
 
-<meta name="description" content="love code, enjoy life .">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lmxy1990 ' Blog">
-<meta property="og:url" content="https://lmxy1990.github.io/categories/markdown/index.html">
+<meta name="description" content="Queue队列的所有已知实现类:
+
+该接口继承Iterable,Collection接口.除了继承的接口的方法外,它有自身操作队列的一些公有的方法:offer/poll/peek.
+队列里面的插入:offer,取出顶层元素:poll,查询顶层元素:peek/element.不建议使用集合类的方法,add,remove,addAll.因为操作失败是报异常,需要去捕获异常然后调用线程等待之类的方法.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java消息队列">
+<meta property="og:url" content="https://lmxy1990.github.io/2017/01/07/java消息队列/index.html">
 <meta property="og:site_name" content="Lmxy1990 ' Blog">
-<meta property="og:description" content="love code, enjoy life .">
+<meta property="og:description" content="Queue队列的所有已知实现类:
+
+该接口继承Iterable,Collection接口.除了继承的接口的方法外,它有自身操作队列的一些公有的方法:offer/poll/peek.
+队列里面的插入:offer,取出顶层元素:poll,查询顶层元素:peek/element.不建议使用集合类的方法,add,remove,addAll.因为操作失败是报异常,需要去捕获异常然后调用线程等待之类的方法.">
+<meta property="og:updated_time" content="2017-01-07T10:00:58.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lmxy1990 ' Blog">
-<meta name="twitter:description" content="love code, enjoy life .">
+<meta name="twitter:title" content="java消息队列">
+<meta name="twitter:description" content="Queue队列的所有已知实现类:
+
+该接口继承Iterable,Collection接口.除了继承的接口的方法外,它有自身操作队列的一些公有的方法:offer/poll/peek.
+队列里面的插入:offer,取出顶层元素:poll,查询顶层元素:peek/element.不建议使用集合类的方法,add,remove,addAll.因为操作失败是报异常,需要去捕获异常然后调用线程等待之类的方法.">
 
 
 
@@ -126,7 +136,7 @@
 
 
 
-  <title> 分类: markdown | Lmxy1990 ' Blog </title>
+  <title> java消息队列 | Lmxy1990 ' Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -157,7 +167,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,47 +292,325 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        markdown
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/28/Markdown-基础语法/" itemprop="url">
-              
-                <span itemprop="name">Markdown 基础语法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-28T16:06:14+08:00"
-              content="2016-12-28" >
-          12-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lmxy1990.github.io/2017/01/07/java消息队列/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="lmxy1990">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/head.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Lmxy1990 ' Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Lmxy1990 ' Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                java消息队列
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T17:14:19+08:00">
+                2017-01-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-01-07T18:00:58+08:00">
+                2017-01-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基本工具类/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基本工具类</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/07/java消息队列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/07/java消息队列/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Queue队列的所有已知实现类"><a href="#Queue队列的所有已知实现类" class="headerlink" title="Queue队列的所有已知实现类:"></a>Queue队列的所有已知实现类:</h3><hr>
+<ol>
+<li>该接口继承Iterable,Collection接口.除了继承的接口的方法外,它有自身操作队列的一些公有的方法:offer/poll/peek.</li>
+<li>队列里面的插入:offer,取出顶层元素:poll,查询顶层元素:peek/element.不建议使用集合类的方法,add,remove,addAll.因为操作失败是报异常,需要去捕获异常然后调用线程等待之类的方法.</li>
+<li>另外,队列的传入值一般不建议插入null.<h3 id="子接口"><a href="#子接口" class="headerlink" title="子接口:"></a>子接口:</h3></li>
+</ol>
+<hr>
+<ol>
+<li>BlockingQueue<e></e></li>
+</ol>
+<ul>
+<li>不容许插入null对象,如果取出顶层元素失败(执行poll),则返回null.<br>可能是有边界的,这种情况下,该队列如果制定边界.那么超过边界的对象不再被接受.如果没指名边界,那么边界就是整行的最大值.不支持close/shutdown这样的方法,线程安全.</li>
+<li>是BlockingDeque,Transfer的父接口.一般该实现类都有边界.因为是阻塞的.<br>集合类方法:add/remove/addAll等,在操作失败抛出异常.<br>队列方法:offer/poll/peek,在操作失败返回null或者false.<br>队列方法put/take/操作失败一直重试.<br>队列方法:put(e,time,unit),重试最大时间,如果还是失败就退出.</li>
+</ul>
+<ol>
+<li>Deque<e>,</e></li>
+</ol>
+<ul>
+<li>双端队列接口,继承自Queue.子接口BlockingDeque.<br>该接口的实现类一般都是无边界的队列(大小自由).<br>首端元素的添加/取出/查询:offerFrist/pollFrist/peekFrist.尾端为Last.<br>也可以使用Queue接口的方法:poll,peek.操作首端元素.这里的offer方法操作的是尾端元素.从尾端添加.首端添加是Stack的push方法.或者offerFrist方法.<br>使用Stack方法:push,pop,peek操作首端元素.</li>
+</ul>
+<ol>
+<li>BlockingDeque<e>,</e></li>
+</ol>
+<ul>
+<li>继承自BlockingQueue与Deque接口.具有二者的共性.<br>双端阻塞队列,所以操作方法是addFrist/addLast,removeFrist/removeLast…这样的方法.操作失败特性与BrokingQueue一样.</li>
+</ul>
+<ol>
+<li>TransferQueue<e>,</e></li>
+</ol>
+<ul>
+<li>继承自BlockingQueue接口.使用场景:生产者–&gt;消费者.生产这产生对象,添加到转移队列,消费者从转移队列取出对象.一般该接口的实现类是有边界的.这种情况下,如果消费者一直没有去走元素,那么该生产这就不能在队列满的情况下继续添加.必须要等到队列空出位置.getWaitingConsumerCount()方法:查询消费者的数量.hasWaitConsumer() :是否有消费者正在等待消费.transfer(E e) :转移对象给消费者.如果没有消费者,则一直等待.tryTransfer(E e) :立即转移给消费者.没有返回false.tryTransfer(E e,long time,timeUnit unit) :尝试转移,等待最大时间之后就不再等待.其他方法与其父接口一致.<h3 id="子实现类"><a href="#子实现类" class="headerlink" title="子实现类:"></a>子实现类:</h3></li>
+</ul>
+<hr>
+<ol>
+<li>AbstractQueue,</li>
+</ol>
+<ul>
+<li>抽象类,所有子队列的顶层.实现Queue的接口.所以Queue接口的方法都具有.<br>下面的类都是该类的子类.下面不再重复说明.</li>
+</ul>
+<ol>
+<li>ArrayBlockingQueue,</li>
+</ol>
+<ul>
+<li>基于数组实现的阻塞队列.拥有边界.实现BlockingQueue接口与序列化接口.</li>
+</ul>
+<ol>
+<li>ArrayDeque,</li>
+</ol>
+<ul>
+<li>基于数组的双端队列.无界,初始化未指定大小,默认为16容量.实现Deque接口,克隆接口,序列化接口.关于克隆接口:Cloneable</li>
+</ul>
+<ol>
+<li>ConcurrentLinkedDeque,</li>
+</ol>
+<ul>
+<li>基于链表实现的没有边界的同步双端队列.适用线程安全的多线程并发插入/移除/访问等操作.因为是双端操作,所以集合类的方法遍历可能结果不准确.不容许插入null值.</li>
+</ul>
+<ol>
+<li>ConcurrentLinkedQueue,</li>
+</ol>
+<ul>
+<li>基于链表实现的没边界的同步队列.与之前的一样,也是线程安全的.同样不容许插入null.这一条之后不再重复.一般队列都不容许插入null.</li>
+</ul>
+<ol>
+<li>DelayQueue,</li>
+</ol>
+<ul>
+<li>无界延迟队列.只有到达时间的对象才能被消费.实现BlockingQueue接口.传入参数必须是实现Delayed接口的对象方法多了个size/take..</li>
+</ul>
+<ol>
+<li>LinkedBlockingDeque,</li>
+</ol>
+<ul>
+<li>基于链表的双端队列.有界,如果初始化未指定容量大小,则默认为整型最大值.实现BlcokingDeque与序列化接口.方法定义与BlockingQueue一致性.</li>
+</ul>
+<ol>
+<li>LinkedBlockingQueue,</li>
+</ol>
+<ul>
+<li>基于链表的阻塞队列,如果初始化时候没有制定大小.默认为整型最大值.遵循FIFO,连接的节点在插入新的对象时候动态创建,知道超出容量限制.</li>
+</ul>
+<ol>
+<li>LinkedList,</li>
+</ol>
+<ul>
+<li>实现List<e>, Deque<e>, Cloneable, Serializable,接口.实现模式是双端队列,使用两条链表操作.该队列是非同步的.官方给出同步的处理方式:Collections.synchronizedList(new LinkedList(…)</e></e></li>
+</ul>
+<ol>
+<li>LinkedTransferQueue,</li>
+</ol>
+<ul>
+<li>基于链表实现的传输队列.无界实现TransferQueue与序列化接口.跟大部分非同步队列一样,由于多线程异步的原因,size方法取到的值不能作为准确的判断队列的数量.建议使用队列的方法取出.</li>
+</ul>
+<ol>
+<li>PriorityQueue,</li>
+</ol>
+<ul>
+<li>指定顺序的队列(优先级),无界.继承自AbstractQueue抽象类.传入对象需要实现排序接口 Comparator 来排序.初始化未指定参数,默认容量为11,排序方式为自然排序: natural ordering.</li>
+</ul>
+<ol>
+<li>PriorityBlockingQueue,</li>
+</ol>
+<ul>
+<li>优先阻塞队列,无界.实现阻塞接口与序列化接口.与阻塞队列相比,它多了一个排序的功能.</li>
+</ul>
+<ol>
+<li>SynchronousQueue</li>
+</ol>
+<ul>
+<li>同步队列,无界.实现BlockingQueue接口与序列化接口.可以指定是否FIFO,初始化默认是非公平队列.即不保证先插入的元素一定最先取出.了解队列特性,建议先了解接口特性.例外的就只有同步队列/排序队列(姑且这么翻译)不是实现接口而产生的功能,其他大体都<br>是接口定义的特性.</li>
+</ul>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/weixin-apply.jpg" alt="lmxy1990 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/zhifubao-apply.jpg" alt="lmxy1990 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/07/idea快捷键/" rel="next" title="idea快捷键">
+                <i class="fa fa-chevron-left"></i> idea快捷键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -330,6 +618,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/07/java消息队列/"
+           data-title="java消息队列" data-url="https://lmxy1990.github.io/2017/01/07/java消息队列/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -349,8 +645,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/head.jpg"
@@ -442,6 +747,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue队列的所有已知实现类"><span class="nav-number">1.</span> <span class="nav-text">Queue队列的所有已知实现类:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子接口"><span class="nav-number">2.</span> <span class="nav-text">子接口:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子实现类"><span class="nav-number">3.</span> <span class="nav-text">子实现类:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number"></span> <span class="nav-text">End</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -536,6 +857,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
