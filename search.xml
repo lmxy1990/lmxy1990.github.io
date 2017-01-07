@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[idea快捷键]]></title>
+      <url>%2F2017%2F01%2F07%2Fidea%E5%BF%AB%E6%8D%B7%E9%94%AE%2F</url>
+      <content type="text"><![CDATA[最重要的两个快捷键 ctrl+shfit+a 查询所有命令快捷键ctrl+j 查询所有语句快捷键(eg:sout等于输出语句) 编辑快捷键 Alt+Insert get/set/constructor/overrider..Alt+Enter 编译器建议.代码提示建议修改为Alt+/Ctrl+/或Ctrl+Shift+/，注释（//或者/**/）Shift+F6，重构 - 重命名Ctrl+O，覆写父类方法OverriderAlt+Insert 自动生成Get/Set方法.Ctrl+Alt+T 自动生成try/catch方法.Ctrl+Shift+Up/Down，向上/下移动语句Ctrl+D 复制当前行Ctrl+Y 删除当前行Ctrl+X，剪切行Ctrl+V 粘贴Ctrl+Alt+L 自动格式化代码块.Ctrl+Alt+I 自动缩进排版Ctrl+Alt+O 删除多余的导入类.Ctrl+Enter 自动导入需要的Jar包.Ctrl+”+/-“，当前方法展开、折叠Ctrl+Shift+”+/-“，全部展开、折叠Ctrl+Shift+U，大小写转化 查找定位快捷键 Ctrl+W/Ctrl+Shift+W 智能选择对应代码块.F2 或 Shift+F2，错误快速定位Ctrl+U，转到父类Ctrl+Alt+B 跳到实现类/实现方法Ctrl+B 跳到定义Ctrl+Q 查看注释Ctrl+H，显示类结构图Ctrl+F12 列出当前类的所有方法,变量.Ctrl+F 查找文本Ctrl+Shift+F，全局查找Ctrl+R 替换文本Ctrl+G，定位行Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择Alt+F7，查找整个工程中使用的某一个类、方法或者变量的位置Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失Ctrl+N 根据类名查找类Ctrl+Shift+N 根据文件名查找文件(包括类)Ctrl+Shift+Alt+N，查找所有类中的方法或变量Ctrl+Shift+S，高级搜索Alt+F3，逐个往下查找相同文本，并高亮显示Alt+F8，计算变量值Ctrl+Alt+left/right，返回至上次浏览的位置Ctrl+Alt+F7，显示用法Ctrl+Shift+A 查看所有快捷键Ctrl+Tab 工作界面切换. Debug快捷键 Alt+Shift+F9，选择 DebugAlt+Shift+F10，选择 RunF7，步入F8，步过Shift+F8 跳出方法F9，恢复程序Alt+F9 跳到鼠标指定的位置/断点/直接跳出Alt+F10，查看当前断点Ctrl+Shift+F8 查看全部断点Shift+F7，智能步入Shift+F8，智能步出Alt+Shift+F7，强制步入Alt+Shift+F8，强制步过 CVS快捷键 Alt+~，VCS 操作菜单Ctrl+K，提交更改Ctrl+T，更新项目Ctrl+Alt+Shift+D，显示变化【常规】 End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[设计模式之命令模式]]></title>
       <url>%2F2017%2F01%2F06%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%2F</url>
       <content type="text"><![CDATA[概念 命令模式是对调用者与执行者的解耦.解耦之后,调用者需要添加新的功能或者执行者添加新的功能时,很容易实现.命令模式与代理模式有一定共性.但也有一定区别.都是对源对象的解耦.增加对需求变化的应变能力. 命令模式调用者–&gt;发出命令–&gt;命令接收对象–&gt;具体执行者执行.需要对命令的跟踪,以方便对其暂停/结束之类的操作.代理模式无需保存具体执行的一些信息.只是作为中间件来调用具体的对象.进行一些处理. 成员 命令接口 命令接口的实现类 命令接收接口 命令接收的实现类 命令执行接口 命令执行实现类 类图End]]></content>

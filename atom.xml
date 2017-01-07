@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-06T03:21:43.051Z</updated>
+  <updated>2017-01-07T08:30:36.198Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>idea快捷键</title>
+    <link href="https://lmxy1990.github.io/2017/01/07/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>https://lmxy1990.github.io/2017/01/07/idea快捷键/</id>
+    <published>2017-01-07T08:28:00.000Z</published>
+    <updated>2017-01-07T08:30:36.198Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="最重要的两个快捷键"><a href="#最重要的两个快捷键" class="headerlink" title="最重要的两个快捷键"></a>最重要的两个快捷键</h2><hr>
+<p>ctrl+shfit+a 查询所有命令快捷键<br>ctrl+j 查询所有语句快捷键(eg:sout等于输出语句)</p>
+<h2 id="编辑快捷键"><a href="#编辑快捷键" class="headerlink" title="编辑快捷键"></a>编辑快捷键</h2><hr>
+<p>Alt+Insert get/set/constructor/overrider..<br>Alt+Enter 编译器建议.<br>代码提示建议修改为Alt+/<br>Ctrl+/或Ctrl+Shift+/，注释（//或者/**/）<br>Shift+F6，重构 - 重命名<br>Ctrl+O，覆写父类方法Overrider<br>Alt+Insert 自动生成Get/Set方法.<br>Ctrl+Alt+T 自动生成try/catch方法.<br>Ctrl+Shift+Up/Down，向上/下移动语句<br>Ctrl+D 复制当前行<br>Ctrl+Y 删除当前行<br>Ctrl+X，剪切行<br>Ctrl+V 粘贴<br>Ctrl+Alt+L 自动格式化代码块.<br>Ctrl+Alt+I 自动缩进排版<br>Ctrl+Alt+O 删除多余的导入类.<br>Ctrl+Enter 自动导入需要的Jar包.<br>Ctrl+”+/-“，当前方法展开、折叠<br>Ctrl+Shift+”+/-“，全部展开、折叠<br>Ctrl+Shift+U，大小写转化</p>
+<h2 id="查找定位快捷键"><a href="#查找定位快捷键" class="headerlink" title="查找定位快捷键"></a>查找定位快捷键</h2><hr>
+<p>Ctrl+W/Ctrl+Shift+W 智能选择对应代码块.<br>F2 或 Shift+F2，错误快速定位<br>Ctrl+U，转到父类<br>Ctrl+Alt+B 跳到实现类/实现方法<br>Ctrl+B 跳到定义<br>Ctrl+Q 查看注释<br>Ctrl+H，显示类结构图<br>Ctrl+F12 列出当前类的所有方法,变量.<br>Ctrl+F 查找文本<br>Ctrl+Shift+F，全局查找<br>Ctrl+R 替换文本<br>Ctrl+G，定位行<br>Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择<br>Alt+F7，查找整个工程中使用的某一个类、方法或者变量的位置<br>Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失<br>Ctrl+N 根据类名查找类<br>Ctrl+Shift+N 根据文件名查找文件(包括类)<br>Ctrl+Shift+Alt+N，查找所有类中的方法或变量<br>Ctrl+Shift+S，高级搜索<br>Alt+F3，逐个往下查找相同文本，并高亮显示<br>Alt+F8，计算变量值<br>Ctrl+Alt+left/right，返回至上次浏览的位置<br>Ctrl+Alt+F7，显示用法<br>Ctrl+Shift+A 查看所有快捷键<br>Ctrl+Tab 工作界面切换.</p>
+<h2 id="Debug快捷键"><a href="#Debug快捷键" class="headerlink" title="Debug快捷键"></a>Debug快捷键</h2><hr>
+<p>Alt+Shift+F9，选择 Debug<br>Alt+Shift+F10，选择 Run<br>F7，步入<br>F8，步过<br>Shift+F8 跳出方法<br>F9，恢复程序<br>Alt+F9 跳到鼠标指定的位置/断点/直接跳出<br>Alt+F10，查看当前断点<br>Ctrl+Shift+F8 查看全部断点<br>Shift+F7，智能步入<br>Shift+F8，智能步出<br>Alt+Shift+F7，强制步入<br>Alt+Shift+F8，强制步过</p>
+<h2 id="CVS快捷键"><a href="#CVS快捷键" class="headerlink" title="CVS快捷键"></a>CVS快捷键</h2><hr>
+<p>Alt+~，VCS 操作菜单<br>Ctrl+K，提交更改<br>Ctrl+T，更新项目<br>Ctrl+Alt+Shift+D，显示变化【常规】</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;最重要的两个快捷键&quot;&gt;&lt;a href=&quot;#最重要的两个快捷键&quot; class=&quot;headerlink&quot; title=&quot;最重要的两个快捷键&quot;&gt;&lt;/a&gt;最重要的两个快捷键&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;ctrl+shfit+a 查询所有命令快捷键&lt;br&gt;ctrl+j 查询所有
+    
+    </summary>
+    
+      <category term="IDE" scheme="https://lmxy1990.github.io/categories/IDE/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式之命令模式</title>
@@ -56,7 +88,7 @@
     <link href="https://lmxy1990.github.io/2017/01/06/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E5%B0%86Object%E8%BD%AC%E6%8D%A2%E4%B8%BAHashMap/"/>
     <id>https://lmxy1990.github.io/2017/01/06/使用反射将Object转换为HashMap/</id>
     <published>2017-01-06T01:49:44.000Z</published>
-    <updated>2017-01-06T01:51:43.121Z</updated>
+    <updated>2017-01-06T06:06:36.416Z</updated>
     
     <content type="html"><![CDATA[<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class MapUtils &#123;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 使用反射获取对象的成员名作为key,值作为value</div><div class="line">     *</div><div class="line">     * @param o</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static Map&lt;String, String&gt; objectField2Map(Object o) &#123;</div><div class="line">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</div><div class="line">        if (o == null) return result;</div><div class="line">        Class oClass = o.getClass();</div><div class="line">        Field[] fields = oClass.getDeclaredFields() ;</div><div class="line">        String key;</div><div class="line">        String value;</div><div class="line">        if (fields != null &amp;&amp; fields.length != 0) &#123;</div><div class="line">            for (Field field : fields) &#123;</div><div class="line">                try &#123;</div><div class="line">                    key = field.getName();</div><div class="line">                    if (&quot;serialVersionUID&quot;.equalsIgnoreCase(key)) continue;</div><div class="line">                    field.setAccessible(true);</div><div class="line">                    Object o1 = field.get(o) ;</div><div class="line">                    value = o1.toString();</div><div class="line">                    result.put(key, value);</div><div class="line">                &#125; catch (IllegalAccessException e) &#123;</div><div class="line">                    continue;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
