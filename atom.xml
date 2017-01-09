@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-07T10:00:58.429Z</updated>
+  <updated>2017-01-09T01:38:36.484Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java的lambda表达式</title>
+    <link href="https://lmxy1990.github.io/2017/01/09/java%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>https://lmxy1990.github.io/2017/01/09/java的lambda表达式/</id>
+    <published>2017-01-09T01:30:48.000Z</published>
+    <updated>2017-01-09T01:38:36.484Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>lambda 表达式是1.8的特性.原预计是1.7的需求,但是因为竞争,收购,资金等等原因到1.8才出现.另外,java的lambda表达式与.net的有一定区别的.两者实现的方式不一样.java的lambda表达式是建立在匿名类(接口)之下延伸的.而.net是使用委托这一特性实现的.增加该特性的话,代码会简洁一些.</p>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p>无论是java还是.net使用方式都差不多.就是() -&gt; “return data” .入参 -&gt; 回参.</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;lambda 表达式是1.8的特性.原预计是1.7的需求,但是因为竞争,收购,资金等等原因到1.8才出现.另外,java的lambda表达式
+    
+    </summary>
+    
+      <category term="JAVA基本工具类" scheme="https://lmxy1990.github.io/categories/JAVA%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>java消息队列</title>
