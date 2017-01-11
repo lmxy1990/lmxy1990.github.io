@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-09T01:38:36.484Z</updated>
+  <updated>2017-01-11T06:24:21.322Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>altimu-designer常用快捷键</title>
+    <link href="https://lmxy1990.github.io/2017/01/11/altimu-designer%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>https://lmxy1990.github.io/2017/01/11/altimu-designer常用快捷键/</id>
+    <published>2017-01-11T04:34:35.000Z</published>
+    <updated>2017-01-11T06:24:21.322Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="原理图快捷键列表"><a href="#原理图快捷键列表" class="headerlink" title="原理图快捷键列表"></a>原理图快捷键列表</h3><ol>
+<li>p 放置器件</li>
+<li>tab 在放置之前,设置器件的属性设置</li>
+<li>space 器件90度旋转.</li>
+<li>x 器件X轴镜像</li>
+<li>y 器件Y轴镜像</li>
+<li>鼠标左键 放置器件</li>
+<li>鼠标右键 取消放置</li>
+<li>按住右键, 拖拽图纸</li>
+<li>ctrl+滚轮 放大/缩小</li>
+<li>ctrl+按住鼠标右键,滑动鼠标 以器件为中心缩放</li>
+</ol>
+<h3 id="ltium-Designer14-PCB快捷键："><a href="#ltium-Designer14-PCB快捷键：" class="headerlink" title="ltium Designer14 PCB快捷键："></a>ltium Designer14 PCB快捷键：</h3><p><strong>旋转：Space；</strong><br>X轴镜像：X；<br>Y轴镜像：Y；<br>板层管理：L；<br>栅格设置：G；<br>单位进制切换：Q；</p>
+<p>对齐-水平：A，D；<br>对齐-垂直：A，I，I，Enter；<br>对齐-顶部：A，T；<br>对齐-底部：A，B；<br>对齐-左侧：A，L；<br>对齐-右侧：A，R；</p>
+<p>设计-类设置：D，C;<br>设计-板层管理：D，K；<br>设计-规则：D，R；<br>设计-规则向导：D，W；<br>设计-拷贝ROOM格式：D，M，C；<br>设计-放置ROOM：D，M，R；<br>设计-根据选择对象定义板子形状：D，S，D；<br>设计-编辑网络：D，N，N；</p>
+<p>编辑-删除：E，D；<br>编辑-切断轨迹：E，K；<br>编辑-设定原点：E，O，S；<br>编辑-复位原点：E，O，R；</p>
+<p>移动-移动：M，M；<br>移动-拖拽：M，D；<br>移动-器件：M，C；<br>移动-打断走线：M，B；<br>移动-器件翻转板层：M，I；</p>
+<p>网络-显示网络：N，S，N；<br>网络-显示器件：N，S，O；<br>网络-显示全部：N，S，A；<br>网络-隐藏网络：N，H，N；<br>网络-隐藏器件：N，H，O；<br>网络-隐藏全部：N，H，A；</p>
+<p>放置-坐标：P，O；<br>放置-焊盘：P，P；<br>放置-字符：P，S；<br>放置-过孔：P，V；<br>放置-多边形：P，R；<br>放置-填充：P，F；<br>放置-敷铜：P，G；<br>放置-线性尺寸：P，D，L；<br>放置-走线：P，T；<br>放置-差分对布线：P，I；<br>放置-多根布线：P，M，Enter；</p>
+<p>选择-全选：S，A；<br>选择-线选：S，L；<br>选择-区域（内部）：S，I；<br>选择-区域（外部）：S，O；</p>
+<p>工具-交叉探测对象：T，C；( Ctrl:跳转到目标文件)</p>
+<p>工具-泪滴选项：T，E；<br>工具-设计规则检查：T，D；<br>工具-复位错误标志：T，M；<br>工具-从选择元素创建板剪切：T，V，B<br>工具-网络等长调节：T，R；</p>
+<p>取消布线-全部：U，A；<br>取消布线-网络：U，N；<br>取消布线-连接：U，C；<br>取消布线-器件：U，O；<br>取消布线-ROOM：U，R；</p>
+<p>查看-合适区域：V，A；<br>查看-翻转板子：V，B；<br>查看-适合文件：V，D；<br>查看-合适板子：V，F；<br>查看-合适图纸：V，H；</p>
+<p>测距：Ctrl M；</p>
+<p>清除蒙板： Shift Ｃ；<br>查找相似对象： Shift F;<br>显示走线长度： Shift G；<br>单层显示： Shift S；<br>改变走线模式：Shift Space；</p>
+<p>切换二维显示：2(主键盘)；<br>切换三维显示：3(主键盘)；<br>顶层底层切换：*(小键盘 )；<br>板层切换： /-(小键盘)；<br>智能走线：在放置走线状态， Ctrl；</p>
+<p>移动多边形顶点：右键，Y，V；<br>器件联合：右键，U；</p>
+<p>增大弧度：长按 &gt;；<br>减小弧度：长按 &lt;；<br>减小多根交互式布线间距：长按Shift B；<br>增加多根交互式布线间距：长按Shift B；</p>
+<p><strong>3D模式下：</strong><br>0°旋转：0（主键盘）；<br>90°旋转：9（主键盘）；</p>
+<p><strong>布等长线状态下：</strong><br>增加蛇形线拐角弧度：1；<br>减少蛇形线拐角弧度：2；<br>增加蛇形线宽度：3；<br>减少蛇形线宽度：4；<br>增加蛇形线拐角振幅：。；<br>减少蛇形线拐角振幅：，；</p>
+<p><strong>Altium Designer14 SCH快捷键：</strong></p>
+<p>对齐-水平：A，D；<br>对齐-垂直：A，I；<br>对齐-顶部：A，T；<br>对齐-底部：A，B；<br>对齐-左侧：A，L；<br>对齐-右侧：A，R；</p>
+<p>打破线：E，W；</p>
+<p>放置总线：P，B；<br>放置总线入库：P，U；<br>放置节点：P，J；<br>放置网络标号：P，N；<br>放置端口：P，R；<br>放置字符串：P，T；<br>放置走线：P，W；<br>放置线：P，D，L；<br>放置差分对标示：P，V，F；<br>放置Blanket：P，V，L；<br>放置网络类：P，V，C；</p>
+<p>从原理图选择PCB器件： T，S；<br>封装管理器：T，G；<br>强制标注所有器件：T，N；</p>
+<p>查看-合适区域：V，A；<br>查看-适合文件：V，D；<br>查看-合适板子：V，F；</p>
+<p>清除蒙板： Shift Ｃ；<br>改变走线模式：Shift Space</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;原理图快捷键列表&quot;&gt;&lt;a href=&quot;#原理图快捷键列表&quot; class=&quot;headerlink&quot; title=&quot;原理图快捷键列表&quot;&gt;&lt;/a&gt;原理图快捷键列表&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;p 放置器件&lt;/li&gt;
+&lt;li&gt;tab 在放置之前,设置器件的属性设置&lt;/li&gt;
+    
+    </summary>
+    
+      <category term="微电子" scheme="https://lmxy1990.github.io/categories/%E5%BE%AE%E7%94%B5%E5%AD%90/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>java的lambda表达式</title>
