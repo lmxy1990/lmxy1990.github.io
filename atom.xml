@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-16T01:48:14.903Z</updated>
+  <updated>2017-01-16T03:09:43.707Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>list,map,queue,dequeue区别</title>
+    <link href="https://lmxy1990.github.io/2017/01/16/list-map-queue-dequeue%E5%8C%BA%E5%88%AB/"/>
+    <id>https://lmxy1990.github.io/2017/01/16/list-map-queue-dequeue区别/</id>
+    <published>2017-01-16T02:21:18.000Z</published>
+    <updated>2017-01-16T03:09:43.707Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><ul>
+<li>list是最常用的集合类.这里需要注意的是arraylist是非线程同步的.如果资源共享时候,需要考虑同步的话可以使用vector类.也可以使用同步队列.arraylist是一局数组的动态扩充来实现的.如果超过长度,则会一次性扩充当前长度的1.5倍.</li>
+</ul>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><ul>
+<li>map也是集合中最为常用的集合类.hashMap,tableMap的区别是多线程时候,该资源是否同步.hashmap的底层实现是根据hashcode与next来进行判断.对于不同对象的相同hashcode,hashmap会在该节点产生一个链表.hashmap的put依托于重写equals方法.hashmap中的hashcode也是重新生成的.null可以作为key. hashcode的无符号右位移16位的次方(<code>(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)</code>).hashmap的的对象是Entry类型.所以equals时候,需比较hashcode与key对象的equals.来判断是否相等.然后执行是插入还哦是更新</li>
+</ul>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><ul>
+<li>队列比较特殊,它是集合类.但是它比一般的集合类功能要多一点.对于非阻塞无界队列来说,它功能上与list来说是一样的.队列有一个特性是阻塞,它表示的意义是只容许插入指定的数据,如果是插满,则在put方法时候会一直处于等待插入状态,add方法会抛出异常.offer方法则会插入失败,但不会抛出异常.功能上来说,队列优于list,set.</li>
+</ul>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;list&quot;&gt;&lt;a href=&quot;#list&quot; class=&quot;headerlink&quot; title=&quot;list&quot;&gt;&lt;/a&gt;list&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;list是最常用的集合类.这里需要注意的是arraylist是非线程同步的.如果资源共享时候,需要考虑同步的话可
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://lmxy1990.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>项目命令规范</title>
