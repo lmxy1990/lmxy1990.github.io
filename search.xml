@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[java多线程概念]]></title>
+      <url>%2F2017%2F01%2F16%2Fjava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A6%82%E5%BF%B5%2F</url>
+      <content type="text"><![CDATA[概述 多线程是线程切换,多线程中的线程安全指的是在统一资源中.多线程在读取与修改的时候.资源是否同步.对于属于线程的资源,则无需考虑多线程安全问题.因为该资源是该县城独占.不存在线程安全问题. 并发 并发与多线程是一个意思.并发描述侧重于业务.多线程描述侧重于编码机制. End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[list,map,queue,dequeue区别]]></title>
       <url>%2F2017%2F01%2F16%2Flist-map-queue-dequeue%E5%8C%BA%E5%88%AB%2F</url>
       <content type="text"><![CDATA[list list是最常用的集合类.这里需要注意的是arraylist是非线程同步的.如果资源共享时候,需要考虑同步的话可以使用vector类.也可以使用同步队列.arraylist是一局数组的动态扩充来实现的.如果超过长度,则会一次性扩充当前长度的1.5倍. map map也是集合中最为常用的集合类.hashMap,tableMap的区别是多线程时候,该资源是否同步.hashmap的底层实现是根据hashcode与next来进行判断.对于不同对象的相同hashcode,hashmap会在该节点产生一个链表.hashmap的put依托于重写equals方法.hashmap中的hashcode也是重新生成的.null可以作为key. hashcode的无符号右位移16位的次方((h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)).hashmap的的对象是Entry类型.所以equals时候,需比较hashcode与key对象的equals.来判断是否相等.然后执行是插入还哦是更新 队列 队列比较特殊,它是集合类.但是它比一般的集合类功能要多一点.对于非阻塞无界队列来说,它功能上与list来说是一样的.队列有一个特性是阻塞,它表示的意义是只容许插入指定的数据,如果是插满,则在put方法时候会一直处于等待插入状态,add方法会抛出异常.offer方法则会插入失败,但不会抛出异常.功能上来说,队列优于list,set. End]]></content>
