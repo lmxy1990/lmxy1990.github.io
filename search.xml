@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[mysql日期处理函数]]></title>
+      <url>%2F2017%2F01%2F23%2Fmysql%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%2F</url>
+      <content type="text"><![CDATA[过滤指定日期 1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate(); 2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(column_time); 3.近一个月1select * from table where DATE_SUB(CURDATE(), INTERVAL 1 MONTH) &lt;= date(column_time); 筛选出需要的日期的值1.筛选出年月日1select DATA(column_time) from table ; 2.筛选出年月1select Extract(year_month FROM column_time) from table ; 3.筛选出年.1select Extract(year FROM column_time) from table ; 4.筛选出月1select Extract(month FROM column_time) from table ; 5.筛选出日1select Extract(day FROM column_time) from table ; 6.筛选出时分秒1select time(day FROM column_time) from table ; End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[xshell故障]]></title>
       <url>%2F2017%2F01%2F23%2Fxshell%E6%95%85%E9%9A%9C%2F</url>
       <content type="text"><![CDATA[故障1,登录成功.会话断开. 这种原因google了很久,都没找到.后来才知道是因为窗口太大了.服务器那边可能不支持大屏显示吧.缩小窗口就可以了. End]]></content>

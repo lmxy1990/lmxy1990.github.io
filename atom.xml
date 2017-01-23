@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-23T02:09:01.654Z</updated>
+  <updated>2017-01-23T09:15:54.333Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql日期处理函数</title>
+    <link href="https://lmxy1990.github.io/2017/01/23/mysql%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/"/>
+    <id>https://lmxy1990.github.io/2017/01/23/mysql日期处理函数/</id>
+    <published>2017-01-23T08:45:58.000Z</published>
+    <updated>2017-01-23T09:15:54.333Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="过滤指定日期"><a href="#过滤指定日期" class="headerlink" title="过滤指定日期"></a>过滤指定日期</h3><hr>
+<p>1.近1天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from table where to_days(column_time) = to_days(now());</div><div class="line"></div><div class="line">select * from table where date(column_time) = curdate();</div></pre></td></tr></table></figure></p>
+<p>2.近7天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from table where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(column_time);</div></pre></td></tr></table></figure></p>
+<p>3.近一个月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from table where DATE_SUB(CURDATE(), INTERVAL 1 MONTH) &lt;= date(column_time);</div></pre></td></tr></table></figure></p>
+<h3 id="筛选出需要的日期的值"><a href="#筛选出需要的日期的值" class="headerlink" title="筛选出需要的日期的值"></a>筛选出需要的日期的值</h3><p>1.筛选出年月日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select DATA(column_time) from table ;</div></pre></td></tr></table></figure></p>
+<p>2.筛选出年月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(year_month FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
+<p>3.筛选出年.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(year FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
+<p>4.筛选出月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(month FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
+<p>5.筛选出日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(day FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
+<p>6.筛选出时分秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select time(day FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;过滤指定日期&quot;&gt;&lt;a href=&quot;#过滤指定日期&quot; class=&quot;headerlink&quot; title=&quot;过滤指定日期&quot;&gt;&lt;/a&gt;过滤指定日期&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;1.近1天&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;
+    
+    </summary>
+    
+      <category term="sql" scheme="https://lmxy1990.github.io/categories/sql/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>xshell故障</title>
@@ -774,47 +806,6 @@
     </summary>
     
       <category term="java" scheme="https://lmxy1990.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式之策略模式</title>
-    <link href="https://lmxy1990.github.io/2016/12/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://lmxy1990.github.io/2016/12/28/设计模式之策略模式/</id>
-    <published>2016-12-28T12:31:12.000Z</published>
-    <updated>2016-12-29T14:18:46.623Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p><br></p>
-<hr>
-<ul>
-<li>策略模式是用于解决面向对象中的抽象类与接口的局限性.即一般的对类别进行抽象,对行为进行抽象为接口.这种方式在代码复用上有一定的局限性.而策略模式可以提高代码的复用.</li>
-<li><p>eg:<br><pre><br>//定义一个接口,用于在抽象类都能调用到.(里氏替换原则)<br>interface Speak{</pre></p>
-<p>void doSpeak() ;<br>}<br>// 实现接口1,其他类只要功能一样都可以采用它.<br>class SpeakCn implements Speak{<br>@Override<br>public void doSpeak() {</p>
-<pre><code>System.out.println(&quot;中文&quot;);
-</code></pre><p>}<br>}<br>//实现接口2,其他类只要功能一样都可以采用它.<br>class SpeakEn implements Speak{<br>@Override<br>public void doSpeak() {</p>
-<pre><code>System.out.println(&quot;English&quot;);
-</code></pre><p>}<br>}<br>//抽象类 使用接口来实现.将具体实现放到子类来实现接口.<br>abstract class man{<br>Speak speak ;<br>void speak(){</p>
-<pre><code>speak.doSpeak();
-</code></pre><p>}<br>}<br>class CnMan extends man{<br>//初始化赋值父类接口的实现,也可以采用Spring的初始化加载实现.<br>public  CnMan() {</p>
-<pre><code>speak = new SpeakCn() ;
-</code></pre><p>}<br>}<br>//使用<br>class test{<br>public void main(String[] args) {</p>
-<pre><code>new CnMan().speak();
-</code></pre><p>}<br>}<br></p>
-<center>End</center></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;策略模式&quot;&gt;&lt;a href=&quot;#策略模式&quot; class=&quot;headerlink&quot; title=&quot;策略模式&quot;&gt;&lt;/a&gt;策略模式&lt;/h2&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;策略模式是用于解决面向对象中的抽象类与接口的局限性.即一般的对类别进行抽象,对
-    
-    </summary>
-    
-      <category term="设计模式" scheme="https://lmxy1990.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
   </entry>
