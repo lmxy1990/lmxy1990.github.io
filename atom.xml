@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-24T01:35:48.593Z</updated>
+  <updated>2017-01-24T01:37:35.521Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lmxy1990.github.io/2017/01/23/mysql%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/"/>
     <id>https://lmxy1990.github.io/2017/01/23/mysql日期处理函数/</id>
     <published>2017-01-23T08:45:58.000Z</published>
-    <updated>2017-01-24T01:35:48.593Z</updated>
+    <updated>2017-01-24T01:37:35.521Z</updated>
     
     <content type="html"><![CDATA[<h3 id="过滤指定日期"><a href="#过滤指定日期" class="headerlink" title="过滤指定日期"></a>过滤指定日期</h3><hr>
 <p>1.近1天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from table where to_days(column_time) = to_days(now());</div><div class="line"></div><div class="line">select * from table where date(column_time) = curdate();</div></pre></td></tr></table></figure></p>
@@ -33,7 +33,7 @@
 <p>5.筛选出日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(day FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
 <p>6.筛选出时分秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select time(day FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
 <h3 id="比较日期"><a href="#比较日期" class="headerlink" title="比较日期"></a>比较日期</h3><p>1.间隔天数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT match_date,create_time FROM table_name WHERE  datediff(match_date,create_time) = 60</div></pre></td></tr></table></figure></p>
-<p><a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff" target="_blank" rel="external">详见:https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff</a></p>
+<p>详见: <a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff</a></p>
 <hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
     
