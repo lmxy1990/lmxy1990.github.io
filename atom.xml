@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-24T01:39:32.871Z</updated>
+  <updated>2017-01-25T01:24:48.632Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Druid的坑</title>
+    <link href="https://lmxy1990.github.io/2017/01/25/Druid%E7%9A%84%E5%9D%91/"/>
+    <id>https://lmxy1990.github.io/2017/01/25/Druid的坑/</id>
+    <published>2017-01-25T01:15:27.000Z</published>
+    <updated>2017-01-25T01:24:48.632Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.高性能的Druid连接池,在没有引入驱动的时候.调用连接.线程直接死循环.</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.高性能的Druid连接池,在没有引入驱动的时候.调用连接.线程直接死循环.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="工作日志" scheme="https://lmxy1990.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>mysql日期处理函数</title>
@@ -766,48 +790,6 @@
     </summary>
     
       <category term="设计模式" scheme="https://lmxy1990.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java volatile 关键字</title>
-    <link href="https://lmxy1990.github.io/2016/12/29/java-volatile-%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    <id>https://lmxy1990.github.io/2016/12/29/java-volatile-关键字/</id>
-    <published>2016-12-29T12:56:42.000Z</published>
-    <updated>2016-12-29T13:18:21.121Z</updated>
-    
-    <content type="html"><![CDATA[<p><br></p>
-<h2 id="volatile关键字的使用"><a href="#volatile关键字的使用" class="headerlink" title="volatile关键字的使用"></a>volatile关键字的使用</h2><hr>
-<ul>
-<li>volatile关键字的作用是告诉编译器,该变量是易变的.不要将该变量的值存储在寄存器中,而是放在内存中(一般指的是静态也就是栈).</li>
-<li>某些静态变量,如果使用频繁.可能会直接存放于寄存器中,以便加快计算的速度.但是,如果我们期望该值不应   该存在多个不一样的值时候,除了使用final定义为常量.还可以使用该关键字.</li>
-<li>该关键字既可以避免一个变量出现多个值的可能,也可以避免常量的不可改变性.</li>
-</ul>
-<hr>
-<p><br></p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h3><ul>
-<li>使用场景应该如下:<ul>
-<li>多个线程中,该变量只能拥有一个对象.</li>
-<li>该变量可能需要变化.即该变量需要动态创建/销毁.</li>
-<li>它本身无法保证运行中只存在一个对象.它只是告诉jvm,<br>它的值需要从内存中去读取,而不是在寄存器(1级缓存/2级缓存/3级缓存)中获取该值.</li>
-</ul>
-</li>
-<li>如果只是需要一个对象,使用final关键字即可.如果该对象使用不频繁,减少内存开销.可以使用该关键字,配合多线程的同步锁,可以实现单例.</li>
-</ul>
-<hr>
-<center>End</center>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;h2 id=&quot;volatile关键字的使用&quot;&gt;&lt;a href=&quot;#volatile关键字的使用&quot; class=&quot;headerlink&quot; title=&quot;volatile关键字的使用&quot;&gt;&lt;/a&gt;volatile关键字的使用&lt;/h2&gt;&lt;hr&gt;
-&lt;ul&gt;
-&lt;li
-    
-    </summary>
-    
-      <category term="java" scheme="https://lmxy1990.github.io/categories/java/"/>
     
     
   </entry>
