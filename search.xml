@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[wondiws磁盘管理命令的使用]]></title>
+      <url>%2F2017%2F01%2F25%2Fwondiws%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+      <content type="text"><![CDATA[diskpart命令 使用方式,打开cmd.输入diskpart.进入diskpart模式.切记,不要相信网上的坑逼教程.直接select disk 1来clean.这样你可能删掉的不是自己想要的磁盘.资料丢失.切记切记,教程参考.实际使用需理论考虑.坑逼教程在百度经验.别相信百度,选择谷歌! 查看1.查看磁盘list disk2.查看分区list partition3.查看卷list volume4.查看虚拟磁盘list vdisk 选择1.选择磁盘select disk 序号2.选择分区select partition 序号3.选择卷select volume 序号4.选择虚拟磁盘select vdisk 序号 清除1.清除磁盘clean disk2.清除分区delete partition3.清除盘符(卷)delete volume 设置1.创建主分区create partition primary [size=n] [offset=n]2.创建逻辑分区create partition logical [size=n] [offset=n]3.创建扩展分区create partition extended [size=n] [offset=n]4.分配盘符assign [letter=l] 其他1.快速格式化format [fs=ntfs] quick 操作的步骤是,先查询.然后选择.在执行清除.然后在分配. End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Druid的坑]]></title>
       <url>%2F2017%2F01%2F25%2FDruid%E7%9A%84%E5%9D%91%2F</url>
       <content type="text"><![CDATA[1.高性能的Druid连接池,在没有引入驱动的时候.调用连接.线程直接死循环. End]]></content>

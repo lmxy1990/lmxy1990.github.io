@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-25T01:24:48.632Z</updated>
+  <updated>2017-01-25T08:34:38.542Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>wondiws磁盘管理命令的使用</title>
+    <link href="https://lmxy1990.github.io/2017/01/25/wondiws%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://lmxy1990.github.io/2017/01/25/wondiws磁盘管理命令的使用/</id>
+    <published>2017-01-25T08:15:27.000Z</published>
+    <updated>2017-01-25T08:34:38.542Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="diskpart命令"><a href="#diskpart命令" class="headerlink" title="diskpart命令"></a>diskpart命令</h3><p><strong> 使用方式,打开cmd.输入diskpart.进入diskpart模式.切记,不要相信网上的坑逼教程.直接select disk 1来clean.这样你可能删掉的不是自己想要的磁盘.资料丢失.切记切记,教程参考.实际使用需理论考虑.坑逼教程在百度经验.别相信百度,选择谷歌! </strong></p>
+<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><p>1.查看磁盘<br><code>list disk</code><br>2.查看分区<br><code>list partition</code><br>3.查看卷<br><code>list volume</code><br>4.查看虚拟磁盘<br><code>list vdisk</code></p>
+<h4 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h4><p>1.选择磁盘<br><code>select disk 序号</code><br>2.选择分区<br><code>select partition 序号</code><br>3.选择卷<br><code>select volume 序号</code><br>4.选择虚拟磁盘<br><code>select vdisk 序号</code></p>
+<h4 id="清除"><a href="#清除" class="headerlink" title="清除"></a>清除</h4><p>1.清除磁盘<br><code>clean disk</code><br>2.清除分区<br><code>delete partition</code><br>3.清除盘符(卷)<br><code>delete volume</code></p>
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p>1.创建主分区<br><code>create partition primary [size=n] [offset=n]</code><br>2.创建逻辑分区<br><code>create partition logical [size=n] [offset=n]</code><br>3.创建扩展分区<br><code>create partition extended [size=n] [offset=n]</code><br>4.分配盘符<br><code>assign [letter=l]</code></p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>1.快速格式化<br><code>format [fs=ntfs] quick</code></p>
+<p><em>操作的步骤是,先查询.然后选择.在执行清除.然后在分配.</em></p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;diskpart命令&quot;&gt;&lt;a href=&quot;#diskpart命令&quot; class=&quot;headerlink&quot; title=&quot;diskpart命令&quot;&gt;&lt;/a&gt;diskpart命令&lt;/h3&gt;&lt;p&gt;&lt;strong&gt; 使用方式,打开cmd.输入diskpart.进入diskp
+    
+    </summary>
+    
+      <category term="小技巧" scheme="https://lmxy1990.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Druid的坑</title>
@@ -758,38 +786,6 @@
     </summary>
     
       <category term="小技巧" scheme="https://lmxy1990.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式之观察者模式</title>
-    <link href="https://lmxy1990.github.io/2016/12/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://lmxy1990.github.io/2016/12/30/设计模式之观察者模式/</id>
-    <published>2016-12-30T04:30:42.000Z</published>
-    <updated>2016-12-30T05:33:12.341Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><hr>
-<ul>
-<li>观察者模式一般使用在订阅/推送功能下,数据提供方推送数据–&gt;数据接收方.其实在开发中该模式使用应该是很普遍的.例如站内信/信息中心/订阅都是用的是该设计模式.<br><br><ul>
-<li>方式1:数据推送方—&gt;查询订购对象—&gt;推送给订购对象.</li>
-<li>方式2:订购的对象 —&gt;查询订阅的数据—&gt;拉取需要的数据.<br><br></li>
-</ul>
-</li>
-<li>本质上其实就是发送方与接收方的依赖隔离,也就是说数据发送方发送数据,<br>不是直接发送给订购的对象,而是先查询哪些订购了.然后统一发送出<br><br></li>
-</ul>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;观察者模式&quot;&gt;&lt;a href=&quot;#观察者模式&quot; class=&quot;headerlink&quot; title=&quot;观察者模式&quot;&gt;&lt;/a&gt;观察者模式&lt;/h2&gt;&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;观察者模式一般使用在订阅/推送功能下,数据提供方推送数据–&amp;gt;数据接收方.其实在开发中该模
-    
-    </summary>
-    
-      <category term="设计模式" scheme="https://lmxy1990.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
   </entry>
