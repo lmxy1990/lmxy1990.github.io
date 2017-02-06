@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[浅谈关系数据使用非关系型数据库处理方法]]></title>
+      <url>%2F2017%2F01%2F26%2F%E6%B5%85%E8%B0%88%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E4%BD%BF%E7%94%A8%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%2F</url>
+      <content type="text"><![CDATA[场景:多个数据表关联.需要查询多个表的信息.表1:用户名+性别表2:表1的id,密码表3:用户id+用户车辆信息 查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需要的数据,必须是筛选过的数据才能准确分页.所以,最后的信息一定是主表,也就是表1. 可以采用先查询所有用户中,车辆为大众的用户id.然后,根据用户名,用户id去筛选出用户信息.再根据用户表的id.去查询用户密码. 为什么要如此做?1.筛选条件前置,才能去除分页之后再筛选造成的数据错误.2.查询速度其实是一样的,因为都需要去查询两个表.3.相对于没有筛选的条件的信息获取,先查寻出id,再根据id拉取数据,一般这个id都会做索引.所以,如此的话,速度应该也能满足. End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[wondiws磁盘管理命令的使用]]></title>
       <url>%2F2017%2F01%2F25%2Fwondiws%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
       <content type="text"><![CDATA[diskpart命令 使用方式,打开cmd.输入diskpart.进入diskpart模式.切记,不要相信网上的坑逼教程.直接select disk 1来clean.这样你可能删掉的不是自己想要的磁盘.资料丢失.切记切记,教程参考.实际使用需理论考虑.坑逼教程在百度经验.别相信百度,选择谷歌! 查看1.查看磁盘list disk2.查看分区list partition3.查看卷list volume4.查看虚拟磁盘list vdisk 选择1.选择磁盘select disk 序号2.选择分区select partition 序号3.选择卷select volume 序号4.选择虚拟磁盘select vdisk 序号 清除1.清除磁盘clean disk2.清除分区delete partition3.清除盘符(卷)delete volume 设置1.创建主分区create partition primary [size=n] [offset=n]2.创建逻辑分区create partition logical [size=n] [offset=n]3.创建扩展分区create partition extended [size=n] [offset=n]4.分配盘符assign [letter=l] 其他1.快速格式化format [fs=ntfs] quick 操作的步骤是,先查询.然后选择.在执行清除.然后在分配. End]]></content>

@@ -86,22 +86,22 @@
 
 
 
-<meta name="description" content="Alpha：
-Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是测试人员,否则不建议使用.是希腊字母的第一位,表示最初级的版本，alpha 就是α，beta 就是β ，alpha 版就是比beta还早的测试版，一般都是内部测试的版本。Beta:
-该版本相对于α版已有了很大的改进，消除了严重的错误，但还是存在着一缺陷，需要经过多次测试来进一步消除。这个阶段的版本会一直加入新的功能。">
+<meta name="description" content="场景:多个数据表关联.需要查询多个表的信息.表1:用户名+性别表2:表1的id,密码表3:用户id+用户车辆信息
+查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需要的数据,必须是筛选过的数据才能准确分页.所以,最后的信息一定是主表,也就是表1.
+可以采用先查询所有用户中,车辆为大众的用户id.然后,根据用户名,用户id去筛选">
 <meta property="og:type" content="article">
-<meta property="og:title" content="项目命令规范">
-<meta property="og:url" content="https://lmxy1990.github.io/2017/01/16/项目命令规范/index.html">
+<meta property="og:title" content="浅谈关系数据使用非关系型数据库处理方法">
+<meta property="og:url" content="https://lmxy1990.github.io/2017/01/26/浅谈关系数据使用非关系型数据库处理方法/index.html">
 <meta property="og:site_name" content="Lmxy1990 ' Blog">
-<meta property="og:description" content="Alpha：
-Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是测试人员,否则不建议使用.是希腊字母的第一位,表示最初级的版本，alpha 就是α，beta 就是β ，alpha 版就是比beta还早的测试版，一般都是内部测试的版本。Beta:
-该版本相对于α版已有了很大的改进，消除了严重的错误，但还是存在着一缺陷，需要经过多次测试来进一步消除。这个阶段的版本会一直加入新的功能。">
-<meta property="og:updated_time" content="2017-01-16T01:48:14.903Z">
+<meta property="og:description" content="场景:多个数据表关联.需要查询多个表的信息.表1:用户名+性别表2:表1的id,密码表3:用户id+用户车辆信息
+查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需要的数据,必须是筛选过的数据才能准确分页.所以,最后的信息一定是主表,也就是表1.
+可以采用先查询所有用户中,车辆为大众的用户id.然后,根据用户名,用户id去筛选">
+<meta property="og:updated_time" content="2017-02-06T03:24:51.431Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="项目命令规范">
-<meta name="twitter:description" content="Alpha：
-Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是测试人员,否则不建议使用.是希腊字母的第一位,表示最初级的版本，alpha 就是α，beta 就是β ，alpha 版就是比beta还早的测试版，一般都是内部测试的版本。Beta:
-该版本相对于α版已有了很大的改进，消除了严重的错误，但还是存在着一缺陷，需要经过多次测试来进一步消除。这个阶段的版本会一直加入新的功能。">
+<meta name="twitter:title" content="浅谈关系数据使用非关系型数据库处理方法">
+<meta name="twitter:description" content="场景:多个数据表关联.需要查询多个表的信息.表1:用户名+性别表2:表1的id,密码表3:用户id+用户车辆信息
+查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需要的数据,必须是筛选过的数据才能准确分页.所以,最后的信息一定是主表,也就是表1.
+可以采用先查询所有用户中,车辆为大众的用户id.然后,根据用户名,用户id去筛选">
 
 
 
@@ -133,7 +133,7 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
 
 
 
-  <title> 项目命令规范 | Lmxy1990 ' Blog </title>
+  <title> 浅谈关系数据使用非关系型数据库处理方法 | Lmxy1990 ' Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +299,7 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://lmxy1990.github.io/2017/01/16/项目命令规范/">
+  <link itemprop="mainEntityOfPage" href="https://lmxy1990.github.io/2017/01/26/浅谈关系数据使用非关系型数据库处理方法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="lmxy1990">
@@ -323,7 +323,7 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
             
             
               
-                项目命令规范
+                浅谈关系数据使用非关系型数据库处理方法
               
             
           </h2>
@@ -338,8 +338,8 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-16T09:44:10+08:00">
-                2017-01-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-26T09:25:38+08:00">
+                2017-01-26
               </time>
             
 
@@ -354,8 +354,8 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-01-16T09:48:14+08:00">
-                2017-01-16
+              <time title="更新于" itemprop="dateModified" datetime="2017-02-06T11:24:51+08:00">
+                2017-02-06
               </time>
             
           </span>
@@ -373,8 +373,8 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/常识/" itemprop="url" rel="index">
-                    <span itemprop="name">常识</span>
+                  <a href="/categories/工作日志/" itemprop="url" rel="index">
+                    <span itemprop="name">工作日志</span>
                   </a>
                 </span>
 
@@ -391,8 +391,8 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/16/项目命令规范/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/16/项目命令规范/" itemprop="commentCount"></span>
+                <a href="/2017/01/26/浅谈关系数据使用非关系型数据库处理方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/26/浅谈关系数据使用非关系型数据库处理方法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -418,14 +418,10 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
       
 
       
-        <h4 id="Alpha："><a href="#Alpha：" class="headerlink" title="Alpha："></a>Alpha：</h4><ul>
-<li>Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是测试人员,否则不建议使用.是希腊字母的第一位,表示最初级的版本，alpha 就是α，beta 就是β ，alpha 版就是比<br>beta还早的测试版，一般都是内部测试的版本。<h4 id="Beta"><a href="#Beta" class="headerlink" title="Beta:"></a>Beta:</h4></li>
-<li>该版本相对于α版已有了很大的改进，消除了严重的错误，但还是存在着一缺陷，需要经过多次测试来进一步消除。这个阶段的版本会一直加入新的功能。        <h4 id="RC：-Release-Candidate"><a href="#RC：-Release-Candidate" class="headerlink" title="RC：(Release Candidate)"></a>RC：(Release Candidate)</h4></li>
-<li>Candidate是候选人的意思，用在软件上就是候选版本。Release.Candidate.就是发行候选版本。和Beta版最大的差别在于Beta阶段会一直加入新的功能，但是到了RC版本，几乎<br>就不会加入新的功能了，而主要着重于除错!  RC版本是最终发放给用户的最接近正式版的版本，发行后改正bug就是正式版了，就是正式版之前的最后一个测试版。<h4 id="GA：（general-availability）"><a href="#GA：（general-availability）" class="headerlink" title="GA：（general availability）"></a>GA：（general availability）</h4></li>
-<li>比如：Apache Struts 2 GA这是Apache Struts 2首次发行稳定的版本，GA意味着GeneralAvailability，也就是官方开始推荐广泛使用了。<h4 id="Release"><a href="#Release" class="headerlink" title="Release:"></a>Release:</h4></li>
-<li>该版本意味“最终版本”，在前面版本的一系列测试版之后，终归会有一个正式版本，是最终交付用户使用的一个版本。该版本有时也称为标准版。一般情况下，Release不会以单词形式出现在软件封面上，取而代之的是符号(R)。<h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4></li>
-<li>第一位表示主版本,一般是产品重大迭代.第二位表示小版本.一般表示小功能的增加.第三位表示修复版本.如果是4位数字的,那么最后一位代表bug修复/优化版本.</li>
-</ul>
+        <p>场景:多个数据表关联.需要查询多个表的信息.<br>表1:用户名+性别<br>表2:表1的id,密码<br>表3:用户id+用户车辆信息</p>
+<p>查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需要的数据,必须是筛选过的数据才能准确分页.所以,最后的信息一定是主表,也就是表1.</p>
+<p>可以采用先查询所有用户中,车辆为大众的用户id.然后,根据用户名,用户id去筛选出用户信息.再根据用户表的id.去查询用户密码.</p>
+<p>为什么要如此做?<br>1.筛选条件前置,才能去除分页之后再筛选造成的数据错误.<br>2.查询速度其实是一样的,因为都需要去查询两个表.<br>3.相对于没有筛选的条件的信息获取,先查寻出id,再根据id拉取数据,一般这个id都会做索引.所以,如此的话,速度应该也能满足.</p>
 <hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>
       
@@ -474,8 +470,8 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/16/java编程的一些建议/" rel="next" title="java编程的一些建议">
-                <i class="fa fa-chevron-left"></i> java编程的一些建议
+              <a href="/2017/01/25/wondiws磁盘管理命令的使用/" rel="next" title="wondiws磁盘管理命令的使用">
+                <i class="fa fa-chevron-left"></i> wondiws磁盘管理命令的使用
               </a>
             
           </div>
@@ -483,10 +479,6 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/16/list-map-queue-dequeue区别/" rel="prev" title="list,map,queue,dequeue区别">
-                list,map,queue,dequeue区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -518,8 +510,8 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/16/项目命令规范/"
-           data-title="项目命令规范" data-url="https://lmxy1990.github.io/2017/01/16/项目命令规范/">
+      <div class="ds-thread" data-thread-key="2017/01/26/浅谈关系数据使用非关系型数据库处理方法/"
+           data-title="浅谈关系数据使用非关系型数据库处理方法" data-url="https://lmxy1990.github.io/2017/01/26/浅谈关系数据使用非关系型数据库处理方法/">
       </div>
     
   </div>
@@ -655,7 +647,7 @@ Alpha是内部测试版,一般不向外部发布,会有很多Bug.除非你也是
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Alpha："><span class="nav-number">1.</span> <span class="nav-text">Alpha：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Beta"><span class="nav-number">2.</span> <span class="nav-text">Beta:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RC：-Release-Candidate"><span class="nav-number">3.</span> <span class="nav-text">RC：(Release Candidate)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GA：（general-availability）"><span class="nav-number">4.</span> <span class="nav-text">GA：（general availability）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Release"><span class="nav-number">5.</span> <span class="nav-text">Release:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字"><span class="nav-number">6.</span> <span class="nav-text">数字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number"></span> <span class="nav-text">End</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number">1.</span> <span class="nav-text">End</span></a></li></ol></div>
             
 
           </div>

@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-01-25T08:34:38.542Z</updated>
+  <updated>2017-02-06T03:24:51.431Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈关系数据使用非关系型数据库处理方法</title>
+    <link href="https://lmxy1990.github.io/2017/01/26/%E6%B5%85%E8%B0%88%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E4%BD%BF%E7%94%A8%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/"/>
+    <id>https://lmxy1990.github.io/2017/01/26/浅谈关系数据使用非关系型数据库处理方法/</id>
+    <published>2017-01-26T01:25:38.000Z</published>
+    <updated>2017-02-06T03:24:51.431Z</updated>
+    
+    <content type="html"><![CDATA[<p>场景:多个数据表关联.需要查询多个表的信息.<br>表1:用户名+性别<br>表2:表1的id,密码<br>表3:用户id+用户车辆信息</p>
+<p>查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需要的数据,必须是筛选过的数据才能准确分页.所以,最后的信息一定是主表,也就是表1.</p>
+<p>可以采用先查询所有用户中,车辆为大众的用户id.然后,根据用户名,用户id去筛选出用户信息.再根据用户表的id.去查询用户密码.</p>
+<p>为什么要如此做?<br>1.筛选条件前置,才能去除分页之后再筛选造成的数据错误.<br>2.查询速度其实是一样的,因为都需要去查询两个表.<br>3.相对于没有筛选的条件的信息获取,先查寻出id,再根据id拉取数据,一般这个id都会做索引.所以,如此的话,速度应该也能满足.</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;场景:多个数据表关联.需要查询多个表的信息.&lt;br&gt;表1:用户名+性别&lt;br&gt;表2:表1的id,密码&lt;br&gt;表3:用户id+用户车辆信息&lt;/p&gt;
+&lt;p&gt;查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需
+    
+    </summary>
+    
+      <category term="工作日志" scheme="https://lmxy1990.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>wondiws磁盘管理命令的使用</title>
@@ -749,43 +775,6 @@
     </summary>
     
       <category term="设计模式" scheme="https://lmxy1990.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>去百度右侧推广方法</title>
-    <link href="https://lmxy1990.github.io/2017/01/02/%E5%8E%BB%E7%99%BE%E5%BA%A6%E6%8E%A8%E5%B9%BF%E6%96%B9%E6%B3%95/"/>
-    <id>https://lmxy1990.github.io/2017/01/02/去百度推广方法/</id>
-    <published>2017-01-02T03:19:12.000Z</published>
-    <updated>2017-01-02T04:32:36.283Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="百度越来越恶心了…"><a href="#百度越来越恶心了…" class="headerlink" title="百度越来越恶心了…"></a>百度越来越恶心了…</h2><hr>
-<h3 id="下面介绍一种简单的去百度推广方法-采用的是chrome浏览器"><a href="#下面介绍一种简单的去百度推广方法-采用的是chrome浏览器" class="headerlink" title="下面介绍一种简单的去百度推广方法,采用的是chrome浏览器."></a>下面介绍一种简单的去百度推广方法,采用的是chrome浏览器.</h3><hr>
-<ol>
-<li>安装adb去广告插件.<br><img src="/img/suggest/adb_plus.jpg" alt="添加adb_plus插件"></li>
-<li>添加自定义规则.<br><img src="/img/suggest/add_rude.jpg" alt="添加自定义规则"></li>
-<li>右侧推广去掉的结果<br><img src="/img/suggest/remove_result.jpg" alt="结果1"></li>
-<li>但是还有搜索的推广<br><img src="/img/suggest/bad_ad.jpg" alt="左侧推广"></li>
-<li>添加清除左侧推广规则<br><img src="/img/suggest/remove_list.jpg" alt="清除左侧推广"></li>
-<li>全部结果<br><img src="/img/suggest/all_result.jpg" alt="结果"><br>7.规则:<ul>
-<li><code>##div[class*=&quot;cr-content&quot;]</code></li>
-<li><code>##div[class*=&quot;opr-recommends-merge-panel&quot;]</code></li>
-<li><code>##div[id*=&quot;con-ar&quot;]</code></li>
-<li><code>##div[style*=&quot;!important&quot;]</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;百度越来越恶心了…&quot;&gt;&lt;a href=&quot;#百度越来越恶心了…&quot; class=&quot;headerlink&quot; title=&quot;百度越来越恶心了…&quot;&gt;&lt;/a&gt;百度越来越恶心了…&lt;/h2&gt;&lt;hr&gt;
-&lt;h3 id=&quot;下面介绍一种简单的去百度推广方法-采用的是chrome浏览器&quot;&gt;
-    
-    </summary>
-    
-      <category term="小技巧" scheme="https://lmxy1990.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
     
   </entry>
