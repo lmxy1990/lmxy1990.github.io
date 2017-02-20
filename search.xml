@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[ubuntu 主题推荐]]></title>
+      <url>%2F2017%2F02%2F20%2Fubuntu-%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90%2F</url>
+      <content type="text"><![CDATA[命令:123sudo add-apt-repository ppa:nitrux-team/nitrux-artworksudo apt-get update sudo apt-get install compass-icon-theme End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[ubuntu 清除Guest账户]]></title>
       <url>%2F2017%2F02%2F17%2Fubuntu-%E6%B8%85%E9%99%A4Guest%E8%B4%A6%E6%88%B7%2F</url>
       <content type="text"><![CDATA[删除:123sudo mkdir /etc/lightdm/lightdm.conf.dsudo sh -c &apos;printf &quot;[SeatDefaults]\nallow-guest=false\n&quot; &gt; /etc/lightdm/lightdm.conf.d/50-no-guest.conf&apos; 恢复:1sudo rm /etc/lightdm/lightdm.conf.d/50-no-guest.conf End]]></content>
