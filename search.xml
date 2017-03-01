@@ -3,13 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[Java 对象转Excel文件]]></title>
-      <url>%2F2017%2F03%2F01%2FJava-%E5%AF%B9%E8%B1%A1%E8%BD%ACExcel%E6%96%87%E4%BB%B6%2F</url>
-      <content type="text"><![CDATA[End]]></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[ubuntu 主题推荐]]></title>
       <url>%2F2017%2F02%2F20%2Fubuntu-%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90%2F</url>
       <content type="text"><![CDATA[更换源打开系统设置 &gt; 软件和更新 选择中国服务器(官方用的是阿里云) 设置新建窗口居中打开终端:1sudo apt install compizconfig-settings-manager 然后打开compizconfig-settings-manager来配置.在窗口管理 &gt; 放置窗口 &gt; 安置模式 &gt; 居中 安装主题工具 unity-tweak-tool打开终端:1sudo apt-get install unity-tweak-tool 添加主题1.Arc 主题安装打开终端:1sudo sh -c &quot;echo &apos;deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /&apos; &gt;&gt; /etc/apt/sources.list.d/arc-theme.list&quot; 让 Arc GTK 主题源定期收到主题更新:123wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.keysudo apt-key add - &lt; Release.key 安装arc主题:12sudo apt updatesudo apt install arc-theme 换掉ubuntu启动器的图标将面板上的 ‘Ubuntu Desktop’ 文字替换 ‘Mac’123cd &amp;&amp; wget -O Mac.po http://drive.noobslab.com/data/Mac/change-name-on-panel/mac.pocd /usr/share/locale/en/LC_MESSAGES; sudo msgfmt -o unity.mo ~/Mac.po;rm ~/Mac.po;cd 语言上如果是其他非英语语言，将 /en 做相应修改： 恢复原来的桌面文字命令：123cd &amp;&amp; wget -O Ubuntu.po http://drive.noobslab.com/data/Mac/change-name-on-panel/ubuntu.pocd /usr/share/locale/en/LC_MESSAGES; sudo msgfmt -o unity.mo ~/Ubuntu.po;rm ~/Ubuntu.po;cd 启动器上苹果Logo123wget -O launcher_bfb.png http://drive.noobslab.com/data/Mac/launcher-logo/apple/launcher_bfb.pngsudo mv launcher_bfb.png /usr/share/unity/icons/ 恢复图标：123wget -O launcher_bfb.png http://drive.noobslab.com/data/Mac/launcher-logo/ubuntu/launcher_bfb.pngsudo mv launcher_bfb.png /usr/share/unity/icons/ 设置主题打开 Unity Tweak Tool 工具软件.找到主题 设置自己喜欢的主题即可. End]]></content>
