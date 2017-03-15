@@ -86,22 +86,15 @@
 
 
 
-<meta name="description" content="过滤指定日期
-1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate();
-2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
-<meta property="og:type" content="article">
-<meta property="og:title" content="mysql日期处理函数">
-<meta property="og:url" content="https://lmxy1990.github.io/2017/01/23/mysql日期处理函数/index.html">
+<meta name="description" content="love code, enjoy life .">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lmxy1990 ' Blog">
+<meta property="og:url" content="https://lmxy1990.github.io/page/16/index.html">
 <meta property="og:site_name" content="Lmxy1990 ' Blog">
-<meta property="og:description" content="过滤指定日期
-1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate();
-2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
-<meta property="og:updated_time" content="2017-01-24T01:39:32.871Z">
+<meta property="og:description" content="love code, enjoy life .">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql日期处理函数">
-<meta name="twitter:description" content="过滤指定日期
-1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate();
-2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
+<meta name="twitter:title" content="Lmxy1990 ' Blog">
+<meta name="twitter:description" content="love code, enjoy life .">
 
 
 
@@ -133,7 +126,7 @@
 
 
 
-  <title> mysql日期处理函数 | Lmxy1990 ' Blog </title>
+  <title> Lmxy1990 ' Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,7 +157,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,9 +283,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -299,7 +294,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://lmxy1990.github.io/2017/01/23/mysql日期处理函数/">
+  <link itemprop="mainEntityOfPage" href="https://lmxy1990.github.io/2016/12/27/git的使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="lmxy1990">
@@ -323,7 +318,10 @@
             
             
               
-                mysql日期处理函数
+                
+                <a class="post-title-link" href="/2016/12/27/git的使用/" itemprop="url">
+                  git的使用
+                </a>
               
             
           </h2>
@@ -338,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T16:45:58+08:00">
-                2017-01-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-27T14:58:27+08:00">
+                2016-12-27
               </time>
             
 
@@ -354,8 +352,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-01-24T09:39:32+08:00">
-                2017-01-24
+              <time title="更新于" itemprop="dateModified" datetime="2016-12-27T15:23:27+08:00">
+                2016-12-27
               </time>
             
           </span>
@@ -373,8 +371,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql/" itemprop="url" rel="index">
-                    <span itemprop="name">sql</span>
+                  <a href="/categories/Git初次使用/" itemprop="url" rel="index">
+                    <span itemprop="name">Git初次使用</span>
                   </a>
                 </span>
 
@@ -391,8 +389,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/23/mysql日期处理函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/23/mysql日期处理函数/" itemprop="commentCount"></span>
+                <a href="/2016/12/27/git的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/27/git的使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -418,55 +416,26 @@
       
 
       
-        <h3 id="过滤指定日期"><a href="#过滤指定日期" class="headerlink" title="过滤指定日期"></a>过滤指定日期</h3><hr>
-<p>1.近1天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from table where to_days(column_time) = to_days(now());</div><div class="line"></div><div class="line">select * from table where date(column_time) = curdate();</div></pre></td></tr></table></figure></p>
-<p>2.近7天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from table where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(column_time);</div></pre></td></tr></table></figure></p>
-<p>3.近一个月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from table where DATE_SUB(CURDATE(), INTERVAL 1 MONTH) &lt;= date(column_time);</div></pre></td></tr></table></figure></p>
-<h3 id="筛选出需要的日期的值"><a href="#筛选出需要的日期的值" class="headerlink" title="筛选出需要的日期的值"></a>筛选出需要的日期的值</h3><p>1.筛选出年月日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select DATA(column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>2.筛选出年月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(year_month FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>3.筛选出年.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(year FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>4.筛选出月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(month FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>5.筛选出日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(day FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>6.筛选出时分秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select time(day FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<h3 id="比较日期"><a href="#比较日期" class="headerlink" title="比较日期"></a>比较日期</h3><p>1.间隔天数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT match_date,create_time FROM table_name WHERE  datediff(match_date,create_time) = 60</div></pre></td></tr></table></figure></p>
-<p><em>详见:</em> <a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff" target="_blank" rel="external">官方文档</a></p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>
+        
+          
+          Git初次
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/27/git的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/weixin-apply.jpg" alt="lmxy1990 WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
-      
-        <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/zhifubao-apply.jpg" alt="lmxy1990 Alipay"/>
-          <p>支付宝打赏</p>
-        </div>
-      
-    </div>
-  </div>
-
-
       
     </div>
 
@@ -475,44 +444,23 @@
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/01/23/xshell故障/" rel="next" title="xshell故障">
-                <i class="fa fa-chevron-left"></i> xshell故障
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/25/Druid的坑/" rel="prev" title="Druid的坑">
-                Druid的坑 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
       
+      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-        
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span>
+  </nav>
 
-      
-    </div>
-  </div>
 
 
           </div>
@@ -520,14 +468,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/01/23/mysql日期处理函数/"
-           data-title="mysql日期处理函数" data-url="https://lmxy1990.github.io/2017/01/23/mysql日期处理函数/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -547,17 +487,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/head.jpg"
@@ -649,22 +580,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤指定日期"><span class="nav-number">1.</span> <span class="nav-text">过滤指定日期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#筛选出需要的日期的值"><span class="nav-number">2.</span> <span class="nav-text">筛选出需要的日期的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较日期"><span class="nav-number">3.</span> <span class="nav-text">比较日期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number"></span> <span class="nav-text">End</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
@@ -759,10 +674,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 

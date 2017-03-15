@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[windows 下新建wifi热点]]></title>
+      <url>%2F2017%2F03%2F15%2Fwindows-%E4%B8%8B%E6%96%B0%E5%BB%BAwifi%E7%83%AD%E7%82%B9%2F</url>
+      <content type="text"><![CDATA[查看无线网卡是否支持Wifi热点 打开命令提示符:netsh wlan show drivers 设置Wifi名/密码 打开命令提示符:netsh wlan set hostednetwork mode=allow ssid=wifi名称 key=wifi密码 启动设置好的热点 打开命令提示符:netsh wlan start hostednetwork 关闭热点 打开命令提示符:netsh wlan stop hostednetwork 最后需要把能访问到互联网的链接共享给这个wifi热点控制面板–&gt;网络共享中心–&gt;属性–&gt;共享 End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[浏览器劫持启动页清除]]></title>
       <url>%2F2017%2F03%2F13%2F%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%AB%E6%8C%81%E5%90%AF%E5%8A%A8%E9%A1%B5%E6%B8%85%E9%99%A4%2F</url>
       <content type="text"><![CDATA[主页劫持与启动劫持 启动劫持是主页明明是自己设定好的.但是启动的时候就是广告页面. 主页劫持是主页修改不了,或者修改了又自动变回来.查看启动劫持.找到浏览器快捷方式,右键属性.在目标一栏后面会多出一个链接地址.这就是启动的时候都会去运行这个链接.清除 简单的直接删除快捷方式—&gt;属性–&gt;目标后面的网址.2.如果修改之后,一段时间有自动变回来.一般式监听脚本引起的.开始–运行–wbemtest–连接–”root\subscription”–查询–”select from __EventFilter“–应用–选择_EventFilter:Name=”unown_filter”删除之–关闭–查询–”select from ActiveScriptEventConsumer”–应用–选择ActiveScriptEventConsumer Name=”unown”删除之–该关的窗口都关掉–编辑快捷方式 End]]></content>
