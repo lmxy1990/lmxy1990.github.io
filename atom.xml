@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-03-15T01:30:43.270Z</updated>
+  <updated>2017-03-16T09:27:52.606Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>定时任务调度</title>
+    <link href="https://lmxy1990.github.io/2017/03/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/"/>
+    <id>https://lmxy1990.github.io/2017/03/16/定时任务调度/</id>
+    <published>2017-03-16T09:01:14.000Z</published>
+    <updated>2017-03-16T09:27:52.606Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="定时任务使用的方法"><a href="#定时任务使用的方法" class="headerlink" title="定时任务使用的方法"></a>定时任务使用的方法</h3><p>1.最原始的使用java提供的延迟循环队列.<br>2.使用Quartz提供的方法.<br>3.使用spring提供的调度器.</p>
+<h3 id="使用循环延迟队列"><a href="#使用循环延迟队列" class="headerlink" title="使用循环延迟队列."></a>使用循环延迟队列.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ScheduledExecutorService executorService = Executors.newScheduledThreadPool(10);</div><div class="line">//启动延迟,初始化延迟,多久执行一次.</div><div class="line">executorService.scheduleWithFixedDelay(new Runable(), 0, 9, TimeUnit.HOURS);</div></pre></td></tr></table></figure>
+<h3 id="使用Quartz调度"><a href="#使用Quartz调度" class="headerlink" title="使用Quartz调度"></a>使用Quartz调度</h3><p>1.引入依赖或者Jar包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz --&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.quartz-scheduler&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;quartz&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;2.2.3&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p>2.配置执行参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;!--配置启动的bean,task以及执行的方法--&gt;</div><div class="line">&lt;bean id=&quot;job&quot; class=&quot; xx.xx.xx.Job&quot; /&gt;</div><div class="line">&lt;bean id=&quot;cronTask&quot; class=&quot;org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean&quot;&gt;</div><div class="line">    &lt;property name=&quot;targetObject&quot; ref=&quot;job&quot; /&gt;</div><div class="line">    &lt;property name=&quot;targetMethod&quot; value=&quot;runWork&quot; /&gt;</div><div class="line">    &lt;!-- false表示job不会并发执行，默认为true--&gt;</div><div class="line">    &lt;property name=&quot;concurrent&quot; value=&quot;false&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>2.接下来配置触发器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=&quot;doWork&quot; class=&quot;org.springframework.scheduling.quartz.CronTriggerBean&quot;&gt;</div><div class="line">    &lt;property name=&quot;jobDetail&quot; ref=&quot;cronTask&quot; /&gt;</div><div class="line">    &lt;!—每天凌晨0点1分执行--&gt;</div><div class="line">    &lt;property name=&quot;cronExpression&quot; value=&quot;0 01 00 * * ?&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>3.最后配置调度工厂<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;bean class=&quot;org.springframework.scheduling.quartz.SchedulerFactoryBean&quot;&gt;</div><div class="line">    &lt;property name=&quot;triggers&quot;&gt;</div><div class="line">        &lt;list&gt;</div><div class="line">            &lt;!--调度多个任务--&gt;</div><div class="line">            &lt;ref local=&quot;doWork&quot;/&gt;</div><div class="line">        &lt;/list&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="使用spring-task来调度"><a href="#使用spring-task来调度" class="headerlink" title="使用spring task来调度"></a>使用spring task来调度</h3><p>1.添加相应的命名空间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; </div><div class="line">    ......</div><div class="line">    xmlns:task=&quot;http://www.springframework.org/schema/task&quot;</div><div class="line">        xsi:schemaLocation=&quot;</div><div class="line">        ......</div><div class="line">    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>2.task 线程池配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;task:executor id=&quot;executor&quot; pool-size=&quot;5&quot; /&gt;</div><div class="line">&lt;task:scheduler id=&quot;scheduler&quot; pool-size=&quot;5&quot; /&gt;</div><div class="line">&lt;task:annotation-driven executor=&quot;executor&quot; scheduler=&quot;scheduler&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>3.task配置,以及调度时间配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;bean name = &quot;myTask&quot; class = &quot;xxx.xxx.MyTask&quot; /&gt;</div><div class="line">&lt;task:scheduled-tasks scheduler=&quot;reportTaskScheduler&quot; &gt;</div><div class="line">    &lt;task:scheduled ref=&quot;myTask&quot; method=&quot;doTask&quot; cron=&quot;0/5 * * * * ?&quot; /&gt;</div><div class="line">&lt;/task:scheduled-tasks&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1.方法一如果要采用Spring来启动的话.就需要实现Spring的初始化Bean的接口(InitializingBean).在初始化之后,调用该任务的延迟队列.<br>2.Quartz与Spring的 Task的区别是一个可以异步,一个只能同步.<br>3.Spring 与Quartz的时间配置都是采用cron表达式.</p>
+<h3 id="附录Cron表达式"><a href="#附录Cron表达式" class="headerlink" title="附录Cron表达式"></a>附录Cron表达式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">“0/10 * * * * ?” 每10秒触发 </div><div class="line">“0 0 12 * * ?” 每天中午12点触发 </div><div class="line">“0 15 10 ? * *” 每天上午10:15触发 </div><div class="line">“0 15 10 * * ?” 每天上午10:15触发 </div><div class="line">“0 15 10 * * ? *” 每天上午10:15触发 </div><div class="line">“0 15 10 * * ? 2005” 2005年的每天上午10:15触发 </div><div class="line">“0 * 14 * * ?” 在每天下午2点到下午2:59期间的每1分钟触发 </div><div class="line">“0 0/5 14 * * ?” 在每天下午2点到下午2:55期间的每5分钟触发 </div><div class="line">“0 0/5 14,18 * * ?” 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发 </div><div class="line">“0 0-5 14 * * ?” 在每天下午2点到下午2:05期间的每1分钟触发 </div><div class="line">“0 10,44 14 ? 3 WED” 每年三月的星期三的下午2:10和2:44触发 </div><div class="line">“0 15 10 ? * MON-FRI” 周一至周五的上午10:15触发 </div><div class="line">“0 15 10 15 * ?” 每月15日上午10:15触发 </div><div class="line">“0 15 10 L * ?” 每月最后一日的上午10:15触发 </div><div class="line">“0 15 10 ? * 6L” 每月的最后一个星期五上午10:15触发 </div><div class="line">“0 15 10 ? * 6L 2002-2005” 2002年至2005年的每月的最后一个星期五上午10:15触发 </div><div class="line">“0 15 10 ? * 6#3” 每月的第三个星期五上午10:15触发 </div><div class="line">每隔5秒执行一次：/5 * * * ? </div><div class="line">每隔1分钟执行一次：0 /1 * * ? </div><div class="line">每天23点执行一次：0 0 23 * * ? </div><div class="line">每天凌晨1点执行一次：0 0 1 * * ? </div><div class="line">每月1号凌晨1点执行一次：0 0 1 1 * ? </div><div class="line">每月最后一天23点执行一次：0 0 23 L * ? </div><div class="line">每周星期天凌晨1点实行一次：0 0 1 ? * L </div><div class="line">在26分、29分、33分执行一次：0 26,29,33 * * * ? </div><div class="line">每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ?</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;定时任务使用的方法&quot;&gt;&lt;a href=&quot;#定时任务使用的方法&quot; class=&quot;headerlink&quot; title=&quot;定时任务使用的方法&quot;&gt;&lt;/a&gt;定时任务使用的方法&lt;/h3&gt;&lt;p&gt;1.最原始的使用java提供的延迟循环队列.&lt;br&gt;2.使用Quartz提供的方法.
+    
+    </summary>
+    
+      <category term="java" scheme="https://lmxy1990.github.io/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>windows 下新建wifi热点</title>
@@ -696,38 +728,6 @@
     </summary>
     
       <category term="Java基本工具类" scheme="https://lmxy1990.github.io/categories/Java%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>idea快捷键</title>
-    <link href="https://lmxy1990.github.io/2017/01/07/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    <id>https://lmxy1990.github.io/2017/01/07/idea快捷键/</id>
-    <published>2017-01-07T08:28:00.000Z</published>
-    <updated>2017-01-07T08:30:36.198Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="最重要的两个快捷键"><a href="#最重要的两个快捷键" class="headerlink" title="最重要的两个快捷键"></a>最重要的两个快捷键</h2><hr>
-<p>ctrl+shfit+a 查询所有命令快捷键<br>ctrl+j 查询所有语句快捷键(eg:sout等于输出语句)</p>
-<h2 id="编辑快捷键"><a href="#编辑快捷键" class="headerlink" title="编辑快捷键"></a>编辑快捷键</h2><hr>
-<p>Alt+Insert get/set/constructor/overrider..<br>Alt+Enter 编译器建议.<br>代码提示建议修改为Alt+/<br>Ctrl+/或Ctrl+Shift+/，注释（//或者/**/）<br>Shift+F6，重构 - 重命名<br>Ctrl+O，覆写父类方法Overrider<br>Alt+Insert 自动生成Get/Set方法.<br>Ctrl+Alt+T 自动生成try/catch方法.<br>Ctrl+Shift+Up/Down，向上/下移动语句<br>Ctrl+D 复制当前行<br>Ctrl+Y 删除当前行<br>Ctrl+X，剪切行<br>Ctrl+V 粘贴<br>Ctrl+Alt+L 自动格式化代码块.<br>Ctrl+Alt+I 自动缩进排版<br>Ctrl+Alt+O 删除多余的导入类.<br>Ctrl+Enter 自动导入需要的Jar包.<br>Ctrl+”+/-“，当前方法展开、折叠<br>Ctrl+Shift+”+/-“，全部展开、折叠<br>Ctrl+Shift+U，大小写转化</p>
-<h2 id="查找定位快捷键"><a href="#查找定位快捷键" class="headerlink" title="查找定位快捷键"></a>查找定位快捷键</h2><hr>
-<p>Ctrl+W/Ctrl+Shift+W 智能选择对应代码块.<br>F2 或 Shift+F2，错误快速定位<br>Ctrl+U，转到父类<br>Ctrl+Alt+B 跳到实现类/实现方法<br>Ctrl+B 跳到定义<br>Ctrl+Q 查看注释<br>Ctrl+H，显示类结构图<br>Ctrl+F12 列出当前类的所有方法,变量.<br>Ctrl+F 查找文本<br>Ctrl+Shift+F，全局查找<br>Ctrl+R 替换文本<br>Ctrl+G，定位行<br>Ctrl+F7，可以查询当前元素在当前文件中的引用，然后按 F3 可以选择<br>Alt+F7，查找整个工程中使用的某一个类、方法或者变量的位置<br>Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失<br>Ctrl+N 根据类名查找类<br>Ctrl+Shift+N 根据文件名查找文件(包括类)<br>Ctrl+Shift+Alt+N，查找所有类中的方法或变量<br>Ctrl+Shift+S，高级搜索<br>Alt+F3，逐个往下查找相同文本，并高亮显示<br>Alt+F8，计算变量值<br>Ctrl+Alt+left/right，返回至上次浏览的位置<br>Ctrl+Alt+F7，显示用法<br>Ctrl+Shift+A 查看所有快捷键<br>Ctrl+Tab 工作界面切换.</p>
-<h2 id="Debug快捷键"><a href="#Debug快捷键" class="headerlink" title="Debug快捷键"></a>Debug快捷键</h2><hr>
-<p>Alt+Shift+F9，选择 Debug<br>Alt+Shift+F10，选择 Run<br>F7，步入<br>F8，步过<br>Shift+F8 跳出方法<br>F9，恢复程序<br>Alt+F9 跳到鼠标指定的位置/断点/直接跳出<br>Alt+F10，查看当前断点<br>Ctrl+Shift+F8 查看全部断点<br>Shift+F7，智能步入<br>Shift+F8，智能步出<br>Alt+Shift+F7，强制步入<br>Alt+Shift+F8，强制步过</p>
-<h2 id="CVS快捷键"><a href="#CVS快捷键" class="headerlink" title="CVS快捷键"></a>CVS快捷键</h2><hr>
-<p>Alt+~，VCS 操作菜单<br>Ctrl+K，提交更改<br>Ctrl+T，更新项目<br>Ctrl+Alt+Shift+D，显示变化【常规】</p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;最重要的两个快捷键&quot;&gt;&lt;a href=&quot;#最重要的两个快捷键&quot; class=&quot;headerlink&quot; title=&quot;最重要的两个快捷键&quot;&gt;&lt;/a&gt;最重要的两个快捷键&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt;ctrl+shfit+a 查询所有命令快捷键&lt;br&gt;ctrl+j 查询所有
-    
-    </summary>
-    
-      <category term="IDE" scheme="https://lmxy1990.github.io/categories/IDE/"/>
     
     
   </entry>
