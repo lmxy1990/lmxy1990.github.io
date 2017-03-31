@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[jarsigner 签名]]></title>
+      <url>%2F2017%2F03%2F31%2Fjarsigner-%E7%AD%BE%E5%90%8D%2F</url>
+      <content type="text"><![CDATA[概要 要生成密钥(私钥/公钥/证书) 需要有相应的密钥库.而证书是保存公钥的一些信息. 命令 生成密钥库keytool -genkey -alias serverkey -keystore keyserver.keystorejarsigner -genkey -alias serverkey -keystore keyserver.keystore 导出证书keytool -export -alias serverkey -keystore keyserver.keystore -file server.crtjarsigner -export -alias serverkey -keystore keyserver.keystore -file server.crt 3.密钥库信任指定的证书keytool -import -alias serverkey -file server.crt -keystore tclient.keystore tclient.keystorejarsigner -import -alias serverkey -file server.crt -keystore tclient.keystore tclient.keystore 4.签名appjarsigner -verbose -keystore reaper.keystore -signedjar test_signed.apk test_unsign.apk reaper-verbose：输出详细信息-keystore：密钥库位置-signedjar：后面跟了3个参数：签名成功的apk的名字，等待签名的apk，生成签名的文件名 说明 密钥库相对于保存密钥的数据库.证书相当于公钥以及一些信息.证书一般式由机构来颁发.这样,客户端解析时候.会显示可信网站.当然,服务器之间的通信可能是双方相互制作传递给对方. 公钥用于客户端加密数据,揭秘需要私钥.公钥是不能用于解密的.非对称摘要算法.如果是对称摘要算法.那就是只有私钥.这样不是很安全.因为客户端可能会泄露. End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[HTTPS 认证模型]]></title>
+      <url>%2F2017%2F03%2F31%2FHTTPS-%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9E%8B%2F</url>
+      <content type="text"><![CDATA[协议模型: 第一步(客户端/服务器的证书,随机数,算法,协议交换): 客户端产生随机数RNC 客户端发送客户端的证书,协议(SSL/TLS),算法信息,RNC给服务器. 服务断接收到请求,产生服务端的随机数RNS 服务端回复服务器的证书,协议(SSL/TLS),算法信息,RNS给客户. 第二步(客户端/服务器向认证机构校验证书信息): 客户端向第三方/本地信任库认证接收到的服务器证书信息. 服务器断向第三方/本地信任库校验客户端的证书信息 第三步(生成主密钥 Primary Master Secret): 客户端产生随机数PMS. 客户端根据协议(SSL/TLS),服务器的证书公钥生成加密过的PMS. 客户端向服务器发送加密过的PMS. 服务器与接收加密过的PMS,并根据服务器的证书私钥解密出PMS. 客户端与服务端保存公共私钥(RNC+RNS+PMS)作为共同的私钥. 第四步(会话密钥确认): 客户端通过PMS产生会话密钥. 客户端数据使用会话密钥加密发送给服务器. 服务器使用PMS产生对应的密钥. 服务使用会话密钥解密接收到的数据. 服务器发送确认信息给客户端. 终止握手. 第五步(正式会话): 客户端数据使用会话密钥加密 发送给服务端. 服务端接收数据使用相同的会话密钥解密出数据. 服务器使用会话密钥加密数据发送给客户端 客户端使用会话密钥解密出对应数据. 只要这5步中有一步校验异常,都会重新握手. End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[字符编码解码以及内存储存]]></title>
       <url>%2F2017%2F03%2F27%2F%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81%E4%BB%A5%E5%8F%8A%E5%86%85%E5%AD%98%E5%82%A8%E5%AD%98%2F</url>
       <content type="text"><![CDATA[编码(encode)因为计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理,将字符–&gt;数字 称之为编码.反之为解码. ASCII : 美国指定的编码标准.只有大小写字母/数字/部分符号(字符占1个字节,不支持中文) GB2312 : 国标 (所有字符占两个字节) UNICODE : 国际通用标准.(所有字符占两个字节) UTF-8 : 国际通用标准的缩小版(字母只占一个字节) 解码(decode)将编码的数字,还原成对相应的字符数组.称之为解码. python中ord(‘’) ; 将字符串解析为编码之后的数字 chr() ; 将数字解析为对应的字符 End]]></content>
