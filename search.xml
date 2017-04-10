@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[java AIO NIO BIO]]></title>
       <url>%2F2017%2F04%2F10%2Fjava-AIO-NIO-BIO%2F</url>
-      <content type="text"><![CDATA[End]]></content>
+      <content type="text"><![CDATA[AIO NIO BIO 概念AIO 异步非阻塞读写. NIO 非阻塞读写. BIO 阻塞读写. 同步与异步:表示目的. 阻塞与非阻塞:实现(同步/异步)方式. AIO 的异步非阻塞,是指的执行IO的线程异步.一个请求一个线程. NIO 查询IO时候非阻塞.使用IO时候阻塞. BIO 查询IO阻塞,执行IO时候阻塞. End]]></content>
     </entry>
 
     

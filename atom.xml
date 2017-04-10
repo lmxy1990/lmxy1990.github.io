@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-04-10T02:23:54.748Z</updated>
+  <updated>2017-04-10T03:18:07.355Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -20,17 +20,27 @@
     <link href="https://lmxy1990.github.io/2017/04/10/java-AIO-NIO-BIO/"/>
     <id>https://lmxy1990.github.io/2017/04/10/java-AIO-NIO-BIO/</id>
     <published>2017-04-10T02:23:54.000Z</published>
-    <updated>2017-04-10T02:23:54.748Z</updated>
+    <updated>2017-04-10T03:18:07.355Z</updated>
     
-    <content type="html"><![CDATA[<hr>
+    <content type="html"><![CDATA[<h3 id="AIO-NIO-BIO-概念"><a href="#AIO-NIO-BIO-概念" class="headerlink" title="AIO NIO BIO 概念"></a>AIO NIO BIO 概念</h3><p>AIO 异步非阻塞读写.</p>
+<p>NIO 非阻塞读写.</p>
+<p>BIO 阻塞读写.</p>
+<p>同步与异步:表示目的.</p>
+<p>阻塞与非阻塞:实现(同步/异步)方式.</p>
+<p>AIO 的异步非阻塞,是指的执行IO的线程异步.一个请求一个线程.</p>
+<p>NIO 查询IO时候非阻塞.使用IO时候阻塞.</p>
+<p>BIO 查询IO阻塞,执行IO时候阻塞.</p>
+<hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
+      &lt;h3 id=&quot;AIO-NIO-BIO-概念&quot;&gt;&lt;a href=&quot;#AIO-NIO-BIO-概念&quot; class=&quot;headerlink&quot; title=&quot;AIO NIO BIO 概念&quot;&gt;&lt;/a&gt;AIO NIO BIO 概念&lt;/h3&gt;&lt;p&gt;AIO 异步非阻塞读写.&lt;/p&gt;
+&lt;p&gt;NI
     
     </summary>
+    
+      <category term="AIO NIO BIO" scheme="https://lmxy1990.github.io/categories/AIO-NIO-BIO/"/>
     
     
   </entry>
