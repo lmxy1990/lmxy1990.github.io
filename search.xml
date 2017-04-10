@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[java AIO NIO BIO]]></title>
+      <url>%2F2017%2F04%2F10%2Fjava-AIO-NIO-BIO%2F</url>
+      <content type="text"><![CDATA[End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[sql 中 Where与Having的区别]]></title>
+      <url>%2F2017%2F04%2F01%2Fsql-%E4%B8%AD-Where%E4%B8%8EHaving%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+      <content type="text"><![CDATA[关于Where与having的原理Where 的原理是根据条件去检索.Having 是根据条件从检索到的内容中根据条件来筛选. 使用场景能使用Where的尽量使用Where.虽然都是遍历.不过机制上来说,前置速度会快些. 但是涉及一些结果处理来筛选的时候.例如:两列的值相减大于某个数的行.SELECT *,(t.c1-t.c2) as tt FROM for_pan_test.new_table t having tt &gt;0; SELECT *,(t.c1-t.c2) as tt FROM for_pan_test.new_table t where (t.c1-t.c2) &gt;0; 这样都可以的.但是如果出现聚合,那就必须使用having了.因为在聚合之前,是不知道该值的(SQL92 标准不支持该查询.SQL99之后支持如果出现sql_model=only_full_group_by.disable该模式 详见). SELECT *,(sum(t.c1)-t.c2) as tt FROM for_pan_test.new_table t group by t.s1 having tt &gt;0; 这时候使用where的结果就行了.SELECT *,(sum(t.c1)-t.c2) as tt FROM for_pan_test.new_table t where (t.c1-t.c2) &gt;0 group by s1; End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[jarsigner 签名]]></title>
       <url>%2F2017%2F03%2F31%2Fjarsigner-%E7%AD%BE%E5%90%8D%2F</url>
       <content type="text"><![CDATA[概要 要生成密钥(私钥/公钥/证书) 需要有相应的密钥库.而证书是保存公钥的一些信息. 命令 生成密钥库keytool -genkey -alias serverkey -keystore keyserver.keystorejarsigner -genkey -alias serverkey -keystore keyserver.keystore 导出证书keytool -export -alias serverkey -keystore keyserver.keystore -file server.crtjarsigner -export -alias serverkey -keystore keyserver.keystore -file server.crt 3.密钥库信任指定的证书keytool -import -alias serverkey -file server.crt -keystore tclient.keystore tclient.keystorejarsigner -import -alias serverkey -file server.crt -keystore tclient.keystore tclient.keystore 4.签名appjarsigner -verbose -keystore reaper.keystore -signedjar test_signed.apk test_unsign.apk reaper-verbose：输出详细信息-keystore：密钥库位置-signedjar：后面跟了3个参数：签名成功的apk的名字，等待签名的apk，生成签名的文件名 说明 密钥库相对于保存密钥的数据库.证书相当于公钥以及一些信息.证书一般式由机构来颁发.这样,客户端解析时候.会显示可信网站.当然,服务器之间的通信可能是双方相互制作传递给对方. 公钥用于客户端加密数据,揭秘需要私钥.公钥是不能用于解密的.非对称摘要算法.如果是对称摘要算法.那就是只有私钥.这样不是很安全.因为客户端可能会泄露. End]]></content>
