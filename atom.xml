@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-04-10T03:18:07.355Z</updated>
+  <updated>2017-05-10T06:52:59.424Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,92 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 开发入门</title>
+    <link href="https://lmxy1990.github.io/2017/05/10/Android-%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/"/>
+    <id>https://lmxy1990.github.io/2017/05/10/Android-开发入门/</id>
+    <published>2017-05-10T06:52:59.000Z</published>
+    <updated>2017-05-10T06:52:59.424Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python 笔记 </title>
+    <link href="https://lmxy1990.github.io/2017/04/13/python-%E7%AC%94%E8%AE%B0/"/>
+    <id>https://lmxy1990.github.io/2017/04/13/python-笔记/</id>
+    <published>2017-04-13T07:06:50.000Z</published>
+    <updated>2017-05-10T08:06:42.572Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><p>python 是弱类型语言.但其也有标准的类型.</p>
+<p>Numbers（12）<br>String（’abc’）<br>List（[1,2]）<br>Tuple（(1,2)）<br>Dictionary（{‘Michael’: 95, ‘Bob’: 75, ‘Tracy’: 85}）<br>Set (([1, 2, 3]))</p>
+<p>变量不需要定义,直接使用变量名进行赋值. 赋值指定格式就是相应的类型.<br>Numbers 相当于java的int,short,long 合集.<br>String 跟java的一样.<br>List 一样<br>Set 一样.<br>Tuple 相当于数组<br>Dict 相当于Map C# 也是dict.</p>
+<p><span style="columns: red;">ps: python 是根据缩进来判断作用域的.</span></p>
+<h3 id="函数定义-调用"><a href="#函数定义-调用" class="headerlink" title="函数定义/调用"></a>函数定义/调用</h3><p>定义函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def functionA(X):</div><div class="line">     return x*x ;</div></pre></td></tr></table></figure></p>
+<p>调用函数<br><code>print(functionA(3)) ;</code></p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>1.切片,取出list或者tuple中部分元素.<br>L = [‘aaa’,’bbb’,’ccc’]</p>
+<p>正序取:第一个是取出位置(包括该位置的元素),第二个是截止位置(不包括该位置的元素)<br>取出第一个元素L[0:1]<br>取出前2个元素:L[0:2]<br>倒序取:第一个是倒序截止位置(包括),第二个倒序是开始取值位置(不包括).<br>取出最后一个元素:L[-1]<br>取出倒数第二个元素:L[-1:-2]</p>
+<p>2.迭代.遍历对象<br>for var in object</p>
+<p>可以通过<code>isinstance(checkObject, Iterable)</code>来判断该对象是否可以进行迭代.<br>不推荐使用(objct) is type(object1) 来进行类型检查是因为type不可靠.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class A():</div><div class="line">    pass;</div><div class="line">class B():</div><div class="line">    pass;</div><div class="line">type(A) is type(B) ;</div><div class="line">&gt;&gt;&gt;True</div></pre></td></tr></table></figure></p>
+<p>遍历dict对象的key<br><code>for  key in dict</code></p>
+<p>遍历dict对象的value<br><code>for var in dict.valuse()</code></p>
+<p>遍历key与value<br><code>for k,v in dict.items()</code></p>
+<p>遍历list的下标与值<br><code>for i,v in enumerate(list)</code></p>
+<p>3.构造器<br>生成1,2,3…9的list<br><code>range(1,10)</code><br>生成 1,4,9…81的 list<br><code>[x*x for x in range(1,10)]</code></p>
+<p>4.赋值<br>可以同时多个赋值.<br><code>a,b,c = 1,2,3 ;</code></p>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p>1.map /reduce python的map不同于java..</p>
+<p>map 是对每个子元素进行函数运算.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">def f(x) :</div><div class="line">    return x*x ;</div><div class="line"></div><div class="line">map(f,range(1,10));</div></pre></td></tr></table></figure></p>
+<p>输出:[1,4,9,25,36,49,64,81]</p>
+<p>reduce 是对没两个元素进行操作.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">def fx(x,y):</div><div class="line">    return x*y +x+y ;</div><div class="line">reduce(fx,range(1,10)) ;</div></pre></td></tr></table></figure></p>
+<p>2.filter 过滤函数<br>filter 是对每个元素进行检查,返回true的保留.返回false的删除.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def ff(x):</div><div class="line">    if (x &gt; 5):</div><div class="line">        return true ;</div><div class="line">    else:</div><div class="line">    return false ;</div><div class="line">filter(ff,range(1,10)) ;</div></pre></td></tr></table></figure></p>
+<p>3.sorted 排序<br>升序<br><code>sorted([36, 5, -12, 9, -21])</code><br>绝对值升序排序<br><code>sorted([36, 5, -12, 9, -21],key=abs)</code><br>忽略大小写升序排序<br><code>sorted([&#39;bob&#39;, &#39;about&#39;, &#39;Zoo&#39;, &#39;Credit&#39;], key=str.lower</code><br>倒序<br><code>sorted([36, 5, -12, 9, -21],reverse=true)</code></p>
+<p>4.lambda表达式<br>传入x,y 返回 x<em>y<br>`lambda x,y:x</em>y`</p>
+<p>5.装饰器<br>装饰器是面向切面编程的概念,主要目的是对程序进行相同代码块的冗余去除.</p>
+<p>定义装饰器:<br>参数:<em>args 称作为数组参数，*</em>kwargs 称作为字典参数.表示可以传进来任意类型任意值.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">def log(func):</div><div class="line">    def proxy_f(*args,**avg):</div><div class="line">        return func(*args,**avg) ;</div><div class="line">    return proxy_f ;</div></pre></td></tr></table></figure></p>
+<p>使用装饰器.<br>在对应的函数前加上@log就可以.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@log</div><div class="line">def now():</div><div class="line">    print(&apos;2015-3-25&apos;) ;</div><div class="line"></div><div class="line">//调用</div><div class="line">now() ;</div></pre></td></tr></table></figure></p>
+<p>也可以这样使用装饰器<br><code>now = log(now)</code></p>
+<p>6.偏函数<br>目的:把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import functools</div><div class="line">&gt;&gt;&gt; int2 = functools.partial(int, base=2)</div><div class="line">&gt;&gt;&gt; int2(&apos;1000000&apos;)</div><div class="line">64</div><div class="line">&gt;&gt;&gt; int2(&apos;1010101&apos;)</div><div class="line">85</div></pre></td></tr></table></figure></p>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><p>1.概述<br>python 的模块有点类似于java的包–类这样的结构.一个python文件相当于一个模块.不同模块的函数名可以相同.单不要与内置的函数名重名.模块名之外,是包名,类似于java.不过包名目录必须有<em>init</em>.py这个文件.</p>
+<p>2.使用模块<br>导入模块 (模块名不含.py,跟java引入类一样,不含.class)<br><code>import model_name</code></p>
+<p>2.使用模块(模块名.函数名来调用相应模块的函数.)<br><code>model_name.func_name</code></p>
+<p>3.使用pip工具安装模块<br><code>pip install 模块名</code></p>
+<p>4.模块搜索路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import sys</div><div class="line"></div><div class="line">sys.path</div></pre></td></tr></table></figure></p>
+<p>5.添加自定义的搜索路径<br>添加环境变量:PYTHONPATH</p>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><ol>
+<li>类/对象(实例)<br>与一般面向对象语言定义基本一致.</li>
+</ol>
+<p>2.区别(下划线都是两个)<br>可以不定义成员属性,直接使用self.XX来赋值.也可以定义一个默认的成员属性.也可以在实例化后定义…<br>初始化构造器(连续两个下划线):<br><code>def __init__ (paramter1,...)</code></p>
+<p>以<strong>XX</strong> 定义的方法(函数)是特殊函数方法.例如:<strong>init</strong><br>以__XX定义的成员变量/方法(函数) 是私有的(private).不能被外部访问.<br>以_XX定义的变量/方法 外部不应该去访问它.但实际是可以访问到的.</p>
+<p>不能通过实例.__XX 来对私有变量进行赋值.这样赋值是赋值给一个新的变量,而非该实例的内部成员变量.<br>这样是错误代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; bart = Student(&apos;Bart Simpson&apos;, 98)</div><div class="line">&gt;&gt;&gt; bart.get_name()</div><div class="line">&apos;Bart Simpson&apos;</div><div class="line">&gt;&gt;&gt; bart.__name = &apos;New Name&apos; # 设置__name变量！</div><div class="line">&gt;&gt;&gt; bart.__name</div><div class="line">&apos;New Name&apos;</div></pre></td></tr></table></figure></p>
+<p>3.继承与多态<br>继承父类,覆写父类方法.符合李氏替换原则.遵循多态.</p>
+<p>对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类，否则，将无法调用run()方法。</p>
+<p>对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以了：</p>
+<p>4.成员属性限制:<br><code>__slots__ = (&#39;name&#39;, &#39;age&#39;) # 用tuple定义允许绑定的属性名称</code></p>
+<h3 id="IO-编程"><a href="#IO-编程" class="headerlink" title="IO 编程"></a>IO 编程</h3><hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;变量类型&quot;&gt;&lt;a href=&quot;#变量类型&quot; class=&quot;headerlink&quot; title=&quot;变量类型&quot;&gt;&lt;/a&gt;变量类型&lt;/h3&gt;&lt;p&gt;python 是弱类型语言.但其也有标准的类型.&lt;/p&gt;
+&lt;p&gt;Numbers（12）&lt;br&gt;String（’abc’）&lt;b
+    
+    </summary>
+    
+      <category term="python" scheme="https://lmxy1990.github.io/categories/python/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>java AIO NIO BIO</title>
@@ -577,72 +663,6 @@
     </summary>
     
       <category term="工作日志" scheme="https://lmxy1990.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java内存模型</title>
-    <link href="https://lmxy1990.github.io/2017/01/22/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://lmxy1990.github.io/2017/01/22/java内存模型/</id>
-    <published>2017-01-22T01:26:06.000Z</published>
-    <updated>2017-01-22T02:11:03.590Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="运行时的内存模型"><a href="#运行时的内存模型" class="headerlink" title="运行时的内存模型"></a>运行时的内存模型</h3><hr>
-<ul>
-<li>java目前使用的虚拟机是HotSpot.运行时的内存模型可以简单分为:方法栈,堆,程序计数器,虚拟机栈,本地方法栈.其中堆与方法栈是所有线程共享的.虚拟机栈与本地方法栈,程序计数器是县城独享的.程序计数器,虚拟机栈的生命周期与线程的周期是一样的.</li>
-</ul>
-<h4 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h4><ul>
-<li>程序计数器可以见到那看作是当前线程的运行状态.进行指令分配的一小段内存块.它的功能是记录当前线程的一些状态,值.以便于线程的唤醒,启动.异常处理等线程功能都由它来完成.</li>
-</ul>
-<h4 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h4><ul>
-<li>虚拟机栈中保存的是局部变量,操作数栈,程序的出口信息.动态连接等.它的主要作用是存储线程执行的一些数据(线程内部数据).</li>
-</ul>
-<h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h4><ul>
-<li>本地方法栈也是用来保存方法内的变量(局部变量),动态连接,出口数据等线程私有的数据.只是它对应的是本地方法(本地函数?),而虚拟机栈对应的是java的方法.</li>
-</ul>
-<h4 id="方法栈"><a href="#方法栈" class="headerlink" title="方法栈"></a>方法栈</h4><ul>
-<li>方法栈是线程公有的.它主要保存所有类的信息,常量,静态变量.方法模型的基本信息.非静态成员变量也保存在此.所以成员变量需要考虑线程安全性的问题.</li>
-</ul>
-<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><ul>
-<li>java堆是内存中最大的一部分,几乎所有的对象实例都保存于此.GC回收最主要部分也是这里.</li>
-</ul>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;运行时的内存模型&quot;&gt;&lt;a href=&quot;#运行时的内存模型&quot; class=&quot;headerlink&quot; title=&quot;运行时的内存模型&quot;&gt;&lt;/a&gt;运行时的内存模型&lt;/h3&gt;&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;java目前使用的虚拟机是HotSpot.运行时的内存模型可以简单分为
-    
-    </summary>
-    
-      <category term="jvm" scheme="https://lmxy1990.github.io/categories/jvm/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>windows下删除文件过深命令</title>
-    <link href="https://lmxy1990.github.io/2017/01/19/windows%E4%B8%8B%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E8%BF%87%E6%B7%B1%E5%91%BD%E4%BB%A4/"/>
-    <id>https://lmxy1990.github.io/2017/01/19/windows下删除文件过深命令/</id>
-    <published>2017-01-19T01:35:18.000Z</published>
-    <updated>2017-01-19T01:40:24.004Z</updated>
-    
-    <content type="html"><![CDATA[<p>命令: robocopy windows的可靠文件复制.<br>原理: 新建一个文件夹,然后使用可靠复制命令.将新建的正常文件夹覆盖需要删除的文件夹.<br>示例: robocopy /MIR 正常文件夹 需要删除的文件夹.</p>
-<p>查看命令所有参数:robocopy /?</p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;命令: robocopy windows的可靠文件复制.&lt;br&gt;原理: 新建一个文件夹,然后使用可靠复制命令.将新建的正常文件夹覆盖需要删除的文件夹.&lt;br&gt;示例: robocopy /MIR 正常文件夹 需要删除的文件夹.&lt;/p&gt;
-&lt;p&gt;查看命令所有参数:robocopy
-    
-    </summary>
-    
-      <category term="小技巧" scheme="https://lmxy1990.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
     
   </entry>
