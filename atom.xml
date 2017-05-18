@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-05-10T06:52:59.424Z</updated>
+  <updated>2017-05-16T09:12:52.400Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -16,11 +16,93 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>java stream 流处理</title>
+    <link href="https://lmxy1990.github.io/2017/05/16/java-stream-%E6%B5%81%E5%A4%84%E7%90%86/"/>
+    <id>https://lmxy1990.github.io/2017/05/16/java-stream-流处理/</id>
+    <published>2017-05-16T05:56:41.000Z</published>
+    <updated>2017-05-16T09:12:52.400Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Java-Stream-流处理"><a href="#Java-Stream-流处理" class="headerlink" title="Java Stream 流处理"></a>Java Stream 流处理</h3><hr>
+<p>jdk1.8之前,处理文字数字都是赋值给相应变量来进行处理.1.8之后,支持是用流来处理.这里的流处理,是对值进行的聚合处理.里面有python的map影子.</p>
+<ol>
+<li>流的列别.</li>
+</ol>
+<ul>
+<li>IntStream、LongStream、DoubleStream。当然我们也可以用 Stream<integer>、Stream<long> &gt;、Stream<double>，但是 boxing 和 unboxing会很耗时.</double></long></integer></li>
+</ul>
+<ol>
+<li>流的获取.<ol>
+<li>使用集合类.<code>Collection.stream()</code> 或者<code>Collection.parallelStream()</code> </li>
+<li>通过数组获取.<code>Arrays.stream(T array) or Stream.of()</code></li>
+<li>通过java的IO.<code>java.io.BufferedReader.lines()</code></li>
+<li>静态工厂.<code>java.util.stream.IntStream.range()</code> 或<code>java.nio.file.Files.walk()</code></li>
+<li>自己构建. <code>java.util.Spliterator</code></li>
+<li>其他:<ul>
+<li>Random.ints()</li>
+<li>BitSet.stream()</li>
+<li>Pattern.splitAsStream(java.lang.CharSequence)</li>
+<li>JarFile.stream()</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>流处理的分类<ul>
+<li>Intermediate：<ul>
+<li>一个流可以后面跟随零个或多个 intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用。这类操作都是惰性化的（lazy），就是说，仅仅调用到这类方法，并没有真正开始流的遍历。</li>
+<li>包含:map (mapToInt, flatMap 等)、 filter、 distinct、 sorted、 peek、 limit、 skip、 parallel、 sequential、 unordered</li>
+</ul>
+</li>
+<li>Terminal:<ul>
+<li>一个流只能有一个 terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。所以这必定是流的最后一个操作。Terminal 操作的执行，才会真正开始流的遍历，并且会生成一个结果，或者一个 side effect。</li>
+<li>包含:forEach、 forEachOrdered、 toArray、 reduce、 collect、 min、 max、 count、 anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 iterator</li>
+</ul>
+</li>
+<li>short-circuiting:<ul>
+<li>当操作一个无限大的 Stream，而又希望在有限时间内完成操作，则在管道内拥有一个 short-circuiting 操作是必要非充分条件.</li>
+<li>包含:anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 limit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="常见的流操作"><a href="#常见的流操作" class="headerlink" title="常见的流操作"></a>常见的流操作</h3><ol>
+<li>查询流里面元素是否为null<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().findAny().ifPresent(System.out::print);</code></li>
+</ol>
+<p><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().findFirst().ifPresent(System.out::print);</code></p>
+<p>2.匹配<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().anyMatch(s -&gt; s.equals(&quot;小王&quot;))</code></p>
+<p><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().allMatch(s -&gt; s.equals(&quot;小王&quot;)) ;</code></p>
+<p><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().noneMatch(s -&gt; s.equals(&quot;小王&quot;)) ;</code></p>
+<p>3.过滤<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().filter(va -&gt; !va.equals(&quot;小王&quot;)).forEach(System.out::print);</code></p>
+<p>4.映射(1对1)<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().map(va -&gt; &quot;打豆豆&quot; + va ).forEachOrdered(System.out :: print);</code></p>
+<p>5.映射(多对一)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Arrays.asList(</div><div class="line">           Arrays.asList(&quot;小明&quot;),</div><div class="line">           Arrays.asList(&quot;小明&quot;, &quot;小王&quot;),</div><div class="line">           Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;)</div><div class="line">   ).stream().flatMap(va -&gt; va.stream().map(a -&gt; a + &quot;不打豆豆&quot;)).forEach(s -&gt; System.out.println(s + &quot;了&quot;));</div></pre></td></tr></table></figure></p>
+<p>6.排序<br><code>Arrays.asList(1, 2, 3).stream().sorted(Comparator.naturalOrder()) ;</code></p>
+<p><code>Arrays.asList(1, 2, 3).stream().sorted(Integer::compareTo) ;</code></p>
+<p>7.截取(limit是截取前N个,skip是丢弃前N个)<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().limit(2).forEach(System.out::print);</code></p>
+<p><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().skip(2).forEach(System.out::print);</code></p>
+<p>8.组合 (组合的第一个参数代表截止条件,第二个代表依次处理数据的方法) 类似与python的reduce.只是传参的方式不一样.使用组合可以实现字符串连接,取最大值,最小值,排序..<br><code>String reduce = Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().reduce(&quot;&quot;, (v1, v2) -&gt; v1 + v2);</code></p>
+<p><code>Integer reduce = Arrays.asList(1, 2, 3).stream().reduce(Integer.MAX_VALUE, Integer::min);</code></p>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录:"></a>附录:</h3><p>参考文档:<a href="https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/" target="_blank" rel="external">链接地址</a></p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Java-Stream-流处理&quot;&gt;&lt;a href=&quot;#Java-Stream-流处理&quot; class=&quot;headerlink&quot; title=&quot;Java Stream 流处理&quot;&gt;&lt;/a&gt;Java Stream 流处理&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;jdk1.8之前,处理文字
+    
+    </summary>
+    
+      <category term="java stream" scheme="https://lmxy1990.github.io/categories/java-stream/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Android 开发入门</title>
     <link href="https://lmxy1990.github.io/2017/05/10/Android-%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/"/>
     <id>https://lmxy1990.github.io/2017/05/10/Android-开发入门/</id>
     <published>2017-05-10T06:52:59.000Z</published>
-    <updated>2017-05-10T06:52:59.424Z</updated>
+    <updated>2017-05-16T03:34:46.900Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
@@ -31,6 +113,8 @@
 &lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
     
     </summary>
+    
+      <category term="Andriod" scheme="https://lmxy1990.github.io/categories/Andriod/"/>
     
     
   </entry>
@@ -638,31 +722,6 @@
     </summary>
     
       <category term="sql" scheme="https://lmxy1990.github.io/categories/sql/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>xshell故障</title>
-    <link href="https://lmxy1990.github.io/2017/01/23/xshell%E6%95%85%E9%9A%9C/"/>
-    <id>https://lmxy1990.github.io/2017/01/23/xshell故障/</id>
-    <published>2017-01-23T02:05:02.000Z</published>
-    <updated>2017-01-23T02:09:01.654Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="故障1-登录成功-会话断开"><a href="#故障1-登录成功-会话断开" class="headerlink" title="故障1,登录成功.会话断开."></a>故障1,登录成功.会话断开.</h3><ul>
-<li>这种原因google了很久,都没找到.后来才知道是因为窗口太大了.服务器那边可能不支持大屏显示吧.缩小窗口就可以了.</li>
-</ul>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;故障1-登录成功-会话断开&quot;&gt;&lt;a href=&quot;#故障1-登录成功-会话断开&quot; class=&quot;headerlink&quot; title=&quot;故障1,登录成功.会话断开.&quot;&gt;&lt;/a&gt;故障1,登录成功.会话断开.&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;这种原因google了很久,都没找到
-    
-    </summary>
-    
-      <category term="工作日志" scheme="https://lmxy1990.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/"/>
     
     
   </entry>
