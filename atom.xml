@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-06-02T01:37:59.035Z</updated>
+  <updated>2017-06-07T02:28:28.094Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA中的值类型,引用类型以及克隆</title>
+    <link href="https://lmxy1990.github.io/2017/06/06/JAVA%E4%B8%AD%E7%9A%84%E5%80%BC%E7%B1%BB%E5%9E%8B-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%85%8B%E9%9A%86/"/>
+    <id>https://lmxy1990.github.io/2017/06/06/JAVA中的值类型-引用类型以及克隆/</id>
+    <published>2017-06-06T11:51:10.000Z</published>
+    <updated>2017-06-07T02:28:28.094Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="JAVA中的引用类型与值类型"><a href="#JAVA中的引用类型与值类型" class="headerlink" title="JAVA中的引用类型与值类型"></a>JAVA中的引用类型与值类型</h3><hr>
+<p>1.引用类型<br>数组,集合,接口,类都是引用类型.</p>
+<p>2.值类型<br>所有基本类型:int,short,long 及与之对应的Long,Integer,Double,<br>以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型.</p>
+<p>3.区别<br>这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.<br>值类型:也就是改变原值,对其之前赋的变量的值没有影响.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BigDecimal d1 = BigDecimal.ONE ;</div><div class="line">BigDecimal d2 = d1 ;</div><div class="line">d1 = d1.add(BigDecimal.ONE) ;</div><div class="line"></div><div class="line">System.out.println(d1);</div><div class="line">System.out.println(d2);</div></pre></td></tr></table></figure></p>
+<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td></tr></table></figure></p>
+<p>引用类型:改变原值,对其之前使用=赋值的变量也会有影响.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">int[] ar = &#123;1,2,3&#125; ;</div><div class="line">int[] br = ar ;</div><div class="line">ar[0] = 2 ;</div><div class="line">ar[1] = 3 ;</div><div class="line">ar[2] = 4 ;</div><div class="line">for (int i = 0; i &lt; ar.length; i++) &#123;</div><div class="line">    int i1 = ar[i];</div><div class="line">    System.out.println(i1);</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (int i = 0; i &lt; br.length; i++) &#123;</div><div class="line">    int i1 = br[i];</div><div class="line">    System.out.println(i1);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<p>4.浅析原理.<br>有一种说法是java没有值类型.其实角度不一样.从原理上来说确实没有.但从表象上来说是有的.因为在赋值运算的时候.遇到基本类型是新开辟内存空间.遇到引用类型是改变指针指向的地址.这区别与java对赋值运算的实现.</p>
+<p>所以,java官方说基本类型是值类型.那就是说,赋值运算在对待基本类型的赋值与引用类型时候,会采用不同的方式去处理.这区别于C/C++.</p>
+<p>这一点其实在对待Long Integer 类的赋值的时候,就可以看出来了.至于为什么基本类型赋值是新开辟,而引用类型是修改指针地址.这可能是因为所占对象大小,基本类型占用低,使用修改频繁.所以新增这样的对象所消耗内存少.而引用类型的内存消耗完全取决用用户的定义.故赋值采用的是改变指针的指向.而非new 对象.但是java提供一个克隆的方法.用于新开辟内存而非改变指针指向内存地址.</p>
+<p>至于如果引用类型需要拷贝而不是改变指针的地址进行的赋值时候.可以采用克隆或者直接new 对象.然后进行对基本类型的赋值操作.遇到引用类型,就需要new/克隆去开辟新的内存空间.这样才能改变原对象的值,不会影响克隆的变量.</p>
+<h3 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h3><hr>
+<p>1.实现Cloneable接口<br>2.覆写Object的clone方法.<br>3.如果对象存在非基本类型,还需要修改覆写的方法.<br>eg: Java 自带的Calendar类覆写的clone方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public Object clone()</div><div class="line">&#123;</div><div class="line">    try &#123;</div><div class="line">        Calendar other = (Calendar) super.clone();</div><div class="line"></div><div class="line">        other.fields = new int[FIELD_COUNT];</div><div class="line">        other.isSet = new boolean[FIELD_COUNT];</div><div class="line">        other.stamp = new int[FIELD_COUNT];</div><div class="line">        for (int i = 0; i &lt; FIELD_COUNT; i++) &#123;</div><div class="line">            other.fields[i] = fields[i];</div><div class="line">            other.stamp[i] = stamp[i];</div><div class="line">            other.isSet[i] = isSet[i];</div><div class="line">        &#125;</div><div class="line">        other.zone = (TimeZone) zone.clone();</div><div class="line">        return other;</div><div class="line">    &#125;</div><div class="line">    catch (CloneNotSupportedException e) &#123;</div><div class="line">        // this shouldn&apos;t happen, since we are Cloneable</div><div class="line">        throw new InternalError(e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上例子就是覆写clone方法.如果没有引用类型.那只需要调用超类的方法即可.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected Object clone() throws CloneNotSupportedException &#123;</div><div class="line">    return super.clone();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;JAVA中的引用类型与值类型&quot;&gt;&lt;a href=&quot;#JAVA中的引用类型与值类型&quot; class=&quot;headerlink&quot; title=&quot;JAVA中的引用类型与值类型&quot;&gt;&lt;/a&gt;JAVA中的引用类型与值类型&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;1.引用类型&lt;br&gt;数组,集合,接
+    
+    </summary>
+    
+      <category term="java基础" scheme="https://lmxy1990.github.io/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SQL 相关备忘录</title>
+    <link href="https://lmxy1990.github.io/2017/06/06/SQL%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    <id>https://lmxy1990.github.io/2017/06/06/SQL 相关备忘录/</id>
+    <published>2017-06-06T02:33:25.000Z</published>
+    <updated>2017-06-06T11:53:37.017Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><hr>
+<p>GREATEST() 取出多个表达式中最大的值.</p>
+<p>LEAST() 取出多个表达式中最小的值</p>
+<h3 id="常用语句"><a href="#常用语句" class="headerlink" title="常用语句"></a>常用语句</h3><hr>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;GREATEST() 取出多个表达式中最大的值.&lt;/p&gt;
+&lt;p&gt;LEAST() 取出多个表达式中最小的值&lt;/p&gt;
+&lt;h3 id=&quot;
+    
+    </summary>
+    
+      <category term="SQL" scheme="https://lmxy1990.github.io/categories/SQL/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>java中标志位的使用&#39;</title>
@@ -662,58 +726,6 @@
     
       &lt;p&gt;场景:多个数据表关联.需要查询多个表的信息.&lt;br&gt;表1:用户名+性别&lt;br&gt;表2:表1的id,密码&lt;br&gt;表3:用户id+用户车辆信息&lt;/p&gt;
 &lt;p&gt;查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需
-    
-    </summary>
-    
-      <category term="工作日志" scheme="https://lmxy1990.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>wondiws磁盘管理命令的使用</title>
-    <link href="https://lmxy1990.github.io/2017/01/25/wondiws%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://lmxy1990.github.io/2017/01/25/wondiws磁盘管理命令的使用/</id>
-    <published>2017-01-25T08:15:27.000Z</published>
-    <updated>2017-01-25T08:34:38.542Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="diskpart命令"><a href="#diskpart命令" class="headerlink" title="diskpart命令"></a>diskpart命令</h3><p><strong> 使用方式,打开cmd.输入diskpart.进入diskpart模式.切记,不要相信网上的坑逼教程.直接select disk 1来clean.这样你可能删掉的不是自己想要的磁盘.资料丢失.切记切记,教程参考.实际使用需理论考虑.坑逼教程在百度经验.别相信百度,选择谷歌! </strong></p>
-<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><p>1.查看磁盘<br><code>list disk</code><br>2.查看分区<br><code>list partition</code><br>3.查看卷<br><code>list volume</code><br>4.查看虚拟磁盘<br><code>list vdisk</code></p>
-<h4 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h4><p>1.选择磁盘<br><code>select disk 序号</code><br>2.选择分区<br><code>select partition 序号</code><br>3.选择卷<br><code>select volume 序号</code><br>4.选择虚拟磁盘<br><code>select vdisk 序号</code></p>
-<h4 id="清除"><a href="#清除" class="headerlink" title="清除"></a>清除</h4><p>1.清除磁盘<br><code>clean disk</code><br>2.清除分区<br><code>delete partition</code><br>3.清除盘符(卷)<br><code>delete volume</code></p>
-<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p>1.创建主分区<br><code>create partition primary [size=n] [offset=n]</code><br>2.创建逻辑分区<br><code>create partition logical [size=n] [offset=n]</code><br>3.创建扩展分区<br><code>create partition extended [size=n] [offset=n]</code><br>4.分配盘符<br><code>assign [letter=l]</code></p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>1.快速格式化<br><code>format [fs=ntfs] quick</code></p>
-<p><em>操作的步骤是,先查询.然后选择.在执行清除.然后在分配.</em></p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;diskpart命令&quot;&gt;&lt;a href=&quot;#diskpart命令&quot; class=&quot;headerlink&quot; title=&quot;diskpart命令&quot;&gt;&lt;/a&gt;diskpart命令&lt;/h3&gt;&lt;p&gt;&lt;strong&gt; 使用方式,打开cmd.输入diskpart.进入diskp
-    
-    </summary>
-    
-      <category term="小技巧" scheme="https://lmxy1990.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Druid的坑</title>
-    <link href="https://lmxy1990.github.io/2017/01/25/Druid%E7%9A%84%E5%9D%91/"/>
-    <id>https://lmxy1990.github.io/2017/01/25/Druid的坑/</id>
-    <published>2017-01-25T01:15:27.000Z</published>
-    <updated>2017-01-25T01:24:48.632Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.高性能的Druid连接池,在没有引入驱动的时候.调用连接.线程直接死循环.</p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.高性能的Druid连接池,在没有引入驱动的时候.调用连接.线程直接死循环.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
     
     </summary>
     

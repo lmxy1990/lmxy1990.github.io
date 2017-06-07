@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[JAVA中的值类型,引用类型以及克隆]]></title>
+      <url>%2F2017%2F06%2F06%2FJAVA%E4%B8%AD%E7%9A%84%E5%80%BC%E7%B1%BB%E5%9E%8B-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%85%8B%E9%9A%86%2F</url>
+      <content type="text"><![CDATA[JAVA中的引用类型与值类型 1.引用类型数组,集合,接口,类都是引用类型. 2.值类型所有基本类型:int,short,long 及与之对应的Long,Integer,Double,以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型. 3.区别这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.值类型:也就是改变原值,对其之前赋的变量的值没有影响.123456BigDecimal d1 = BigDecimal.ONE ;BigDecimal d2 = d1 ;d1 = d1.add(BigDecimal.ONE) ;System.out.println(d1);System.out.println(d2); 结果如下:123456234234 引用类型:改变原值,对其之前使用=赋值的变量也会有影响.1234567891011121314int[] ar = &#123;1,2,3&#125; ;int[] br = ar ;ar[0] = 2 ;ar[1] = 3 ;ar[2] = 4 ;for (int i = 0; i &lt; ar.length; i++) &#123; int i1 = ar[i]; System.out.println(i1);&#125;for (int i = 0; i &lt; br.length; i++) &#123; int i1 = br[i]; System.out.println(i1);&#125; 结果如下:1221 4.浅析原理.有一种说法是java没有值类型.其实角度不一样.从原理上来说确实没有.但从表象上来说是有的.因为在赋值运算的时候.遇到基本类型是新开辟内存空间.遇到引用类型是改变指针指向的地址.这区别与java对赋值运算的实现. 所以,java官方说基本类型是值类型.那就是说,赋值运算在对待基本类型的赋值与引用类型时候,会采用不同的方式去处理.这区别于C/C++. 这一点其实在对待Long Integer 类的赋值的时候,就可以看出来了.至于为什么基本类型赋值是新开辟,而引用类型是修改指针地址.这可能是因为所占对象大小,基本类型占用低,使用修改频繁.所以新增这样的对象所消耗内存少.而引用类型的内存消耗完全取决用用户的定义.故赋值采用的是改变指针的指向.而非new 对象.但是java提供一个克隆的方法.用于新开辟内存而非改变指针指向内存地址. 至于如果引用类型需要拷贝而不是改变指针的地址进行的赋值时候.可以采用克隆或者直接new 对象.然后进行对基本类型的赋值操作.遇到引用类型,就需要new/克隆去开辟新的内存空间.这样才能改变原对象的值,不会影响克隆的变量. 克隆 1.实现Cloneable接口2.覆写Object的clone方法.3.如果对象存在非基本类型,还需要修改覆写的方法.eg: Java 自带的Calendar类覆写的clone方法12345678910111213141516171819202122@Overridepublic Object clone()&#123; try &#123; Calendar other = (Calendar) super.clone(); other.fields = new int[FIELD_COUNT]; other.isSet = new boolean[FIELD_COUNT]; other.stamp = new int[FIELD_COUNT]; for (int i = 0; i &lt; FIELD_COUNT; i++) &#123; other.fields[i] = fields[i]; other.stamp[i] = stamp[i]; other.isSet[i] = isSet[i]; &#125; other.zone = (TimeZone) zone.clone(); return other; &#125; catch (CloneNotSupportedException e) &#123; // this shouldn&apos;t happen, since we are Cloneable throw new InternalError(e); &#125;&#125; 以上例子就是覆写clone方法.如果没有引用类型.那只需要调用超类的方法即可.1234@Overrideprotected Object clone() throws CloneNotSupportedException &#123; return super.clone();&#125; End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[SQL 相关备忘录]]></title>
+      <url>%2F2017%2F06%2F06%2FSQL%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98%E5%BD%95%2F</url>
+      <content type="text"><![CDATA[函数 GREATEST() 取出多个表达式中最大的值. LEAST() 取出多个表达式中最小的值 常用语句 End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[java中标志位的使用']]></title>
       <url>%2F2017%2F06%2F01%2Fjava%E6%A0%87%E5%BF%97%E4%BD%8D%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
       <content type="text"><![CDATA[Java 位操作 1.位左移(符号位不变)&lt;&lt;2.位右移(符号位不变)&gt;&gt;3.无符号的位移(空位补零,不考虑符号位)&lt;&lt;&lt; ‘&gt;&gt;&gt;’4.或|5.与&amp;6.按位取反~7.异或^ 用途 用途有点类似控制器上的拨码开关.00001001001 .一般来说,用0代表无,1代表有.每一个符号位代表一种权限.这种应用在多权限的场景下很容易解决N权限的问题. Java 代码 判断方法12345678910111213141516//复合权限判断 private static boolean isHasAllAuthority(long ready,long authority)&#123; return (ready &amp; authority) == authority ? true :false ; &#125; //添加权限 private static long addAuthority(long ready,long authority)&#123; return ready | authority; &#125; //删除权限 private static long removeAuthority(long ready,long authority)&#123; return (ready | authority) ^ authority ; &#125; 测试方法1234567891011121314151617181920212223long pp1 = 1&lt;&lt;1 ;long pp2 = 1&lt;&lt;2 ;long pp3 = 1&lt;&lt;3 ;long pp4 = 1&lt;&lt;4 ;//初始化权限long ready = 0L ;//添加1,4权限ready = addAuthority(ready,pp1) ;ready = addAuthority(ready,pp4) ;//删除1,3权限ready = removeAuthority(ready,pp1|pp3) ;//判断是否拥有1权限System.out.println(&quot;判断是否拥有1权限&quot; + isHasAllAuthority(ready,pp1));//判断是否拥有3权限System.out.println(&quot;判断是否拥有3权限&quot; + isHasAllAuthority(ready,pp3));//判断是否拥有4权限System.out.println(&quot;判断是否拥有4权限&quot; + isHasAllAuthority(ready,pp4));//判断是否拥有1,4权限System.out.println(&quot;判断是否拥有1,4权限&quot; + isHasAllAuthority(ready,pp1|pp4)); 结果123456判断是否拥有1权限false判断是否拥有3权限false判断是否拥有4权限true判断是否拥有1,4权限falseProcess finished with exit code 0 End]]></content>
