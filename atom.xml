@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-06-07T02:28:28.094Z</updated>
+  <updated>2017-06-15T07:01:33.026Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java中的集合删除方法注意点</title>
+    <link href="https://lmxy1990.github.io/2017/06/15/java%E4%B8%AD%E7%9A%84%E9%9B%86%E5%90%88%E5%88%A0%E9%99%A4%E6%96%B9%E6%B3%95%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
+    <id>https://lmxy1990.github.io/2017/06/15/java中的集合删除方法注意点/</id>
+    <published>2017-06-15T06:45:08.000Z</published>
+    <updated>2017-06-15T07:01:33.026Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="集合类的删除方法"><a href="#集合类的删除方法" class="headerlink" title="集合类的删除方法"></a>集合类的删除方法</h3><hr>
+<ul>
+<li>最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; pp = new ArrayList&lt;&gt;() ;</div><div class="line">pp.add(1) ;</div><div class="line">pp.add(2) ;</div><div class="line">pp.add(3) ;</div><div class="line">pp.add(4) ;</div><div class="line"></div><div class="line">for (int i = 0; i &lt; pp.size(); i++) &#123;</div><div class="line">    Integer integer =  pp.get(i);</div><div class="line">    System.out.println(&quot;当前遍历i:&quot; + i + &quot;对应集合数据:&quot; + integer);</div><div class="line">    if (integer.equals(3))&#123;</div><div class="line">        pp.remove(i) ;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">当前遍历i:0对应集合数据:1</div><div class="line">当前遍历i:1对应集合数据:2</div><div class="line">当前遍历i:2对应集合数据:3</div><div class="line"></div><div class="line">Process finished with exit code 0</div></pre></td></tr></table></figure></p>
+<p>why?数据4去了哪里?<br>这其实是remove之后,size会立即变化.但是遍历的指针却并没有做出相应的变化.依旧是自增了一下.也就是说,当i = 2的时候,remove方法执行.然后对应的size变化为3.这时候i++变为了3<3不成立,不再循环,跳出循环.但实际上,并没有循环完成.因为还有一个数据没循环到.也就是i=2现在是新的数据了. 如何避免?="" 我是这样处理的.="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; pp = new ArrayList&lt;&gt;() ;</div><div class="line">pp.add(1) ;</div><div class="line">pp.add(2) ;</div><div class="line">pp.add(3) ;</div><div class="line">pp.add(4) ;</div><div class="line"></div><div class="line">for (int i = 0; i &lt; pp.size(); i++) &#123;</div><div class="line">    Integer integer =  pp.get(i);</div><div class="line">    System.out.println(&quot;当前遍历i:&quot; + i + &quot;对应集合数据:&quot; + integer);</div><div class="line">    if (integer.equals(3))&#123;</div><div class="line">        pp.remove(i);</div><div class="line">        i--;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></3不成立,不再循环,跳出循环.但实际上,并没有循环完成.因为还有一个数据没循环到.也就是i=2现在是新的数据了.></p>
+<p>输出结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">当前遍历i:0对应集合数据:1</div><div class="line">当前遍历i:1对应集合数据:2</div><div class="line">当前遍历i:2对应集合数据:3</div><div class="line">当前遍历i:2对应集合数据:4</div><div class="line"></div><div class="line">Process finished with exit code 0</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;集合类的删除方法&quot;&gt;&lt;a href=&quot;#集合类的删除方法&quot; class=&quot;headerlink&quot; title=&quot;集合类的删除方法&quot;&gt;&lt;/a&gt;集合类的删除方法&lt;/h3&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有
+    
+    </summary>
+    
+      <category term="陷阱" scheme="https://lmxy1990.github.io/categories/%E9%99%B7%E9%98%B1/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JAVA中的值类型,引用类型以及克隆</title>
@@ -704,32 +735,6 @@
     </summary>
     
       <category term="linux" scheme="https://lmxy1990.github.io/categories/linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈关系数据使用非关系型数据库处理方法</title>
-    <link href="https://lmxy1990.github.io/2017/01/26/%E6%B5%85%E8%B0%88%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E4%BD%BF%E7%94%A8%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/"/>
-    <id>https://lmxy1990.github.io/2017/01/26/浅谈关系数据使用非关系型数据库处理方法/</id>
-    <published>2017-01-26T01:25:38.000Z</published>
-    <updated>2017-02-06T03:24:51.431Z</updated>
-    
-    <content type="html"><![CDATA[<p>场景:多个数据表关联.需要查询多个表的信息.<br>表1:用户名+性别<br>表2:表1的id,密码<br>表3:用户id+用户车辆信息</p>
-<p>查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需要的数据,必须是筛选过的数据才能准确分页.所以,最后的信息一定是主表,也就是表1.</p>
-<p>可以采用先查询所有用户中,车辆为大众的用户id.然后,根据用户名,用户id去筛选出用户信息.再根据用户表的id.去查询用户密码.</p>
-<p>为什么要如此做?<br>1.筛选条件前置,才能去除分页之后再筛选造成的数据错误.<br>2.查询速度其实是一样的,因为都需要去查询两个表.<br>3.相对于没有筛选的条件的信息获取,先查寻出id,再根据id拉取数据,一般这个id都会做索引.所以,如此的话,速度应该也能满足.</p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;场景:多个数据表关联.需要查询多个表的信息.&lt;br&gt;表1:用户名+性别&lt;br&gt;表2:表1的id,密码&lt;br&gt;表3:用户id+用户车辆信息&lt;/p&gt;
-&lt;p&gt;查询条件:需要查询某个用户的大众车辆,并查询该用户的密码.假色有很多台.采用分页查询.那么这里应该区分主表,附加表.我们需
-    
-    </summary>
-    
-      <category term="工作日志" scheme="https://lmxy1990.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/"/>
     
     
   </entry>
