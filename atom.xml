@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-06-15T07:01:33.026Z</updated>
+  <updated>2017-08-09T05:06:41.716Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,262 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 对象判断工具类</title>
+    <link href="https://lmxy1990.github.io/2017/08/09/Java-%E5%AF%B9%E8%B1%A1%E5%88%A4%E6%96%AD%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    <id>https://lmxy1990.github.io/2017/08/09/Java-对象判断工具类/</id>
+    <published>2017-08-09T05:03:11.000Z</published>
+    <updated>2017-08-09T05:06:41.716Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="用于判断对象是否相等-支持Java基本类型-包装类"><a href="#用于判断对象是否相等-支持Java基本类型-包装类" class="headerlink" title="用于判断对象是否相等,支持Java基本类型,包装类."></a>用于判断对象是否相等,支持Java基本类型,包装类.</h3><p>需要引用的jar包.谷歌工具类,apache工具类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div></pre></td><td class="code"><pre><div class="line">public class ObjectUtils implements Serializable &#123;</div><div class="line">    private static final long serialVersionUID = 602163719206844077L;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 对象比较工具类</div><div class="line">     *</div><div class="line">     * @param ob1               比较对象1</div><div class="line">     * @param ob2               比较对象2</div><div class="line">     * @param ignoreProperNames 忽略属性名List</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static boolean deepEquals(Object ob1, Object ob2, List&lt;String&gt; ignoreProperNames) &#123;</div><div class="line">        if (ob1 == ob2) return true;</div><div class="line">        if (ob1 == null || ob2 == null) return false;</div><div class="line"></div><div class="line">        Map&lt;String, Boolean&gt; jugMap = new HashMap&lt;&gt;();</div><div class="line">        if (CollectionUtils.isEmpty(ignoreProperNames)) &#123;</div><div class="line">            ignoreProperNames.stream().filter(StringUtils::isNotBlank).forEach(v -&gt; jugMap.put(v, true));</div><div class="line">        &#125;</div><div class="line">        return deepEquals(ob1, ob2, jugMap);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static boolean deepEquals(Object ob1, Object ob2, Map&lt;String, Boolean&gt; jugMap) &#123;</div><div class="line">        Class&lt;?&gt; aClass = ob1.getClass();</div><div class="line">        Class&lt;?&gt; bClass = ob1.getClass();</div><div class="line">        if (isJavaClass(aClass) || isJavaClass(bClass)) &#123;</div><div class="line">            return Objects.deepEquals(ob1, ob2);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Field[] fields1 = aClass.getDeclaredFields();</div><div class="line">        Field[] fields2 = bClass.getDeclaredFields();</div><div class="line">        if (fields1 == fields2) return true;</div><div class="line">        if (fields1 == null || fields2 == null) return false;</div><div class="line">        if (fields1.length != fields2.length) return false;</div><div class="line">        Map&lt;String, Field&gt; fieldMap1 = new HashMap&lt;&gt;();</div><div class="line">        Map&lt;String, Field&gt; fieldMap2 = new HashMap&lt;&gt;();</div><div class="line"></div><div class="line">        for (int i = 0; i &lt; fields1.length; i++) &#123;</div><div class="line">            Field field1 = fields1[i];</div><div class="line">            Field field2 = fields2[i];</div><div class="line">            Boolean aBoolean = jugMap.get(field1.getName());</div><div class="line">            if (aBoolean != null &amp;&amp; aBoolean) continue;</div><div class="line">            if (&quot;serialVersionUID&quot;.equals(field1.getName())) continue;</div><div class="line"></div><div class="line">            field1.setAccessible(true);</div><div class="line">            field2.setAccessible(true);</div><div class="line">            fieldMap1.put(field1.getName(), field1);</div><div class="line">            fieldMap2.put(field2.getName(), field1);</div><div class="line">        &#125;</div><div class="line">        Set&lt;Map.Entry&lt;String, Field&gt;&gt; entrySet = fieldMap1.entrySet();</div><div class="line">        for (Iterator&lt;Map.Entry&lt;String, Field&gt;&gt; iterator = entrySet.iterator(); iterator.hasNext(); ) &#123;</div><div class="line">            Map.Entry&lt;String, Field&gt; next = iterator.next();</div><div class="line">            String key = next.getKey();</div><div class="line">            Field field1 = next.getValue();</div><div class="line">            Field field2 = fieldMap2.get(key);</div><div class="line">            Class&lt;?&gt; type1 = field1.getType();</div><div class="line">            Class&lt;?&gt; type2 = field2.getType();</div><div class="line">            if (!Objects.equals(type1, type2)) return false;</div><div class="line"></div><div class="line">            Object o1 = null;</div><div class="line">            Object o2 = null;</div><div class="line">            try &#123;</div><div class="line">                o1 = field1.get(ob1);</div><div class="line">                o2 = field2.get(ob2);</div><div class="line">            &#125; catch (IllegalAccessException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            if (isJavaClass(field1.getType()) || isJavaClass(field1.getType())) &#123;</div><div class="line">                boolean equals = Objects.deepEquals(o1, o2);</div><div class="line">                if (!equals) return false;</div><div class="line">            &#125; else &#123;</div><div class="line">                boolean equals = deepEquals(o1, o2, jugMap);</div><div class="line">                if (!equals) return false;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 是否是基本类型</div><div class="line">     *</div><div class="line">     * @param _class</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static boolean isJavaClass(Class _class) &#123;</div><div class="line">        //基本类型</div><div class="line">        if (_class.isPrimitive()) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">        //包装类型</div><div class="line">        if (_class.getPackage().getName().startsWith(&quot;java.&quot;)) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">        //自定义类型</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        GameRoomDTO room1 = new GameRoomDTO();</div><div class="line">        GameRoomDTO room2 = new GameRoomDTO();</div><div class="line"></div><div class="line">        room1.setGameRoomId(1L);</div><div class="line">        room2.setGameRoomId(1L);</div><div class="line"></div><div class="line">        room1.setRoomName(&quot;房间1&quot;);</div><div class="line">        room2.setRoomName(&quot;房间1&quot;);</div><div class="line"></div><div class="line">        Member member1 = new Member() ;</div><div class="line">        Member member2 = new Member() ;</div><div class="line"></div><div class="line">        member1.setNickName(&quot;小王&quot;);</div><div class="line">        member2.setNickName(&quot;小李&quot;);</div><div class="line"></div><div class="line">        room1.setMemberList(Lists.newArrayList(member1));</div><div class="line">        room2.setMemberList(Lists.newArrayList(member2));</div><div class="line"></div><div class="line">        List&lt;String&gt; ignoreProps = Lists.newArrayList(&quot;&quot;);</div><div class="line"></div><div class="line">        System.out.println(deepEquals(room1, room2, ignoreProps));</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;用于判断对象是否相等-支持Java基本类型-包装类&quot;&gt;&lt;a href=&quot;#用于判断对象是否相等-支持Java基本类型-包装类&quot; class=&quot;headerlink&quot; title=&quot;用于判断对象是否相等,支持Java基本类型,包装类.&quot;&gt;&lt;/a&gt;用于判断对象是否相等
+    
+    </summary>
+    
+    
+      <category term="工具类" scheme="https://lmxy1990.github.io/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 编程规范</title>
+    <link href="https://lmxy1990.github.io/2017/07/04/Java-%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/"/>
+    <id>https://lmxy1990.github.io/2017/07/04/Java-编程规范/</id>
+    <published>2017-07-04T06:36:39.000Z</published>
+    <updated>2017-08-07T12:12:56.437Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="编程规约"><a href="#编程规约" class="headerlink" title="编程规约"></a>编程规约</h3><hr>
+<ol>
+<li><p>代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束。</p>
+</li>
+<li><p>常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚.</p>
+</li>
+<li><p>POJO 类中布尔类型的变量，都不要加 is，否则部分框架解析会引起序列化错误。</p>
+</li>
+<li><p>接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁.</p>
+</li>
+<li><p>不允许任何魔法值（即未经定义的常量）直接出现在代码中。</p>
+</li>
+<li><p>所有的覆写方法，必须加@Override 注解。 </p>
+</li>
+<li><p>构造方法里面禁止加入任何业务逻辑，如果有初始化逻辑，请放在 init 方法中。 </p>
+</li>
+<li><p>setter 方法中，参数名称与类成员变量名称一致，this.成员名 = 参数名。在 getter/setter 方法中，不要增加业务逻辑，增加排查问题的难度。</p>
+</li>
+<li><p>循环体内，字符串的连接方式，使用 StringBuilder 的 append 方法进行扩展。</p>
+</li>
+<li><p>对于Map,只要重写 equals，就必须重写 hashCode。 </p>
+</li>
+<li><p>如果自定义对象做为 Map 的键，那么必须重写 hashCode 和 equals。</p>
+</li>
+<li><p>ArrayList 的 subList 结果不可强转成 ArrayList，否则会抛出 ClassCastException 异常.</p>
+</li>
+<li><p>使用集合转数组的方法，必须使用集合的 toArray(T[] array)，传入的是类型完全 一样的数组，大小就是 list.size()。</p>
+</li>
+<li><p>使用工具类 Arrays.asList()把数组转换成集合时，不能使用其修改集合相关的方 法，它的 add/remove/clear 方法会抛出 UnsupportedOperationException 异常。</p>
+</li>
+<li><p>泛型通配符&lt;? extends T&gt;来接收返回的数据，此写法的泛型集合不能使用 add 方 法，而&lt;? super T&gt;不能使用 get 方法，做为接口调用赋值时易出错。</p>
+</li>
+</ol>
+<ul>
+<li>说明：扩展说一下 PECS(Producer Extends Consumer Super)原则：1）频繁往外读取内容 的，适合用上界 Extends。2）经常往里插入的，适合用下界 Super。</li>
+</ul>
+<ol>
+<li><p>不要在 foreach 循环里进行元素的 remove/add 操作。remove 元素请使用 Iterator方式，如果并发操作，需要对 Iterator 对象加锁。 </p>
+</li>
+<li><p>集合初始化时，指定集合初始值大小。</p>
+</li>
+<li><p>使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历。</p>
+</li>
+<li><p>获取单例对象需要保证线程安全，其中的方法也要保证线程安全。</p>
+</li>
+<li><p>SimpleDateFormat 是线程不安全的类，一般不要定义为 static 变量，如果定义为 static，必须加锁，或者使用 DateUtils 工具类。</p>
+</li>
+<li><p>高并发时，同步调用应该去考量锁的性能损耗。能用无锁数据结构，就不要用锁；能 锁区块，就不要锁整个方法体；能用对象锁，就不要用类锁。</p>
+</li>
+<li><p>并发修改同一记录时，避免更新丢失，需要加锁。要么在应用层加锁，要么在缓存加 锁，要么在数据库层使用乐观锁，使用 version 作为更新依据。 说明：如果每次访问冲突概率小于 20%，推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次 数不得小于 3 次。</p>
+</li>
+<li><p>子线程抛出异常堆栈，不能在主线程 try-catch 到。</p>
+</li>
+<li><p>避免 Random 实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一<br>seed 导致的性能下降。</p>
+</li>
+<li><p>volatile 解决多线程内存不可见问题。对于一写多读，是可以解决变量同步问题， 但是如果多写，同样无法解决线程安全问题。</p>
+</li>
+<li><p>HashMap 在容量不够进行 resize 时由于高并发可能出现死链，导致 CPU 飙升，在<br>开发过程中可以使用其它数据结构或加锁来规避此风险。</p>
+</li>
+<li><p>表达异常的分支时，少用 if-else 方式，这种方式可以改写成：if return ;</p>
+</li>
+<li><p>在使用正则表达式时，利用好其预编译功能，可以有效加快正则匹配速度。不要在方法体内定义：Pattern pattern = Pattern.compile(规则); </p>
+</li>
+<li><p>后台输送给页面的变量必须加$!{var}.如果 var=null 或者不存在，那么${var}会直接显示在页面上。</p>
+</li>
+</ol>
+<p>29.注意 Math.random() 这个方法返回是 double 类型，注意取值的范围 0≤x&lt;1（能够 取到零值，注意除零异常），如果想获取整数类型的随机数，不要将 x 放大 10 的若干倍然后 取整，直接使用 Random 对象的 nextInt 或者 nextLong 方法。</p>
+<ol>
+<li><p>获取当前毫秒数 System.currentTimeMillis(); 而不是 new Date().getTime(); </p>
+</li>
+<li><p>异常不要用来做流程控制，条件控制，因为异常的处理效率比条件分支低。</p>
+</li>
+<li><p>捕获异常是为了处理它，不要捕获了却什么都不处理而抛弃之，如果不想处理它，请 将该异常抛给它的调用者。最外层的业务使用者，必须处理异常，将其转化为用户可以理解的 内容。 </p>
+</li>
+<li><p>不能在 finally 块中使用 return，finally 块中的 return 返回后方法结束执行，不会再执行 try 块中的 return 语句。</p>
+</li>
+<li><p>应用中不可直接使用日志系统（Log4j、Logback）中的 API，而应依赖使用日志框架<br>SLF4J 中的 API，使用门面模式的日志框架，有利于维护和各个类的日志处理方式统一。</p>
+</li>
+<li><p>异常信息应该包括两类信息：案发现场信息和异常堆栈信息。如果不处理，那么通过 关键字 throws 往上抛出。</p>
+</li>
+</ol>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><hr>
+<ol>
+<li><p>任何字段如果为非负数，必须是 unsigned。</p>
+</li>
+<li><p>表名、字段名必须使用小写字母或数字，禁止出现数字开头，禁止两个下划线中间只 出现数字。数据库字段名的修改代价很大，因为无法进行预发布，所以字段名称需要慎重考虑。</p>
+</li>
+<li><p>表名不使用复数名词。</p>
+</li>
+<li><p>禁用保留字，如 desc、range、match、delayed 等，请参考 MySQL 官方保留字。</p>
+</li>
+<li><p>主键索引名为 pk<em>字段名；唯一索引名为 uk</em>字段名；普通索引名则为 idx_字段名。</p>
+</li>
+<li><p>小数类型为 decimal，禁止使用 float 和 double。 </p>
+</li>
+<li><p>varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长 度大于此值，定义字段类型为text，独立出来一张表，用主键来对应，避免影响其它字段索 引效率。</p>
+</li>
+<li><p>表的命名最好是加上“业务名称_表的作用”。</p>
+</li>
+<li><p>业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引。</p>
+</li>
+<li><p>超过三个表禁止 join。需要 join 的字段，数据类型必须绝对一致；多表关联查询 时，保证被关联的字段需要有索引。</p>
+</li>
+<li><p>页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决。</p>
+</li>
+<li><p>如果有 order by 的场景，请注意利用索引的有序性。order by 最后的字段是组合 索引的一部分，并且放在索引组合顺序的最后，避免出现 file_sort的情况，影响查询性能。</p>
+</li>
+<li><p>建组合索引的时候，区分度最高的在最左边。 </p>
+</li>
+<li><p>防止因字段类型不同造成的隐式转换，导致索引失效。</p>
+</li>
+<li><p>不要使用 count(列名)或 count(常量)来替代 count(<em>)，count(</em>)是 SQL92 定义的 标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关。</p>
+</li>
+<li><p>count(distinct col) 计算该列除 NULL 之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0。</p>
+</li>
+<li><p>当某一列的值全是 NULL 时，count(col)的返回结果为 0，但 sum(col)的返回结果为 NULL，因此使用 sum()时需注意 NPE 问题。</p>
+</li>
+<li><p>禁止使用存储过程，存储过程难以调试和扩展，更没有移植性。 </p>
+</li>
+<li><p>in 操作能避免则避免，若实在避免不了，需要仔细评估 in 后边的集合元素数量，控 制在 1000 个之内。</p>
+</li>
+<li><p>POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行 字段与属性之间的映射。</p>
+</li>
+<li><p>sql.xml 配置参数使用：#{}，#param# 不要使用${} 此种方式容易出现 SQL 注入。</p>
+</li>
+<li><p>@Transactional 事务不要滥用。事务会影响数据库的 QPS，另外使用事务的地方需 要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等。</p>
+</li>
+</ol>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;编程规约&quot;&gt;&lt;a href=&quot;#编程规约&quot; class=&quot;headerlink&quot; title=&quot;编程规约&quot;&gt;&lt;/a&gt;编程规约&lt;/h3&gt;&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束。&lt;/p&gt;
+&lt;/li&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="Java 编程规范" scheme="https://lmxy1990.github.io/categories/Java-%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java 自定义线程池</title>
+    <link href="https://lmxy1990.github.io/2017/06/28/Java-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    <id>https://lmxy1990.github.io/2017/06/28/Java-自定义线程池/</id>
+    <published>2017-06-28T07:49:21.000Z</published>
+    <updated>2017-06-28T08:00:27.991Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="自定义线程池的逻辑"><a href="#自定义线程池的逻辑" class="headerlink" title="自定义线程池的逻辑:"></a>自定义线程池的逻辑:</h2><p>指定核心线程数,最大线程数,线程执行的最长时间,线程指定最长时间的单位,线程执行任务的缓存队列,线程工厂.<br>代码:</p>
+<p>自定义线程工厂:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class MyThreadFactory implements ThreadFactory &#123;</div><div class="line"></div><div class="line">    //线程优先级</div><div class="line">    private int priority = 5;</div><div class="line">    //是否是守护线程</div><div class="line">    private boolean daemon = false;</div><div class="line">    private String name = &quot;自定义线程&quot;;</div><div class="line">    private ClassLoader classLoader;</div><div class="line">    private UncaughtExceptionHandler uncaughtExceptionHandler;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Thread newThread(Runnable r) &#123;</div><div class="line">        Thread thread = new Thread(r);</div><div class="line">        thread.setName(this.name);</div><div class="line">        thread.setPriority(this.priority);</div><div class="line">        thread.setDaemon(this.daemon);</div><div class="line">        thread.setContextClassLoader(this.classLoader);</div><div class="line">        thread.setUncaughtExceptionHandler(this.uncaughtExceptionHandler);</div><div class="line">        System.out.println(&quot;通过线程工厂开始执行线程:&quot;+this.name);</div><div class="line">        return thread;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>自定义线程池:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class ThreadPool &#123;</div><div class="line"></div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">        //自定义缓冲队列</div><div class="line">        LinkedBlockingQueue&lt;Runnable&gt; linkedBlockingDeque = new LinkedBlockingQueue&lt;&gt;() ;</div><div class="line"></div><div class="line">        //自定义线程工厂</div><div class="line">        ThreadFactory threadFactory = new MyThreadFactory() ;</div><div class="line"></div><div class="line">        //自定义线程池</div><div class="line">        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5,10,10, TimeUnit.MINUTES,linkedBlockingDeque,threadFactory) ;</div><div class="line"></div><div class="line">        //通过程工厂执行任务</div><div class="line">        for (int i = 0; i &lt; 20; i++) &#123;</div><div class="line">            threadPoolExecutor.execute(() -&gt; &#123;</div><div class="line">                for (int j = 0; j &lt;100000000; j++) &#123;</div><div class="line">                    int div = Math.floorDiv(++j, j * j);</div><div class="line">//                    System.out.println(div);</div><div class="line">                &#125;</div><div class="line">                System.out.println(&quot;线程启动&quot;) ;</div><div class="line">            &#125;);</div><div class="line">            int activeCount = threadPoolExecutor.getActiveCount();</div><div class="line">            System.out.println(&quot;当前进行中的线程数:&quot; +activeCount);</div><div class="line">            System.out.println(&quot;当前队列中的缓存数:&quot; +linkedBlockingDeque.size());</div><div class="line">        &#125;</div><div class="line">        //关闭线程池</div><div class="line">        threadPoolExecutor.shutdown();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>执行输出结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">通过线程工厂开始执行线程:自定义线程</div><div class="line">线程名:自定义线程</div><div class="line">当前进行中的线程数:1</div><div class="line">当前队列中的缓存数:0</div><div class="line">通过线程工厂开始执行线程:自定义线程</div><div class="line">线程名:自定义线程</div><div class="line">当前进行中的线程数:2</div><div class="line">当前队列中的缓存数:0</div><div class="line">通过线程工厂开始执行线程:自定义线程</div><div class="line">线程名:自定义线程</div><div class="line">当前进行中的线程数:3</div><div class="line">当前队列中的缓存数:0</div><div class="line">通过线程工厂开始执行线程:自定义线程</div><div class="line">线程名:自定义线程</div><div class="line">当前进行中的线程数:4</div><div class="line">当前队列中的缓存数:0</div><div class="line">通过线程工厂开始执行线程:自定义线程</div><div class="line">线程名:自定义线程</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:0</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:1</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:2</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:3</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:4</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:5</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:6</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:7</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:8</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:9</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:10</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:11</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:12</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:13</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:14</div><div class="line">当前进行中的线程数:5</div><div class="line">当前队列中的缓存数:15</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div><div class="line">线程启动</div></pre></td></tr></table></figure></p>
+<h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析:"></a>结果分析:</h2><ol>
+<li><p>任务启动  -&gt; 线程工厂创建该线程  -&gt; 线程池判断当前线程执行数量  -&gt; 线程等待 -&gt; 加入缓冲队列.</p>
+</li>
+<li><p>任务启动  -&gt; 线程工厂创建该线程  -&gt; 线程池判断当前线程执行数量  -&gt; 线程执行 </p>
+</li>
+<li><p>线程池当前执行任务数少于最大任务数  -&gt; 缓冲队列FIFO 获取任务.</p>
+</li>
+</ol>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;自定义线程池的逻辑&quot;&gt;&lt;a href=&quot;#自定义线程池的逻辑&quot; class=&quot;headerlink&quot; title=&quot;自定义线程池的逻辑:&quot;&gt;&lt;/a&gt;自定义线程池的逻辑:&lt;/h2&gt;&lt;p&gt;指定核心线程数,最大线程数,线程执行的最长时间,线程指定最长时间的单位,线程执行
+    
+    </summary>
+    
+      <category term="线程池 Java" scheme="https://lmxy1990.github.io/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0-Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MySql 存储过程</title>
+    <link href="https://lmxy1990.github.io/2017/06/28/MySql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/"/>
+    <id>https://lmxy1990.github.io/2017/06/28/MySql-存储过程/</id>
+    <published>2017-06-28T06:25:03.000Z</published>
+    <updated>2017-06-28T06:28:34.078Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="数据库 Mysql" scheme="https://lmxy1990.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/"/>
+    
+    
+      <category term="DB" scheme="https://lmxy1990.github.io/tags/DB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySql 锁机制</title>
+    <link href="https://lmxy1990.github.io/2017/06/28/MySql-%E9%94%81%E6%9C%BA%E5%88%B6/"/>
+    <id>https://lmxy1990.github.io/2017/06/28/MySql-锁机制/</id>
+    <published>2017-06-28T06:23:30.000Z</published>
+    <updated>2017-06-28T06:24:33.038Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="数据库 Mysql" scheme="https://lmxy1990.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/"/>
+    
+    
+      <category term="DB Mysql" scheme="https://lmxy1990.github.io/tags/DB-Mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>java中的集合删除方法注意点</title>
@@ -87,11 +343,15 @@
     <link href="https://lmxy1990.github.io/2017/06/06/SQL%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98%E5%BD%95/"/>
     <id>https://lmxy1990.github.io/2017/06/06/SQL 相关备忘录/</id>
     <published>2017-06-06T02:33:25.000Z</published>
-    <updated>2017-06-06T11:53:37.017Z</updated>
+    <updated>2017-06-28T06:23:39.691Z</updated>
     
     <content type="html"><![CDATA[<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><hr>
 <p>GREATEST() 取出多个表达式中最大的值.</p>
 <p>LEAST() 取出多个表达式中最小的值</p>
+<p>在使用形如sum/count函数时候,limit将不起作用.limit是对返回内容的限制.</p>
+<p>定义:</p>
+<p>数据库 用于存储数据的文件.</p>
+<p>数据库实例:用于执行数据增删改查的程序.</p>
 <h3 id="常用语句"><a href="#常用语句" class="headerlink" title="常用语句"></a>常用语句</h3><hr>
 <hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
@@ -101,7 +361,7 @@
       &lt;h3 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;GREATEST() 取出多个表达式中最大的值.&lt;/p&gt;
 &lt;p&gt;LEAST() 取出多个表达式中最小的值&lt;/p&gt;
-&lt;h3 id=&quot;
+&lt;p&gt;在使用形如
     
     </summary>
     
@@ -588,153 +848,6 @@
     </summary>
     
       <category term="java" scheme="https://lmxy1990.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>windows 下新建wifi热点</title>
-    <link href="https://lmxy1990.github.io/2017/03/15/windows-%E4%B8%8B%E6%96%B0%E5%BB%BAwifi%E7%83%AD%E7%82%B9/"/>
-    <id>https://lmxy1990.github.io/2017/03/15/windows-下新建wifi热点/</id>
-    <published>2017-03-15T01:11:28.000Z</published>
-    <updated>2017-03-15T01:30:43.270Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="查看无线网卡是否支持Wifi热点"><a href="#查看无线网卡是否支持Wifi热点" class="headerlink" title="查看无线网卡是否支持Wifi热点"></a>查看无线网卡是否支持Wifi热点</h3><ul>
-<li>打开命令提示符:<br><code>netsh wlan show drivers</code></li>
-</ul>
-<h3 id="设置Wifi名-密码"><a href="#设置Wifi名-密码" class="headerlink" title="设置Wifi名/密码"></a>设置Wifi名/密码</h3><ul>
-<li>打开命令提示符:<br><code>netsh wlan set hostednetwork mode=allow ssid=wifi名称 key=wifi密码</code></li>
-</ul>
-<h3 id="启动设置好的热点"><a href="#启动设置好的热点" class="headerlink" title="启动设置好的热点"></a>启动设置好的热点</h3><ul>
-<li>打开命令提示符:<br><code>netsh wlan start hostednetwork</code></li>
-</ul>
-<h3 id="关闭热点"><a href="#关闭热点" class="headerlink" title="关闭热点"></a>关闭热点</h3><ul>
-<li>打开命令提示符:<br><code>netsh wlan stop hostednetwork</code></li>
-</ul>
-<h3 id="最后需要把能访问到互联网的链接共享给这个wifi热点"><a href="#最后需要把能访问到互联网的链接共享给这个wifi热点" class="headerlink" title="最后需要把能访问到互联网的链接共享给这个wifi热点"></a>最后需要把能访问到互联网的链接共享给这个wifi热点</h3><p>控制面板–&gt;网络共享中心–&gt;属性–&gt;共享</p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;查看无线网卡是否支持Wifi热点&quot;&gt;&lt;a href=&quot;#查看无线网卡是否支持Wifi热点&quot; class=&quot;headerlink&quot; title=&quot;查看无线网卡是否支持Wifi热点&quot;&gt;&lt;/a&gt;查看无线网卡是否支持Wifi热点&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;打开命令提示符:
-    
-    </summary>
-    
-      <category term="小技巧" scheme="https://lmxy1990.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>浏览器劫持启动页清除</title>
-    <link href="https://lmxy1990.github.io/2017/03/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%AB%E6%8C%81%E5%90%AF%E5%8A%A8%E9%A1%B5%E6%B8%85%E9%99%A4/"/>
-    <id>https://lmxy1990.github.io/2017/03/13/浏览器劫持启动页清除/</id>
-    <published>2017-03-13T01:55:57.000Z</published>
-    <updated>2017-03-13T02:07:00.321Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="主页劫持与启动劫持"><a href="#主页劫持与启动劫持" class="headerlink" title="主页劫持与启动劫持"></a>主页劫持与启动劫持</h3><ol>
-<li>启动劫持是主页明明是自己设定好的.但是启动的时候就是广告页面.</li>
-<li>主页劫持是主页修改不了,或者修改了又自动变回来.<h3 id="查看启动劫持"><a href="#查看启动劫持" class="headerlink" title="查看启动劫持."></a>查看启动劫持.</h3>找到浏览器快捷方式,右键属性.在目标一栏后面会多出一个链接地址.这就是启动的时候都会去运行这个链接.<h3 id="清除"><a href="#清除" class="headerlink" title="清除"></a>清除</h3></li>
-<li>简单的直接删除快捷方式—&gt;属性–&gt;目标后面的网址.<br>2.如果修改之后,一段时间有自动变回来.一般式监听脚本引起的.<br>开始–运行–wbemtest–连接–”root\subscription”–查询–”select <em> from __EventFilter“–应用–选择_EventFilter:Name=”unown_filter”删除之–关闭–查询–”select </em> from ActiveScriptEventConsumer”–应用–选择ActiveScriptEventConsumer Name=”unown”删除之–该关的窗口都关掉–编辑快捷方式</li>
-</ol>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;主页劫持与启动劫持&quot;&gt;&lt;a href=&quot;#主页劫持与启动劫持&quot; class=&quot;headerlink&quot; title=&quot;主页劫持与启动劫持&quot;&gt;&lt;/a&gt;主页劫持与启动劫持&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;启动劫持是主页明明是自己设定好的.但是启动的时候就是广告页面.&lt;/li&gt;
-    
-    </summary>
-    
-      <category term="浏览器" scheme="https://lmxy1990.github.io/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java 对象转Excel文件</title>
-    <link href="https://lmxy1990.github.io/2017/03/01/Java-%E5%AF%B9%E8%B1%A1%E8%BD%ACExcel%E6%96%87%E4%BB%B6/"/>
-    <id>https://lmxy1990.github.io/2017/03/01/Java-对象转Excel文件/</id>
-    <published>2017-03-01T10:39:48.000Z</published>
-    <updated>2017-03-01T11:29:44.427Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="所用到的依赖jar包"><a href="#所用到的依赖jar包" class="headerlink" title="所用到的依赖jar包."></a>所用到的依赖jar包.</h3><p>1.阿帕奇的POI<br>2.阿里的fastjson<br>3.阿帕奇公共工具类</p>
-<h3 id="代码逻辑"><a href="#代码逻辑" class="headerlink" title="代码逻辑"></a>代码逻辑</h3><p>1.通过反射获取对象成员变量名称作为Excel的标题.<br>2.反射获取到的对象成员变量值作为Excel的行数据.<br>3.写出文件.</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>1.工具类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div></pre></td><td class="code"><pre><div class="line">package my.test.org;</div><div class="line"></div><div class="line">import com.alibaba.fastjson.JSON;</div><div class="line">import org.apache.commons.collections.CollectionUtils;</div><div class="line">import org.apache.commons.lang3.StringUtils;</div><div class="line">import org.apache.poi.hssf.usermodel.*;</div><div class="line">import org.apache.poi.ss.usermodel.HorizontalAlignment;</div><div class="line"></div><div class="line">import javax.transaction.TransactionRequiredException;</div><div class="line">import java.io.FileNotFoundException;</div><div class="line">import java.io.FileOutputStream;</div><div class="line">import java.io.IOException;</div><div class="line">import java.lang.reflect.Field;</div><div class="line">import java.math.BigDecimal;</div><div class="line">import java.text.SimpleDateFormat;</div><div class="line">import java.util.*;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Author: xinyi.pan</div><div class="line"> * Date: 2017/3/1</div><div class="line"> * &lt;p&gt;</div><div class="line"> * 工具类:excel 导出</div><div class="line"> */</div><div class="line">public class AccessUtils &#123;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 将对象List转换为HSSFWorkbook对象</div><div class="line">     *</div><div class="line">     * @param objectList</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static &lt;T&gt; HSSFWorkbook ListObject2HSSFWorkbook(List&lt;T&gt;... objectList) &#123;</div><div class="line">        if (objectList == null || objectList.length == 0) &#123;</div><div class="line">            throw new IllegalArgumentException(&quot;待转换的对象为空&quot;);</div><div class="line">        &#125;</div><div class="line">        HSSFWorkbook workbook = new HSSFWorkbook();</div><div class="line">        for (int i = 0; i &lt; objectList.length; i++) &#123;</div><div class="line">            List&lt;T&gt; tList = objectList[i];</div><div class="line">            if (CollectionUtils.isNotEmpty(tList)) &#123;</div><div class="line">                String sheetName = objectList[i].get(0).getClass().getSimpleName();</div><div class="line">                if (StringUtils.isNotBlank(sheetName)) &#123;</div><div class="line">                    ListObject2HSSFWorkbook(objectList[i], sheetName, workbook);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return workbook;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 将List对象添加到对应的页</div><div class="line">     *</div><div class="line">     * @param objectList</div><div class="line">     * @param sheetName</div><div class="line">     * @param workbook</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static &lt;T&gt; HSSFWorkbook ListObject2HSSFWorkbook(List&lt;T&gt; objectList, String sheetName, HSSFWorkbook workbook) &#123;</div><div class="line">        //创建该页的首行</div><div class="line">        HSSFSheet sheet = workbook.createSheet(sheetName);</div><div class="line">        //创建基本样式居中</div><div class="line">        HSSFCellStyle style = workbook.createCellStyle();</div><div class="line">        style.setAlignment(HorizontalAlignment.CENTER);</div><div class="line"></div><div class="line">        boolean isFirstRow = true;</div><div class="line">        Map&lt;String, Integer&gt; keyMap = new HashMap&lt;String, Integer&gt;();</div><div class="line">        for (int i = 0; i &lt; objectList.size(); i++) &#123;</div><div class="line">            T t1 = objectList.get(i);</div><div class="line">            if (t1 == null) continue;</div><div class="line">            Class oClass = t1.getClass();</div><div class="line">            Field[] fields = oClass.getDeclaredFields();</div><div class="line">            if (fields == null || fields.length == 0) continue;</div><div class="line">            String key;</div><div class="line">            String valueStr;</div><div class="line">            if (isFirstRow) &#123;</div><div class="line">                //创建标题</div><div class="line">                HSSFRow row = sheet.createRow(0);</div><div class="line">                for (int j = 0, k = 0; j &lt; fields.length; j++) &#123;</div><div class="line">                    Field field = fields[j];</div><div class="line">                    if (field == null) continue;</div><div class="line">                    HSSFCell cell = row.createCell(k);</div><div class="line">                    key = field.getName();</div><div class="line">                    if (StringUtils.isBlank(key)) continue;</div><div class="line">                    if (&quot;serialVersionUID&quot;.equalsIgnoreCase(key)) continue;</div><div class="line">                    cell.setCellStyle(style);</div><div class="line">                    cell.setCellValue(key);</div><div class="line">                    keyMap.put(key, k);</div><div class="line">                    k++;</div><div class="line">                &#125;</div><div class="line">                isFirstRow = false;</div><div class="line">            &#125;</div><div class="line">            //添加数据</div><div class="line">            HSSFRow row = sheet.createRow(i + 1);</div><div class="line">            for (int j = 0; j &lt; fields.length; j++) &#123;</div><div class="line">                Field field = fields[j];</div><div class="line">                if (field == null) continue;</div><div class="line">                try &#123;</div><div class="line">                    key = field.getName();</div><div class="line">                    HSSFCell cell = row.createCell(keyMap.get(key));</div><div class="line">                    if (StringUtils.isBlank(key)) continue;</div><div class="line">                    if (&quot;serialVersionUID&quot;.equalsIgnoreCase(key)) continue;</div><div class="line">                    field.setAccessible(true);</div><div class="line">                    Object value = field.get(t1);</div><div class="line">                    if (value == null) continue;</div><div class="line">                    //日期格式化</div><div class="line">                    if (value instanceof Calendar) &#123;</div><div class="line">                        SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);</div><div class="line">                        valueStr = dateFormat.format(((Calendar) value).getTime());</div><div class="line">                    &#125; else if (value instanceof Date) &#123;</div><div class="line">                        SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);</div><div class="line">                        valueStr = dateFormat.format(value);</div><div class="line">                    &#125; else &#123;</div><div class="line">                        //其他转换为JSON字符串,去掉引号</div><div class="line">                        valueStr = JSON.toJSONString(value).replaceAll(&quot;\&quot;&quot;, &quot;&quot;);</div><div class="line">                    &#125;</div><div class="line">                    cell.setCellValue(valueStr);</div><div class="line">                &#125; catch (IllegalAccessException e) &#123;</div><div class="line">                    //异常继续执行下一个成员变量</div><div class="line">                    continue;</div><div class="line">                &#125; catch (Exception e) &#123;</div><div class="line">                    //异常继续执行下一个成员变量</div><div class="line">                    continue;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //列宽自适应</div><div class="line">        for (int i = 0; i &lt; keyMap.size(); i++) &#123;</div><div class="line">            sheet.autoSizeColumn(i);</div><div class="line">            sheet.setColumnWidth(i, sheet.getColumnWidth(i) * 17 / 10);</div><div class="line">        &#125;</div><div class="line">        return workbook;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        List&lt;Student&gt; studentList = new ArrayList&lt;Student&gt;();</div><div class="line">        List&lt;String&gt; stringList = new ArrayList&lt;String&gt;();</div><div class="line">        stringList.add(&quot;qqqq&quot;);</div><div class="line">        stringList.add(&quot;wwww&quot;);</div><div class="line">        stringList.add(&quot;eeee&quot;);</div><div class="line"></div><div class="line">        Student student1 = new Student();</div><div class="line">        student1.set学生姓名(&quot;张三&quot;);</div><div class="line">        student1.set学生成绩(new BigDecimal(&quot;90&quot;));</div><div class="line">        student1.setStringList(stringList);</div><div class="line">        studentList.add(student1);</div><div class="line"></div><div class="line">        Student student2 = new Student();</div><div class="line">        student2.set学生姓名(&quot;李四&quot;);</div><div class="line">        student2.set学生成绩(new BigDecimal(&quot;80&quot;));</div><div class="line">        studentList.add(student2);</div><div class="line"></div><div class="line">        Student student3 = new Student();</div><div class="line">        student3.set学生姓名(&quot;王五&quot;);</div><div class="line">        student3.set学生成绩(new BigDecimal(&quot;50&quot;));</div><div class="line">        studentList.add(student3);</div><div class="line"></div><div class="line">        Student student4 = new Student();</div><div class="line">        student4.set学生姓名(&quot;陈翔&quot;);</div><div class="line">        student4.set学生成绩(new BigDecimal(&quot;0.0&quot;));</div><div class="line">        studentList.add(student4);</div><div class="line"></div><div class="line">        HSSFWorkbook workbook = new HSSFWorkbook();</div><div class="line">        try &#123;</div><div class="line">            workbook = AccessUtils.ListObject2HSSFWorkbook(studentList);</div><div class="line">            FileOutputStream outputStream = new FileOutputStream(&quot;E:\\downloads\\test.xls&quot;);</div><div class="line">            workbook.write(outputStream);</div><div class="line">        &#125; catch (TransactionRequiredException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; catch (FileNotFoundException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>2.测试用到的对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line">package my.test.org;</div><div class="line"></div><div class="line">import java.io.Serializable;</div><div class="line">import java.math.BigDecimal;</div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Author: xinyi.pan</div><div class="line"> * Date: 2017/3/1</div><div class="line"> */</div><div class="line">public class Student implements Serializable &#123;</div><div class="line"></div><div class="line">    private static final long serialVersionUID = 7911823052873591951L;</div><div class="line">    private String 学生姓名 ;</div><div class="line">    private BigDecimal 学生成绩 ;</div><div class="line">    private List&lt;String&gt; stringList ;</div><div class="line"></div><div class="line"></div><div class="line">    public String get学生姓名() &#123;</div><div class="line">        return 学生姓名;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void set学生姓名(String 学生姓名) &#123;</div><div class="line">        this.学生姓名 = 学生姓名;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public BigDecimal get学生成绩() &#123;</div><div class="line">        return 学生成绩;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void set学生成绩(BigDecimal 学生成绩) &#123;</div><div class="line">        this.学生成绩 = 学生成绩;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public List&lt;String&gt; getStringList() &#123;</div><div class="line">        return stringList;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setStringList(List&lt;String&gt; stringList) &#123;</div><div class="line">        this.stringList = stringList;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">package my.test.org;</div><div class="line"></div><div class="line">import java.io.Serializable;</div><div class="line">import java.math.BigDecimal;</div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Author: xinyi.pan</div><div class="line"> * Date: 2017/3/1</div><div class="line"> */</div><div class="line">public class Student implements Serializable &#123;</div><div class="line"></div><div class="line">    private static final long serialVersionUID = 7911823052873591951L;</div><div class="line">    private String 学生姓名 ;</div><div class="line">    private BigDecimal 学生成绩 ;</div><div class="line">    private List&lt;String&gt; stringList ;</div><div class="line"></div><div class="line"></div><div class="line">    public String get学生姓名() &#123;</div><div class="line">        return 学生姓名;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void set学生姓名(String 学生姓名) &#123;</div><div class="line">        this.学生姓名 = 学生姓名;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public BigDecimal get学生成绩() &#123;</div><div class="line">        return 学生成绩;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void set学生成绩(BigDecimal 学生成绩) &#123;</div><div class="line">        this.学生成绩 = 学生成绩;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public List&lt;String&gt; getStringList() &#123;</div><div class="line">        return stringList;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setStringList(List&lt;String&gt; stringList) &#123;</div><div class="line">        this.stringList = stringList;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="输出的结果"><a href="#输出的结果" class="headerlink" title="输出的结果"></a>输出的结果</h3><table><br>    <thead><br>        <th><br>            </th></thead><td>学生姓名</td><br>            <td>学生成绩</td><br>            <td>stringList</td><br>        <br>    <br>    <tbody><br>        <tr><br>            <td>张三</td><br>            <td>90</td><br>            <td>[qqqq,wwww,eeee]</td><br>        </tr><br>        <tr><br>            <td>李四</td><br>            <td>80</td><br>            <td></td><br>        </tr><br>        <tr><br>            <td>王五</td><br>            <td>50</td><br>            <td></td><br>        </tr><br>        <tr><br>            <td>陈翔</td><br>            <td>0.0</td><br>            <td></td><br>        </tr><br>    </tbody><br></table>
-
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;所用到的依赖jar包&quot;&gt;&lt;a href=&quot;#所用到的依赖jar包&quot; class=&quot;headerlink&quot; title=&quot;所用到的依赖jar包.&quot;&gt;&lt;/a&gt;所用到的依赖jar包.&lt;/h3&gt;&lt;p&gt;1.阿帕奇的POI&lt;br&gt;2.阿里的fastjson&lt;br&gt;3.阿帕奇公
-    
-    </summary>
-    
-      <category term="工具类" scheme="https://lmxy1990.github.io/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu 主题推荐</title>
-    <link href="https://lmxy1990.github.io/2017/02/20/ubuntu-%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/"/>
-    <id>https://lmxy1990.github.io/2017/02/20/ubuntu-主题推荐/</id>
-    <published>2017-02-20T03:23:38.000Z</published>
-    <updated>2017-02-20T08:11:00.462Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="更换源"><a href="#更换源" class="headerlink" title="更换源"></a>更换源</h3><p>打开系统设置 &gt; 软件和更新 选择中国服务器(官方用的是阿里云)</p>
-<h3 id="设置新建窗口居中"><a href="#设置新建窗口居中" class="headerlink" title="设置新建窗口居中"></a>设置新建窗口居中</h3><p>打开终端:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install compizconfig-settings-manager</div></pre></td></tr></table></figure></p>
-<p>然后打开compizconfig-settings-manager来配置.<br>在窗口管理 &gt; 放置窗口 &gt; 安置模式 &gt; 居中</p>
-<h3 id="安装主题工具-unity-tweak-tool"><a href="#安装主题工具-unity-tweak-tool" class="headerlink" title="安装主题工具 unity-tweak-tool"></a>安装主题工具 unity-tweak-tool</h3><p>打开终端:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo  apt-get  install unity-tweak-tool</div></pre></td></tr></table></figure></p>
-<h3 id="添加主题"><a href="#添加主题" class="headerlink" title="添加主题"></a>添加主题</h3><p>1.Arc 主题安装<br>打开终端:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sh -c &quot;echo &apos;deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /&apos; &gt;&gt; /etc/apt/sources.list.d/arc-theme.list&quot;</div></pre></td></tr></table></figure></p>
-<p>让 Arc GTK 主题源定期收到主题更新:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key</div><div class="line"></div><div class="line">sudo apt-key add - &lt; Release.key</div></pre></td></tr></table></figure></p>
-<p>安装arc主题:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt install arc-theme</div></pre></td></tr></table></figure></p>
-<h3 id="换掉ubuntu启动器的图标"><a href="#换掉ubuntu启动器的图标" class="headerlink" title="换掉ubuntu启动器的图标"></a>换掉ubuntu启动器的图标</h3><p>将面板上的 ‘Ubuntu Desktop’ 文字替换 ‘Mac’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd &amp;&amp; wget -O Mac.po http://drive.noobslab.com/data/Mac/change-name-on-panel/mac.po</div><div class="line"></div><div class="line">cd /usr/share/locale/en/LC_MESSAGES; sudo msgfmt -o unity.mo ~/Mac.po;rm ~/Mac.po;cd</div></pre></td></tr></table></figure></p>
-<p>语言上如果是其他非英语语言，将 /en 做相应修改：</p>
-<p>恢复原来的桌面文字命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd &amp;&amp; wget -O Ubuntu.po http://drive.noobslab.com/data/Mac/change-name-on-panel/ubuntu.po</div><div class="line"></div><div class="line">cd /usr/share/locale/en/LC_MESSAGES; sudo msgfmt -o unity.mo ~/Ubuntu.po;rm ~/Ubuntu.po;cd</div></pre></td></tr></table></figure></p>
-<p>启动器上苹果Logo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -O launcher_bfb.png http://drive.noobslab.com/data/Mac/launcher-logo/apple/launcher_bfb.png</div><div class="line"></div><div class="line">sudo mv launcher_bfb.png /usr/share/unity/icons/</div></pre></td></tr></table></figure></p>
-<p>恢复图标：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -O launcher_bfb.png http://drive.noobslab.com/data/Mac/launcher-logo/ubuntu/launcher_bfb.png</div><div class="line"></div><div class="line">sudo mv launcher_bfb.png /usr/share/unity/icons/</div></pre></td></tr></table></figure></p>
-<h3 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h3><p>打开 Unity Tweak Tool 工具软件.<br>找到主题 设置自己喜欢的主题即可.</p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;更换源&quot;&gt;&lt;a href=&quot;#更换源&quot; class=&quot;headerlink&quot; title=&quot;更换源&quot;&gt;&lt;/a&gt;更换源&lt;/h3&gt;&lt;p&gt;打开系统设置 &amp;gt; 软件和更新 选择中国服务器(官方用的是阿里云)&lt;/p&gt;
-&lt;h3 id=&quot;设置新建窗口居中&quot;&gt;&lt;a href=
-    
-    </summary>
-    
-      <category term="Linux" scheme="https://lmxy1990.github.io/categories/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu 清除Guest账户</title>
-    <link href="https://lmxy1990.github.io/2017/02/17/ubuntu-%E6%B8%85%E9%99%A4Guest%E8%B4%A6%E6%88%B7/"/>
-    <id>https://lmxy1990.github.io/2017/02/17/ubuntu-清除Guest账户/</id>
-    <published>2017-02-17T09:58:24.000Z</published>
-    <updated>2017-02-17T10:00:26.982Z</updated>
-    
-    <content type="html"><![CDATA[<p>删除:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /etc/lightdm/lightdm.conf.d</div><div class="line"></div><div class="line">sudo sh -c &apos;printf &quot;[SeatDefaults]\nallow-guest=false\n&quot; &gt; /etc/lightdm/lightdm.conf.d/50-no-guest.conf&apos;</div></pre></td></tr></table></figure></p>
-<p>恢复:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm /etc/lightdm/lightdm.conf.d/50-no-guest.conf</div></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;删除:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;l
-    
-    </summary>
-    
-      <category term="linux" scheme="https://lmxy1990.github.io/categories/linux/"/>
     
     
   </entry>
