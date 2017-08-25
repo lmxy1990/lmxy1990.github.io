@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-08-14T09:33:32.999Z</updated>
+  <updated>2017-08-25T11:16:56.748Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL Group By Order By </title>
+    <link href="https://lmxy1990.github.io/2017/08/25/SQL-Group-By-Order-By/"/>
+    <id>https://lmxy1990.github.io/2017/08/25/SQL-Group-By-Order-By/</id>
+    <published>2017-08-25T10:31:49.000Z</published>
+    <updated>2017-08-25T11:16:56.748Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Mysql-Group-By-灵活应用"><a href="#Mysql-Group-By-灵活应用" class="headerlink" title="Mysql Group  By 灵活应用"></a>Mysql Group  By 灵活应用</h3><ol>
+<li>场景<br>有赛事球员表 记为race_player<br>赛事表 race<br>球员表 player<br>现在需要查询 ,每个球员未开赛,最近一场的赛事球员数据.</li>
+</ol>
+<hr>
+<ol>
+<li>分析<br>条件 :未开赛<br>聚合纬度 :球员<br>聚合选取条件:未开赛且比赛时间最小</li>
+</ol>
+<hr>
+<ol>
+<li>探究<br>确定 赛事球员的幂等是赛事id,球员id.<br>那么,在选取赛事球员对象的时候,就需要构造成这样的参数对.<br>那么,首先应该先查出这样的参数对.<br>代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">select min(r2.match_time) t,player_id from race_player r1 </div><div class="line">        left join race r2 on r1.race_id = r2.id </div><div class="line">        where r2.race_status = 1</div><div class="line">        group by r1.player_id</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这里查出球员id,对应的最小比赛时间. 也就是相当于赛事id(在做一层关联).<br>这里使用赛事球员关联赛事,聚合球员.取得球员对应的最小值.因为这里只需要走一层关联.<br>如果采用赛事 -&gt; 球队 -&gt; 球员 去查这个幂等对.会多走一层关联.<br>选取好这个幂等对,首先需要转化为赛事id.所以这里还需要在关联赛事,用于获取赛事id.<br>代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SELECT rp.* FROM race_player rp</div><div class="line">LEFT JOIN player tp ON rp.player_id = tp.id</div><div class="line">LEFT JOIN race r ON rp.race_id = r.id</div><div class="line">LEFT JOIN (</div><div class="line">    select min(r2.match_time) t,player_id from race_player r1 </div><div class="line">    left join race r2 on r1.race_id = r2.id </div><div class="line">    where r2.race_status = 1 //赛事条件</div><div class="line">    group by r1.player_id </div><div class="line">) r3 on r3.t = r.match_time and r3.player_id = rp.player_id</div><div class="line">WHERE  </div><div class="line">//其他条件</div><div class="line">ISNULL(rp.id) = FALSE</div><div class="line">AND ISNULL(tp.id) = FALSE</div><div class="line">AND ISNULL(r.id) = FALSE ;</div></pre></td></tr></table></figure></p>
+<p>这样,有序列的group by 就完成了.</p>
+<p>group by 大多数情况下.希望以后这个函数会优化成group by 参数 desc 选取指定行.而不是只能采用聚合函数.那面对这样的问题,就很简单了.</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Mysql-Group-By-灵活应用&quot;&gt;&lt;a href=&quot;#Mysql-Group-By-灵活应用&quot; class=&quot;headerlink&quot; title=&quot;Mysql Group  By 灵活应用&quot;&gt;&lt;/a&gt;Mysql Group  By 灵活应用&lt;/h3&gt;&lt;ol
+    
+    </summary>
+    
+      <category term="Mysql SQL GroupBy" scheme="https://lmxy1990.github.io/categories/Mysql-SQL-GroupBy/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>QuartZ Cron表达式</title>
@@ -812,30 +848,6 @@
     </summary>
     
       <category term="POI Excel" scheme="https://lmxy1990.github.io/categories/POI-Excel/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关于Sprintg注解与配置文件产生的bean</title>
-    <link href="https://lmxy1990.github.io/2017/03/22/%E5%85%B3%E4%BA%8ESprintg%E6%B3%A8%E8%A7%A3%E4%B8%8E%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BA%A7%E7%94%9F%E7%9A%84bean/"/>
-    <id>https://lmxy1990.github.io/2017/03/22/关于Sprintg注解与配置文件产生的bean/</id>
-    <published>2017-03-22T02:24:03.000Z</published>
-    <updated>2017-03-22T02:30:28.177Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="bean-的创建有XML与注解"><a href="#bean-的创建有XML与注解" class="headerlink" title="bean 的创建有XML与注解"></a>bean 的创建有XML与注解</h3><p>最近忘了这坑壁事情了.如果是配置生成的bean.里面的对象又是用注解注入的话.必须用扫描.</p>
-<p>不然只有配置该bean的时候,去手动配置该bean.</p>
-<p>之前遇到过,忘记了.现在又遇到了.搞了一天…郁闷.</p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;bean-的创建有XML与注解&quot;&gt;&lt;a href=&quot;#bean-的创建有XML与注解&quot; class=&quot;headerlink&quot; title=&quot;bean 的创建有XML与注解&quot;&gt;&lt;/a&gt;bean 的创建有XML与注解&lt;/h3&gt;&lt;p&gt;最近忘了这坑壁事情了.如果是配置生成
-    
-    </summary>
-    
-      <category term="spring bean" scheme="https://lmxy1990.github.io/categories/spring-bean/"/>
     
     
   </entry>
