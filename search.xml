@@ -3,9 +3,23 @@
   
     
     <entry>
+      <title><![CDATA[算法笔记]]></title>
+      <url>%2F2017%2F09%2F14%2F%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%2F</url>
+      <content type="text"><![CDATA[End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[MySQL 锁]]></title>
+      <url>%2F2017%2F09%2F12%2FMySQL-%E9%94%81%2F</url>
+      <content type="text"><![CDATA[概述 数据库锁,是为了支持对共享资源进行并发访问,保持数据一致性,完整性的一个特性.与程序锁的概念类似. innoDB锁类型 共享锁(S):容许事物读取一行数据. 排它锁(X):容许事物删除或更新一行数据. 意向共享锁(IS): 意向排它锁(IX): 读取操作,使用共享锁.对于update操作,采用排它锁. 锁获取 事物获取共享锁的条件:该行不存在排它锁.(可以存在共享锁) 事物获取排它锁的条件:该行没有共享锁,也没有排它锁. S锁获取流程 : 是否有X锁,如果有.则需要等待X锁释放后加S锁.X锁获取流程 : 是否存在X/S锁,如果有,则等待释放,然后加X锁. 一致性非锁定读. InnoDB 默认的读取操作,采用的是一致性非锁定读.也就是说,在读取数据时,不考虑当前数据是否被加锁.如果该行被锁定,则返回该行历史版本的最新一个版本.否则返回该行数据.一致性非锁定读,极大提升数据库的并发读的性能. 共享锁读数据 一致性非锁定读性能极大提升,但是某些时候.需要数据的完整性,而不是获取历史快照.是希望取到最新的数据.这时候,就需要采用共享锁了. 操作:SELECT * FROM TABLE WHERE ID = 1 FOR UPDATE 给该行加上一个X锁. SELECT * FROM TABLE WHERE id = 1 LOCK IN SHARE MODE 给该行加上一个S锁. 特别注意:加锁需要在事物之中,事物提交.锁释放. End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[SQL Group By Order By]]></title>
       <url>%2F2017%2F08%2F25%2FSQL-Group-By-Order-By%2F</url>
-      <content type="text"><![CDATA[Mysql Group By 灵活应用 场景有赛事球员表 记为race_player赛事表 race球员表 player现在需要查询 ,每个球员未开赛,最近一场的赛事球员数据. 分析条件 :未开赛聚合纬度 :球员聚合选取条件:未开赛且比赛时间最小 探究确定 赛事球员的幂等是赛事id,球员id.那么,在选取赛事球员对象的时候,就需要构造成这样的参数对.那么,首先应该先查出这样的参数对.代码:1234select min(r2.match_time) t,player_id from race_player r1 left join race r2 on r1.race_id = r2.id where r2.race_status = 1 group by r1.player_id 这里查出球员id,对应的最小比赛时间. 也就是相当于赛事id(在做一层关联).这里使用赛事球员关联赛事,聚合球员.取得球员对应的最小值.因为这里只需要走一层关联.如果采用赛事 -&gt; 球队 -&gt; 球员 去查这个幂等对.会多走一层关联.选取好这个幂等对,首先需要转化为赛事id.所以这里还需要在关联赛事,用于获取赛事id.代码:1234567891011121314SELECT rp.* FROM race_player rpLEFT JOIN player tp ON rp.player_id = tp.idLEFT JOIN race r ON rp.race_id = r.idLEFT JOIN ( select min(r2.match_time) t,player_id from race_player r1 left join race r2 on r1.race_id = r2.id where r2.race_status = 1 //赛事条件 group by r1.player_id ) r3 on r3.t = r.match_time and r3.player_id = rp.player_idWHERE //其他条件ISNULL(rp.id) = FALSEAND ISNULL(tp.id) = FALSEAND ISNULL(r.id) = FALSE ; 这样,有序列的group by 就完成了. group by 大多数情况下.希望以后这个函数会优化成group by 参数 desc 选取指定行.而不是只能采用聚合函数.那面对这样的问题,就很简单了. End]]></content>
+      <content type="text"><![CDATA[Mysql Group By 灵活应用 场景有赛事球员表 记为race_player赛事表 race球员表 player现在需要查询 ,每个球员未开赛,最近一场的赛事球员数据. 分析条件 :未开赛聚合纬度 :球员聚合选取条件:未开赛且比赛时间最小 探究确定 赛事球员的幂等是赛事id,球员id.那么,在选取赛事球员对象的时候,就需要构造成这样的参数对.那么,首先应该先查出这样的参数对.代码:1234select min(r2.match_time) t,player_id from race_player r1 left join race r2 on r1.race_id = r2.id where r2.race_status = 1 group by r1.player_id 这里查出球员id,对应的最小比赛时间. 也就是相当于赛事id(在做一层关联).这里使用赛事球员关联赛事,聚合球员.取得球员对应的最小值.因为这里只需要走一层关联.如果采用赛事 -&gt; 球队 -&gt; 球员 去查这个幂等对.会多走一层关联.选取好这个幂等对,首先需要转化为赛事id.所以这里还需要在关联赛事,用于获取赛事id.代码:1234567891011121314SELECT rp.* FROM race_player rpLEFT JOIN player tp ON rp.player_id = tp.idLEFT JOIN race r ON rp.race_id = r.idLEFT JOIN ( select min(r2.match_time) t,player_id from race_player r1 left join race r2 on r1.race_id = r2.id where r2.race_status = 1 //赛事条件 group by r1.player_id ) r3 on r3.t = r.match_time and r3.player_id = rp.player_idWHERE //其他条件ISNULL(rp.id) = FALSEAND ISNULL(tp.id) = FALSEAND ISNULL(r.id) = FALSE ; 这样,有序列的group by 就完成了. group by 大多数情况下.希望以后这个函数会优化成group by可以先order by再group by选取指定行.而不是只能采用聚合函数.那面对这样的问题,就很简单了. End]]></content>
     </entry>
 
     
