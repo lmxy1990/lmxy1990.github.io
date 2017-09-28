@@ -86,16 +86,31 @@
 
 
 
-<meta name="description" content="End">
+<meta name="description" content="算法基础
+算法分析:解决问题的途径有很多,意味着有很多的算法可供选择.那么,如何选择以及消耗的时间/性能在不同算法之间.会存在巨大的差异.在了解算法前,应学会如何分析算法.
+数据量 n ;(输入规模)单次执行时间 t(单次循环执行语句消耗时间)
+在算法的比较中, t 可以认为全部为1(即单挑语句的执行时间认为一致).
+从而获得一个关于输入量n的函数. 根据这个函数,与实际可能出现的n分布情况.
+散">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法笔记">
 <meta property="og:url" content="https://lmxy1990.github.io/2017/09/14/算法笔记/index.html">
 <meta property="og:site_name" content="Lmxy1990 ' Blog">
-<meta property="og:description" content="End">
-<meta property="og:updated_time" content="2017-09-14T02:56:04.787Z">
+<meta property="og:description" content="算法基础
+算法分析:解决问题的途径有很多,意味着有很多的算法可供选择.那么,如何选择以及消耗的时间/性能在不同算法之间.会存在巨大的差异.在了解算法前,应学会如何分析算法.
+数据量 n ;(输入规模)单次执行时间 t(单次循环执行语句消耗时间)
+在算法的比较中, t 可以认为全部为1(即单挑语句的执行时间认为一致).
+从而获得一个关于输入量n的函数. 根据这个函数,与实际可能出现的n分布情况.
+散">
+<meta property="og:updated_time" content="2017-09-27T09:11:55.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法笔记">
-<meta name="twitter:description" content="End">
+<meta name="twitter:description" content="算法基础
+算法分析:解决问题的途径有很多,意味着有很多的算法可供选择.那么,如何选择以及消耗的时间/性能在不同算法之间.会存在巨大的差异.在了解算法前,应学会如何分析算法.
+数据量 n ;(输入规模)单次执行时间 t(单次循环执行语句消耗时间)
+在算法的比较中, t 可以认为全部为1(即单挑语句的执行时间认为一致).
+从而获得一个关于输入量n的函数. 根据这个函数,与实际可能出现的n分布情况.
+散">
 
 
 
@@ -348,12 +363,34 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-14T10:56:04+08:00">
-                2017-09-14
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-27T17:11:55+08:00">
+                2017-09-27
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -390,7 +427,20 @@
       
 
       
-        <hr>
+        <h3 id="算法基础"><a href="#算法基础" class="headerlink" title="算法基础"></a>算法基础</h3><hr>
+<p>算法分析:<br>解决问题的途径有很多,意味着有很多的算法可供选择.那么,如何选择以及消耗的时间/性能在不同算法之间.会存在巨大的差异.在了解算法前,应学会如何分析算法.</p>
+<p>数据量 n ;(输入规模)<br>单次执行时间 t(单次循环执行语句消耗时间)</p>
+<p>在算法的比较中, t 可以认为全部为1(即单挑语句的执行时间认为一致).</p>
+<p>从而获得一个关于输入量n的函数. 根据这个函数,与实际可能出现的n分布情况.</p>
+<p>散列表(hash表) </p>
+<p>NP 问题 :<br>可以简述为阶乘组合问题.(最常见,也最难解决)</p>
+<p>最短路径:<br>多地点,多路径,路径有权值.权值为限制最佳条件.(单向路径最佳,双向也可以)</p>
+<p>贪婪算法:<br>对于NP 问题,求取近似的最佳结果的算法.(结果非最佳).<br>第一步选取权值最大的一项,后面递减.</p>
+<p>迪克斯特拉算法:<br>求解最短路径问题的算法.算法思想是两点之间,直连或借助其他点,每段分路径.取权值最小.加权之后,得出的路径根据权值筛选最佳路径.<br>目的 是A -&gt; D .其中有路径 A -&gt; D , A -&gt; B -&gt; D ,A -&gt; C -&gt; D<br>则 求解思路是 求出 A -&gt; B 所有方案的最优解,B -&gt; D 所有方案的最优解. 各个子最优解之和,取最优解.</p>
+<p>动态规划<br>用于解决NP问题的算法.递归求出最小最优解,然后获得最佳最优解.<br>详情见后续叙述.</p>
+<p>最近临近值<br>根据属性分类,来源新数据与旧类别比较.更为相似的作为同一类.(主要用于智能推送)</p>
+<p>广度优先搜索.<br>多因素,取主因素最快速的算法.(例子:朋友圈经销商查找.)</p>
+<hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>
       
     </div>
@@ -447,6 +497,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/27/递归转化为栈/" rel="prev" title="递归转化为栈">
+                递归转化为栈 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -526,7 +580,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -535,7 +589,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -615,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number">1.</span> <span class="nav-text">End</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法基础"><span class="nav-number">1.</span> <span class="nav-text">算法基础</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End"><span class="nav-number"></span> <span class="nav-text">End</span></a></div>
             
 
           </div>
