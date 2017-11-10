@@ -86,22 +86,17 @@
 
 
 
-<meta name="description" content="过滤指定日期
-1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate();
-2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
+<meta name="description" content="过滤指定日期 1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate(); 2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql日期处理函数">
 <meta property="og:url" content="https://lmxy1990.github.io/2017/01/23/mysql日期处理函数/index.html">
-<meta property="og:site_name" content="Lmxy1990 ' Blog">
-<meta property="og:description" content="过滤指定日期
-1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate();
-2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
-<meta property="og:updated_time" content="2017-01-24T01:39:32.871Z">
+<meta property="og:site_name" content="Lmxy1990 &#39; Blog">
+<meta property="og:description" content="过滤指定日期 1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate(); 2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-01-24T01:39:32.872Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql日期处理函数">
-<meta name="twitter:description" content="过滤指定日期
-1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate();
-2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
+<meta name="twitter:description" content="过滤指定日期 1.近1天123select * from table where to_days(column_time) = to_days(now());select * from table where date(column_time) = curdate(); 2.近7天1select * from table where DATE_SUB(CURDATE(), INTERVAL 7 D">
 
 
 
@@ -419,16 +414,16 @@
 
       
         <h3 id="过滤指定日期"><a href="#过滤指定日期" class="headerlink" title="过滤指定日期"></a>过滤指定日期</h3><hr>
-<p>1.近1天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from table where to_days(column_time) = to_days(now());</div><div class="line"></div><div class="line">select * from table where date(column_time) = curdate();</div></pre></td></tr></table></figure></p>
-<p>2.近7天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from table where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(column_time);</div></pre></td></tr></table></figure></p>
-<p>3.近一个月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from table where DATE_SUB(CURDATE(), INTERVAL 1 MONTH) &lt;= date(column_time);</div></pre></td></tr></table></figure></p>
-<h3 id="筛选出需要的日期的值"><a href="#筛选出需要的日期的值" class="headerlink" title="筛选出需要的日期的值"></a>筛选出需要的日期的值</h3><p>1.筛选出年月日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select DATA(column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>2.筛选出年月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(year_month FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>3.筛选出年.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(year FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>4.筛选出月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(month FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>5.筛选出日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select Extract(day FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<p>6.筛选出时分秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select time(day FROM column_time) from table ;</div></pre></td></tr></table></figure></p>
-<h3 id="比较日期"><a href="#比较日期" class="headerlink" title="比较日期"></a>比较日期</h3><p>1.间隔天数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT match_date,create_time FROM table_name WHERE  datediff(match_date,create_time) = 60</div></pre></td></tr></table></figure></p>
+<p>1.近1天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from table where to_days(column_time) = to_days(now());</span><br><span class="line"></span><br><span class="line">select * from table where date(column_time) = curdate();</span><br></pre></td></tr></table></figure></p>
+<p>2.近7天<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(column_time);</span><br></pre></td></tr></table></figure></p>
+<p>3.近一个月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where DATE_SUB(CURDATE(), INTERVAL 1 MONTH) &lt;= date(column_time);</span><br></pre></td></tr></table></figure></p>
+<h3 id="筛选出需要的日期的值"><a href="#筛选出需要的日期的值" class="headerlink" title="筛选出需要的日期的值"></a>筛选出需要的日期的值</h3><p>1.筛选出年月日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select DATA(column_time) from table ;</span><br></pre></td></tr></table></figure></p>
+<p>2.筛选出年月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select Extract(year_month FROM column_time) from table ;</span><br></pre></td></tr></table></figure></p>
+<p>3.筛选出年.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select Extract(year FROM column_time) from table ;</span><br></pre></td></tr></table></figure></p>
+<p>4.筛选出月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select Extract(month FROM column_time) from table ;</span><br></pre></td></tr></table></figure></p>
+<p>5.筛选出日<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select Extract(day FROM column_time) from table ;</span><br></pre></td></tr></table></figure></p>
+<p>6.筛选出时分秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select time(day FROM column_time) from table ;</span><br></pre></td></tr></table></figure></p>
+<h3 id="比较日期"><a href="#比较日期" class="headerlink" title="比较日期"></a>比较日期</h3><p>1.间隔天数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT match_date,create_time FROM table_name WHERE  datediff(match_date,create_time) = 60</span><br></pre></td></tr></table></figure></p>
 <p><em>详见:</em> <a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff" target="_blank" rel="external">官方文档</a></p>
 <hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>
@@ -570,7 +565,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -579,7 +574,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

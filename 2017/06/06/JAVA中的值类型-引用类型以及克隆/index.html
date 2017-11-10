@@ -86,25 +86,17 @@
 
 
 
-<meta name="description" content="JAVA中的引用类型与值类型
-1.引用类型数组,集合,接口,类都是引用类型.
-2.值类型所有基本类型:int,short,long 及与之对应的Long,Integer,Double,以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型.
-3.区别这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.值类型:也就是改变原值,对其之前赋的变量的值没有影响.1234">
+<meta name="description" content="JAVA中的引用类型与值类型 1.引用类型数组,集合,接口,类都是引用类型. 2.值类型所有基本类型:int,short,long 及与之对应的Long,Integer,Double,以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型. 3.区别这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.值类型:也就是改变原值,对其之前赋的变量的值没有影响.1234">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA中的值类型,引用类型以及克隆">
 <meta property="og:url" content="https://lmxy1990.github.io/2017/06/06/JAVA中的值类型-引用类型以及克隆/index.html">
-<meta property="og:site_name" content="Lmxy1990 ' Blog">
-<meta property="og:description" content="JAVA中的引用类型与值类型
-1.引用类型数组,集合,接口,类都是引用类型.
-2.值类型所有基本类型:int,short,long 及与之对应的Long,Integer,Double,以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型.
-3.区别这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.值类型:也就是改变原值,对其之前赋的变量的值没有影响.1234">
+<meta property="og:site_name" content="Lmxy1990 &#39; Blog">
+<meta property="og:description" content="JAVA中的引用类型与值类型 1.引用类型数组,集合,接口,类都是引用类型. 2.值类型所有基本类型:int,short,long 及与之对应的Long,Integer,Double,以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型. 3.区别这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.值类型:也就是改变原值,对其之前赋的变量的值没有影响.1234">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-06-07T02:28:28.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA中的值类型,引用类型以及克隆">
-<meta name="twitter:description" content="JAVA中的引用类型与值类型
-1.引用类型数组,集合,接口,类都是引用类型.
-2.值类型所有基本类型:int,short,long 及与之对应的Long,Integer,Double,以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型.
-3.区别这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.值类型:也就是改变原值,对其之前赋的变量的值没有影响.1234">
+<meta name="twitter:description" content="JAVA中的引用类型与值类型 1.引用类型数组,集合,接口,类都是引用类型. 2.值类型所有基本类型:int,short,long 及与之对应的Long,Integer,Double,以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型. 3.区别这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.值类型:也就是改变原值,对其之前赋的变量的值没有影响.1234">
 
 
 
@@ -424,17 +416,17 @@
         <h3 id="JAVA中的引用类型与值类型"><a href="#JAVA中的引用类型与值类型" class="headerlink" title="JAVA中的引用类型与值类型"></a>JAVA中的引用类型与值类型</h3><hr>
 <p>1.引用类型<br>数组,集合,接口,类都是引用类型.</p>
 <p>2.值类型<br>所有基本类型:int,short,long 及与之对应的Long,Integer,Double,<br>以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型.</p>
-<p>3.区别<br>这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.<br>值类型:也就是改变原值,对其之前赋的变量的值没有影响.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BigDecimal d1 = BigDecimal.ONE ;</div><div class="line">BigDecimal d2 = d1 ;</div><div class="line">d1 = d1.add(BigDecimal.ONE) ;</div><div class="line"></div><div class="line">System.out.println(d1);</div><div class="line">System.out.println(d2);</div></pre></td></tr></table></figure></p>
-<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td></tr></table></figure></p>
-<p>引用类型:改变原值,对其之前使用=赋值的变量也会有影响.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">int[] ar = &#123;1,2,3&#125; ;</div><div class="line">int[] br = ar ;</div><div class="line">ar[0] = 2 ;</div><div class="line">ar[1] = 3 ;</div><div class="line">ar[2] = 4 ;</div><div class="line">for (int i = 0; i &lt; ar.length; i++) &#123;</div><div class="line">    int i1 = ar[i];</div><div class="line">    System.out.println(i1);</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (int i = 0; i &lt; br.length; i++) &#123;</div><div class="line">    int i1 = br[i];</div><div class="line">    System.out.println(i1);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<p>3.区别<br>这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.<br>值类型:也就是改变原值,对其之前赋的变量的值没有影响.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal d1 = BigDecimal.ONE ;</span><br><span class="line">BigDecimal d2 = d1 ;</span><br><span class="line">d1 = d1.add(BigDecimal.ONE) ;</span><br><span class="line"></span><br><span class="line">System.out.println(d1);</span><br><span class="line">System.out.println(d2);</span><br></pre></td></tr></table></figure></p>
+<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p>引用类型:改变原值,对其之前使用=赋值的变量也会有影响.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int[] ar = &#123;1,2,3&#125; ;</span><br><span class="line">int[] br = ar ;</span><br><span class="line">ar[0] = 2 ;</span><br><span class="line">ar[1] = 3 ;</span><br><span class="line">ar[2] = 4 ;</span><br><span class="line">for (int i = 0; i &lt; ar.length; i++) &#123;</span><br><span class="line">    int i1 = ar[i];</span><br><span class="line">    System.out.println(i1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; br.length; i++) &#123;</span><br><span class="line">    int i1 = br[i];</span><br><span class="line">    System.out.println(i1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
 <p>4.浅析原理.<br>有一种说法是java没有值类型.其实角度不一样.从原理上来说确实没有.但从表象上来说是有的.因为在赋值运算的时候.遇到基本类型是新开辟内存空间.遇到引用类型是改变指针指向的地址.这区别与java对赋值运算的实现.</p>
 <p>所以,java官方说基本类型是值类型.那就是说,赋值运算在对待基本类型的赋值与引用类型时候,会采用不同的方式去处理.这区别于C/C++.</p>
 <p>这一点其实在对待Long Integer 类的赋值的时候,就可以看出来了.至于为什么基本类型赋值是新开辟,而引用类型是修改指针地址.这可能是因为所占对象大小,基本类型占用低,使用修改频繁.所以新增这样的对象所消耗内存少.而引用类型的内存消耗完全取决用用户的定义.故赋值采用的是改变指针的指向.而非new 对象.但是java提供一个克隆的方法.用于新开辟内存而非改变指针指向内存地址.</p>
 <p>至于如果引用类型需要拷贝而不是改变指针的地址进行的赋值时候.可以采用克隆或者直接new 对象.然后进行对基本类型的赋值操作.遇到引用类型,就需要new/克隆去开辟新的内存空间.这样才能改变原对象的值,不会影响克隆的变量.</p>
 <h3 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h3><hr>
-<p>1.实现Cloneable接口<br>2.覆写Object的clone方法.<br>3.如果对象存在非基本类型,还需要修改覆写的方法.<br>eg: Java 自带的Calendar类覆写的clone方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public Object clone()</div><div class="line">&#123;</div><div class="line">    try &#123;</div><div class="line">        Calendar other = (Calendar) super.clone();</div><div class="line"></div><div class="line">        other.fields = new int[FIELD_COUNT];</div><div class="line">        other.isSet = new boolean[FIELD_COUNT];</div><div class="line">        other.stamp = new int[FIELD_COUNT];</div><div class="line">        for (int i = 0; i &lt; FIELD_COUNT; i++) &#123;</div><div class="line">            other.fields[i] = fields[i];</div><div class="line">            other.stamp[i] = stamp[i];</div><div class="line">            other.isSet[i] = isSet[i];</div><div class="line">        &#125;</div><div class="line">        other.zone = (TimeZone) zone.clone();</div><div class="line">        return other;</div><div class="line">    &#125;</div><div class="line">    catch (CloneNotSupportedException e) &#123;</div><div class="line">        // this shouldn&apos;t happen, since we are Cloneable</div><div class="line">        throw new InternalError(e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以上例子就是覆写clone方法.如果没有引用类型.那只需要调用超类的方法即可.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected Object clone() throws CloneNotSupportedException &#123;</div><div class="line">    return super.clone();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>1.实现Cloneable接口<br>2.覆写Object的clone方法.<br>3.如果对象存在非基本类型,还需要修改覆写的方法.<br>eg: Java 自带的Calendar类覆写的clone方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public Object clone()</span><br><span class="line">&#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        Calendar other = (Calendar) super.clone();</span><br><span class="line"></span><br><span class="line">        other.fields = new int[FIELD_COUNT];</span><br><span class="line">        other.isSet = new boolean[FIELD_COUNT];</span><br><span class="line">        other.stamp = new int[FIELD_COUNT];</span><br><span class="line">        for (int i = 0; i &lt; FIELD_COUNT; i++) &#123;</span><br><span class="line">            other.fields[i] = fields[i];</span><br><span class="line">            other.stamp[i] = stamp[i];</span><br><span class="line">            other.isSet[i] = isSet[i];</span><br><span class="line">        &#125;</span><br><span class="line">        other.zone = (TimeZone) zone.clone();</span><br><span class="line">        return other;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (CloneNotSupportedException e) &#123;</span><br><span class="line">        // this shouldn&apos;t happen, since we are Cloneable</span><br><span class="line">        throw new InternalError(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上例子就是覆写clone方法.如果没有引用类型.那只需要调用超类的方法即可.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected Object clone() throws CloneNotSupportedException &#123;</span><br><span class="line">    return super.clone();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>
       
@@ -575,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -584,7 +576,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

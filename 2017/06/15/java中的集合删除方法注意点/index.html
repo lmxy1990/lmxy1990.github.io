@@ -86,22 +86,17 @@
 
 
 
-<meta name="description" content="集合类的删除方法
-
-最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:12345678910111213List&amp;lt;Integer&amp;gt; pp = new ArrayList&amp;lt;&amp;gt;() ;pp.add(1) ;pp.add(2) ;pp.add(3) ;pp.add(4) ;for (in">
+<meta name="description" content="集合类的删除方法  最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:12345678910111213List&amp;lt;Integer&amp;gt; pp = new ArrayList&amp;lt;&amp;gt;() ;pp.add(1) ;pp.add(2) ;pp.add(3) ;pp.add(4) ;for (in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java中的集合删除方法注意点">
 <meta property="og:url" content="https://lmxy1990.github.io/2017/06/15/java中的集合删除方法注意点/index.html">
-<meta property="og:site_name" content="Lmxy1990 ' Blog">
-<meta property="og:description" content="集合类的删除方法
-
-最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:12345678910111213List&amp;lt;Integer&amp;gt; pp = new ArrayList&amp;lt;&amp;gt;() ;pp.add(1) ;pp.add(2) ;pp.add(3) ;pp.add(4) ;for (in">
+<meta property="og:site_name" content="Lmxy1990 &#39; Blog">
+<meta property="og:description" content="集合类的删除方法  最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:12345678910111213List&amp;lt;Integer&amp;gt; pp = new ArrayList&amp;lt;&amp;gt;() ;pp.add(1) ;pp.add(2) ;pp.add(3) ;pp.add(4) ;for (in">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-06-15T07:01:33.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中的集合删除方法注意点">
-<meta name="twitter:description" content="集合类的删除方法
-
-最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:12345678910111213List&amp;lt;Integer&amp;gt; pp = new ArrayList&amp;lt;&amp;gt;() ;pp.add(1) ;pp.add(2) ;pp.add(3) ;pp.add(4) ;for (in">
+<meta name="twitter:description" content="集合类的删除方法  最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:12345678910111213List&amp;lt;Integer&amp;gt; pp = new ArrayList&amp;lt;&amp;gt;() ;pp.add(1) ;pp.add(2) ;pp.add(3) ;pp.add(4) ;for (in">
 
 
 
@@ -420,12 +415,12 @@
       
         <h3 id="集合类的删除方法"><a href="#集合类的删除方法" class="headerlink" title="集合类的删除方法"></a>集合类的删除方法</h3><hr>
 <ul>
-<li>最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; pp = new ArrayList&lt;&gt;() ;</div><div class="line">pp.add(1) ;</div><div class="line">pp.add(2) ;</div><div class="line">pp.add(3) ;</div><div class="line">pp.add(4) ;</div><div class="line"></div><div class="line">for (int i = 0; i &lt; pp.size(); i++) &#123;</div><div class="line">    Integer integer =  pp.get(i);</div><div class="line">    System.out.println(&quot;当前遍历i:&quot; + i + &quot;对应集合数据:&quot; + integer);</div><div class="line">    if (integer.equals(3))&#123;</div><div class="line">        pp.remove(i) ;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; pp = new ArrayList&lt;&gt;() ;</span><br><span class="line">pp.add(1) ;</span><br><span class="line">pp.add(2) ;</span><br><span class="line">pp.add(3) ;</span><br><span class="line">pp.add(4) ;</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; pp.size(); i++) &#123;</span><br><span class="line">    Integer integer =  pp.get(i);</span><br><span class="line">    System.out.println(&quot;当前遍历i:&quot; + i + &quot;对应集合数据:&quot; + integer);</span><br><span class="line">    if (integer.equals(3))&#123;</span><br><span class="line">        pp.remove(i) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">当前遍历i:0对应集合数据:1</div><div class="line">当前遍历i:1对应集合数据:2</div><div class="line">当前遍历i:2对应集合数据:3</div><div class="line"></div><div class="line">Process finished with exit code 0</div></pre></td></tr></table></figure></p>
-<p>why?数据4去了哪里?<br>这其实是remove之后,size会立即变化.但是遍历的指针却并没有做出相应的变化.依旧是自增了一下.也就是说,当i = 2的时候,remove方法执行.然后对应的size变化为3.这时候i++变为了3<3不成立,不再循环,跳出循环.但实际上,并没有循环完成.因为还有一个数据没循环到.也就是i=2现在是新的数据了. 如何避免?="" 我是这样处理的.="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; pp = new ArrayList&lt;&gt;() ;</div><div class="line">pp.add(1) ;</div><div class="line">pp.add(2) ;</div><div class="line">pp.add(3) ;</div><div class="line">pp.add(4) ;</div><div class="line"></div><div class="line">for (int i = 0; i &lt; pp.size(); i++) &#123;</div><div class="line">    Integer integer =  pp.get(i);</div><div class="line">    System.out.println(&quot;当前遍历i:&quot; + i + &quot;对应集合数据:&quot; + integer);</div><div class="line">    if (integer.equals(3))&#123;</div><div class="line">        pp.remove(i);</div><div class="line">        i--;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></3不成立,不再循环,跳出循环.但实际上,并没有循环完成.因为还有一个数据没循环到.也就是i=2现在是新的数据了.></p>
-<p>输出结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">当前遍历i:0对应集合数据:1</div><div class="line">当前遍历i:1对应集合数据:2</div><div class="line">当前遍历i:2对应集合数据:3</div><div class="line">当前遍历i:2对应集合数据:4</div><div class="line"></div><div class="line">Process finished with exit code 0</div></pre></td></tr></table></figure></p>
+<p>输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">当前遍历i:0对应集合数据:1</span><br><span class="line">当前遍历i:1对应集合数据:2</span><br><span class="line">当前遍历i:2对应集合数据:3</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure></p>
+<p>why?数据4去了哪里?<br>这其实是remove之后,size会立即变化.但是遍历的指针却并没有做出相应的变化.依旧是自增了一下.也就是说,当i = 2的时候,remove方法执行.然后对应的size变化为3.这时候i++变为了3<3不成立,不再循环,跳出循环.但实际上,并没有循环完成.因为还有一个数据没循环到.也就是i=2现在是新的数据了. 如何避免?="" 我是这样处理的.="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; pp = new ArrayList&lt;&gt;() ;</span><br><span class="line">pp.add(1) ;</span><br><span class="line">pp.add(2) ;</span><br><span class="line">pp.add(3) ;</span><br><span class="line">pp.add(4) ;</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; pp.size(); i++) &#123;</span><br><span class="line">    Integer integer =  pp.get(i);</span><br><span class="line">    System.out.println(&quot;当前遍历i:&quot; + i + &quot;对应集合数据:&quot; + integer);</span><br><span class="line">    if (integer.equals(3))&#123;</span><br><span class="line">        pp.remove(i);</span><br><span class="line">        i--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></3不成立,不再循环,跳出循环.但实际上,并没有循环完成.因为还有一个数据没循环到.也就是i=2现在是新的数据了.></p>
+<p>输出结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">当前遍历i:0对应集合数据:1</span><br><span class="line">当前遍历i:1对应集合数据:2</span><br><span class="line">当前遍历i:2对应集合数据:3</span><br><span class="line">当前遍历i:2对应集合数据:4</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>
       
@@ -566,7 +561,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -575,7 +570,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
