@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-11-10T01:59:17.951Z</updated>
+  <updated>2017-11-10T06:50:09.291Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -20,17 +20,22 @@
     <link href="https://lmxy1990.github.io/2017/11/10/fork%E5%90%8E%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0/"/>
     <id>https://lmxy1990.github.io/2017/11/10/fork后如何同步更新/</id>
     <published>2017-11-10T01:59:17.000Z</published>
-    <updated>2017-11-10T01:59:17.951Z</updated>
+    <updated>2017-11-10T06:50:09.291Z</updated>
     
-    <content type="html"><![CDATA[<hr>
+    <content type="html"><![CDATA[<h3 id="git-fork之后-如何保持代码的更新"><a href="#git-fork之后-如何保持代码的更新" class="headerlink" title="git fork之后,如何保持代码的更新."></a>git fork之后,如何保持代码的更新.</h3><p>第一步:将源添加到一个更新的组里面.(这里认为你已经clone下来你的项目)<br>添加的名字可以随意,与后面操作一致即可.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add updateOrigin https://github.com/更新源的地址.git</span><br></pre></td></tr></table></figure></p>
+<p>第二步:更新 updateOrigin 代码到最新.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch updateOrigin</span><br></pre></td></tr></table></figure></p>
+<p>第三步:合并最新代码到你的master.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge updateOrigin/master</span><br></pre></td></tr></table></figure></p>
+<p>第四步:提交变更到master.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
+<hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
+      &lt;h3 id=&quot;git-fork之后-如何保持代码的更新&quot;&gt;&lt;a href=&quot;#git-fork之后-如何保持代码的更新&quot; class=&quot;headerlink&quot; title=&quot;git fork之后,如何保持代码的更新.&quot;&gt;&lt;/a&gt;git fork之后,如何保持代码的更新.&lt;/h3
     
     </summary>
+    
+      <category term="git fork" scheme="https://lmxy1990.github.io/categories/git-fork/"/>
     
     
   </entry>
@@ -40,17 +45,23 @@
     <link href="https://lmxy1990.github.io/2017/11/03/%E5%A4%9A%E4%B8%AA%E9%9B%86%E5%90%88%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/"/>
     <id>https://lmxy1990.github.io/2017/11/03/多个集合排列组合/</id>
     <published>2017-11-03T03:45:17.000Z</published>
-    <updated>2017-11-03T03:53:50.656Z</updated>
+    <updated>2017-11-10T06:42:55.417Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="笛卡尔乘积"><a href="#笛卡尔乘积" class="headerlink" title="笛卡尔乘积"></a>笛卡尔乘积</h3><p>两个集合,组成新的集合.</p>
+    <content type="html"><![CDATA[<h3 id="笛卡尔乘积"><a href="#笛卡尔乘积" class="headerlink" title="笛卡尔乘积"></a>笛卡尔乘积</h3><h2 id="1-两个集合-组成新的集合"><a href="#1-两个集合-组成新的集合" class="headerlink" title="1.两个集合,组成新的集合."></a>1.两个集合,组成新的集合.</h2><p>处理的思想:<br>1.从一个集合中,取出一个元素. 这个元素与另外的一个集合做一次组合.组成新的集合.<br>第一个集合遍历完成,则组合完成.</p>
+<p>即记第一个集合的长度是M ,另一个集合的长度是N.<br>则需要遍历的次数是M*N .<br>因为集合1中的每一个元素,都需要遍历N次.</p>
+<p>而笛卡尔乘积亦是M*N</p>
+<h2 id="2-多个集合-组成的笛卡尔乘积"><a href="#2-多个集合-组成的笛卡尔乘积" class="headerlink" title="2.多个集合,组成的笛卡尔乘积."></a>2.多个集合,组成的笛卡尔乘积.</h2><p>这里有两种思路:<br>第一种是采用递归.<br>第二种是采用循环.</p>
+<p>原理上来说,我的解决思路是多个集合的笛卡尔乘积拆分成2个笛卡尔乘积的运算.<br>每次都是当前的集合与下一个集合做<code>2个迪卡而乘积运算</code>.</p>
+<p>递归的写法是写一个处理2个集合的方法,然后有条件的递归调用.递归写起来比较简单.</p>
+<p>循环的思想,可以考虑采用栈.</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>笛卡尔乘积使用场景还是很多的,例如组合排列.商品sku.等等</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码:"></a>示例代码:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数据组装:递归处理</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * 思路:从第一层取出该层所有元素,与下一层的每一个元素拼接.组成中间变量,继续拼接下一层.直到层数拼接完成.</span><br><span class="line"> * 这时候,该层的所有数据已完成拼接.则返回拼接数据的list.</span><br><span class="line"> *</span><br><span class="line"> * @param layer     层</span><br><span class="line"> * @param nowString 当前组合的中间变量</span><br><span class="line"> * @param lists     待组合的所有数据,</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">private static List&lt;String&gt; fxEachShangPin(int layer, String nowString, List&lt;List&lt;ShangPin&gt;&gt; lists) &#123;</span><br><span class="line">    List&lt;String&gt; strings = new ArrayList&lt;&gt;();</span><br><span class="line">    if (layer &lt; lists.size()) &#123;//有下一个List</span><br><span class="line">        List&lt;ShangPin&gt; nextList = lists.get(layer);</span><br><span class="line">        for (int i = 0; i &lt; nextList.size(); i++) &#123;</span><br><span class="line">            ShangPin subShangPin = nextList.get(i);</span><br><span class="line">            String tmpStr = subShangPin.getSpName();</span><br><span class="line">            //当前层级与下一层级组装</span><br><span class="line">            if (StringUtils.isNotBlank(nowString)) &#123;</span><br><span class="line">                tmpStr = nowString + &quot;-&quot; + tmpStr;</span><br><span class="line">            &#125;</span><br><span class="line">            List&lt;String&gt; subStr = fxEachShangPin(layer + 1, tmpStr, lists);</span><br><span class="line">            strings.addAll(subStr);</span><br><span class="line">        &#125;</span><br><span class="line">        return strings;</span><br><span class="line">    &#125; else &#123; //没有下一层</span><br><span class="line">        return Lists.newArrayList(nowString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line"> * 使用循环来解决,有栈的思想</span><br><span class="line"> *</span><br><span class="line"> * @param lists</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">private static List&lt;String&gt; fxStackShangPin(List&lt;List&lt;ShangPin&gt;&gt; lists) &#123;</span><br><span class="line">    if (CollectionUtils.isEmpty(lists)) return new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    List&lt;String&gt; rs = new ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;String&gt; tmpList = new ArrayList&lt;&gt;();</span><br><span class="line">    Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();</span><br><span class="line">    stack.push(0);</span><br><span class="line">    while (stack.size() != 0) &#123;</span><br><span class="line">        Integer layer = stack.pop();</span><br><span class="line">        List&lt;ShangPin&gt; shangPins = lists.get(layer);</span><br><span class="line">        if (CollectionUtils.isEmpty(shangPins)) continue;</span><br><span class="line">        //初次塞值</span><br><span class="line">        if (CollectionUtils.isEmpty(rs)) &#123;</span><br><span class="line">            for (int i = 0; i &lt; shangPins.size(); i++) &#123;</span><br><span class="line">                ShangPin shangPin = shangPins.get(i);</span><br><span class="line">                if (shangPin == null) continue;</span><br><span class="line">                tmpList.add(shangPin.getSpName());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //二级数据组装</span><br><span class="line">        if (!CollectionUtils.isEmpty(rs)) &#123;</span><br><span class="line">            for (int i = 0; i &lt; rs.size(); i++) &#123;//数据组装</span><br><span class="line">                String s = rs.get(i);</span><br><span class="line">                for (int j = 0; j &lt; shangPins.size(); j++) &#123;</span><br><span class="line">                    ShangPin shangPin = shangPins.get(j);</span><br><span class="line">                    if (shangPin == null) continue;</span><br><span class="line">                    String tmp = shangPin.getSpName();</span><br><span class="line">                    if (StringUtils.isNotBlank(s)) &#123;</span><br><span class="line">                        tmp = s + &quot;-&quot; + shangPin.getSpName();</span><br><span class="line">                    &#125;</span><br><span class="line">                    tmpList.add(i, tmp);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //临时变量传递</span><br><span class="line">        rs.clear();</span><br><span class="line">        rs.addAll(tmpList);</span><br><span class="line">        tmpList.clear();</span><br><span class="line">        layer++;</span><br><span class="line">        //下一层级</span><br><span class="line">        if (layer &lt; lists.size()) &#123;</span><br><span class="line">            stack.push(layer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return rs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;笛卡尔乘积&quot;&gt;&lt;a href=&quot;#笛卡尔乘积&quot; class=&quot;headerlink&quot; title=&quot;笛卡尔乘积&quot;&gt;&lt;/a&gt;笛卡尔乘积&lt;/h3&gt;&lt;p&gt;两个集合,组成新的集合.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;h
+      &lt;h3 id=&quot;笛卡尔乘积&quot;&gt;&lt;a href=&quot;#笛卡尔乘积&quot; class=&quot;headerlink&quot; title=&quot;笛卡尔乘积&quot;&gt;&lt;/a&gt;笛卡尔乘积&lt;/h3&gt;&lt;h2 id=&quot;1-两个集合-组成新的集合&quot;&gt;&lt;a href=&quot;#1-两个集合-组成新的集合&quot; class=&quot;header
     
     </summary>
     
