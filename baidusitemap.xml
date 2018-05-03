@@ -4,6 +4,144 @@
 
     
   <url>
+    <loc>https://lmxy1990.github.io/2018/05/03/idea-artifacts%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2018-05-03T11:34:06.689Z</lastmod>
+    <data>
+        <display>
+        <title>idea_artifacts依赖错误</title>
+        <pubTime>2018-05-03T11:14:32.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://lmxy1990.github.io/2018/05/03/%E6%96%87%E6%A1%A3%E6%A0%B9%E5%85%83%E7%B4%A0_beans_%E5%BF%85%E9%A1%BB%E5%8C%B9%E9%85%8D_DOCTYPE_%E6%A0%B9_null/</loc>
+    <lastmod>2018-05-03T11:26:04.346Z</lastmod>
+    <data>
+        <display>
+        <title>文档根元素_beans_必须匹配_DOCTYPE_根_null</title>
+        <pubTime>2018-05-03T11:16:06.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://lmxy1990.github.io/2018/04/18/spring-%E6%8B%A6%E6%88%AA%E5%99%A8/</loc>
+    <lastmod>2018-05-03T11:02:53.052Z</lastmod>
+    <data>
+        <display>
+        <title>spring 拦截器</title>
+        <pubTime>2018-04-18T05:59:31.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="拦截器" url="https://lmxy1990.github.io/categories/%E6%8B%A6%E6%88%AA%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://lmxy1990.github.io/2018/03/17/JVM%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/</loc>
+    <lastmod>2018-04-18T05:58:48.800Z</lastmod>
+    <data>
+        <display>
+        <title>JVM一些理解:</title>
+        <pubTime>2018-03-17T00:49:37.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="jvm" url="https://lmxy1990.github.io/categories/jvm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://lmxy1990.github.io/2017/11/27/dubbo-%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2018-03-09T03:17:13.375Z</lastmod>
+    <data>
+        <display>
+        <title>dubbo 源码学习</title>
+        <pubTime>2017-11-27T08:09:56.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="dubbo 源码" url="https://lmxy1990.github.io/categories/dubbo-%E6%BA%90%E7%A0%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://lmxy1990.github.io/2018/02/07/java-tensorflow/</loc>
+    <lastmod>2018-02-07T01:38:07.463Z</lastmod>
+    <data>
+        <display>
+        <title>java tensorflow</title>
+        <pubTime>2018-02-07T01:08:51.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="java tensorflow" url="https://lmxy1990.github.io/categories/java-tensorflow/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://lmxy1990.github.io/2017/12/08/linux-svn%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2017-12-18T07:37:57.429Z</lastmod>
+    <data>
+        <display>
+        <title>linux svn服务器安装</title>
+        <pubTime>2017-12-08T02:15:03.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="svn" url="https://lmxy1990.github.io/categories/svn/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://lmxy1990.github.io/2017/11/27/Java-%E6%B3%9B%E5%9E%8B/</loc>
+    <lastmod>2017-11-27T07:59:20.037Z</lastmod>
+    <data>
+        <display>
+        <title>Java 泛型</title>
+        <pubTime>2017-11-27T07:51:28.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="泛型" url="https://lmxy1990.github.io/categories/%E6%B3%9B%E5%9E%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://lmxy1990.github.io/2017/11/10/fork%E5%90%8E%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0/</loc>
     <lastmod>2017-11-10T06:50:09.291Z</lastmod>
     <data>

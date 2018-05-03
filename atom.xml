@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://lmxy1990.github.io/"/>
-  <updated>2017-11-10T06:50:09.291Z</updated>
+  <updated>2018-05-03T11:26:04.346Z</updated>
   <id>https://lmxy1990.github.io/</id>
   
   <author>
@@ -14,6 +14,297 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文档根元素_beans_必须匹配_DOCTYPE_根_null</title>
+    <link href="https://lmxy1990.github.io/2018/05/03/%E6%96%87%E6%A1%A3%E6%A0%B9%E5%85%83%E7%B4%A0_beans_%E5%BF%85%E9%A1%BB%E5%8C%B9%E9%85%8D_DOCTYPE_%E6%A0%B9_null/"/>
+    <id>https://lmxy1990.github.io/2018/05/03/文档根元素_beans_必须匹配_DOCTYPE_根_null/</id>
+    <published>2018-05-03T11:16:06.000Z</published>
+    <updated>2018-05-03T11:26:04.346Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><p>网上说的是因为:文件名是不能取名为application.xml.(错误)<br>真实原因是spring解析xml的时候死循环了.</p>
+<p>a.xml  -&gt; b.xml … -&gt; a.xml<br>也就是说a.xml 引入了自己.这样,一直加载下一级,当下一级是父级就会抛出该异常.<br>至于为什么有的人说文件名的问题,应该是安卓默认application.xml -&gt; 用户的application.xml -&gt; 安卓默认的application.xml</p>
+<p>总之,不要自己引入自己就不会出现这个异常了.</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;错误原因&quot;&gt;&lt;a href=&quot;#错误原因&quot; class=&quot;headerlink&quot; title=&quot;错误原因&quot;&gt;&lt;/a&gt;错误原因&lt;/h3&gt;&lt;p&gt;网上说的是因为:文件名是不能取名为application.xml.(错误)&lt;br&gt;真实原因是spring解析xml的时候死循
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>idea_artifacts依赖错误</title>
+    <link href="https://lmxy1990.github.io/2018/05/03/idea-artifacts%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF/"/>
+    <id>https://lmxy1990.github.io/2018/05/03/idea-artifacts依赖错误/</id>
+    <published>2018-05-03T11:14:32.000Z</published>
+    <updated>2018-05-03T11:34:06.689Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="idea折腾一天"><a href="#idea折腾一天" class="headerlink" title="idea折腾一天"></a>idea折腾一天</h3><p>今天搭项目时候,明明pom文件依赖有了,model的依赖也正常.<br>偏偏artifacts的依赖就坑爹了.<br>现象是导出的war包没有依赖.反复检查配置文件,发现<em>.iml没有对应的依赖配置.手动修改</em>.iml也没卵用.又会自动修改回去.<br>后面感觉还是项目配置的问题,反复折腾N个小时.MD,IDEA就是个ZZ,我的maven项目是父项目 -&gt; 3个子项目 ,我添加进来的pom是父项目.然后我要导出的war是子项目.这时候,子项目就拿不到依赖了.</p>
+<h2 id="这尼玛坑逼啊-折腾N久才发现者逼东西"><a href="#这尼玛坑逼啊-折腾N久才发现者逼东西" class="headerlink" title="这尼玛坑逼啊,折腾N久才发现者逼东西."></a>这尼玛坑逼啊,折腾N久才发现者逼东西.</h2><p>后面引入项目的时候,只引入子项目.不引入父项目就OK了.<br>引入子项目的时候,会自动生成*.iml.<br>该文件的依赖是正常的,导出的war也正常了.</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;idea折腾一天&quot;&gt;&lt;a href=&quot;#idea折腾一天&quot; class=&quot;headerlink&quot; title=&quot;idea折腾一天&quot;&gt;&lt;/a&gt;idea折腾一天&lt;/h3&gt;&lt;p&gt;今天搭项目时候,明明pom文件依赖有了,model的依赖也正常.&lt;br&gt;偏偏artifact
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>spring 拦截器</title>
+    <link href="https://lmxy1990.github.io/2018/04/18/spring-%E6%8B%A6%E6%88%AA%E5%99%A8/"/>
+    <id>https://lmxy1990.github.io/2018/04/18/spring-拦截器/</id>
+    <published>2018-04-18T05:59:31.000Z</published>
+    <updated>2018-05-03T11:02:53.052Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><p>请求的路径:<br>client -&gt; tcp/ip -&gt; 服务器系统层 -&gt; 应用层(nginx -&gt; tomcat -&gt; servlet层 -&gt; DispatcherServlet -&gt; 拦截处理handler/adapter -&gt; controller -&gt; 试图渲染 -&gt;tcp/ip -&gt; 客户端 -&gt;客户端浏览器)</p>
+<p>1.拦截器一般实现HandlerInterceptor接口或者继承HandlerInterceptorAdapter.<br>也可以实现WebRequestInterceptor 接口</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;拦截器&quot;&gt;&lt;a href=&quot;#拦截器&quot; class=&quot;headerlink&quot; title=&quot;拦截器&quot;&gt;&lt;/a&gt;拦截器&lt;/h3&gt;&lt;p&gt;请求的路径:&lt;br&gt;client -&amp;gt; tcp/ip -&amp;gt; 服务器系统层 -&amp;gt; 应用层(nginx -&amp;gt; t
+    
+    </summary>
+    
+      <category term="拦截器" scheme="https://lmxy1990.github.io/categories/%E6%8B%A6%E6%88%AA%E5%99%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JVM一些理解:</title>
+    <link href="https://lmxy1990.github.io/2018/03/17/JVM%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/"/>
+    <id>https://lmxy1990.github.io/2018/03/17/JVM一些理解/</id>
+    <published>2018-03-17T00:49:37.000Z</published>
+    <updated>2018-04-18T05:58:48.800Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="JVM-内存模型"><a href="#JVM-内存模型" class="headerlink" title="##JVM  内存模型"></a>##JVM  内存模型</h2><p>内存模型分为:方法区,堆区,虚拟机栈,本地方法栈,程序计数器.</p>
+<ol>
+<li><p>方法区(线程共享)<br>存储了每一个类的结构信息，例如运行时常量池（ Runtime Constant Pool）、字段和方法数据、构造函数和普通方法的字节码内容、还包括一些在类、实例、接口初始化时用到的特殊方法.(jdk7 hotspot 中采用来实现永久带,1.8采用元数据区来实现.)</p>
+</li>
+<li><p>堆区(线程共享)<br>存放对象的区域</p>
+</li>
+<li><p>虚拟机栈<br>方法运行时创建的栈帧,用于存放局部变量,操作数栈,动态链接,方法出口,每个方法局部变量是隔离的.</p>
+</li>
+<li><p>本地方法栈<br>native方法运行时,存放局部变量,操作数栈,方法出口的信息.</p>
+</li>
+<li><p>程序计数器<br>当前程序执行字节码的指示器,通过改变计数器来选取下一条需要执行的字节码指令.</p>
+</li>
+<li><p>元数据区<br>作用类似用永久带</p>
+</li>
+</ol>
+<p>总结:JVM 内存模型,分为5块.方法区,堆区,虚拟机栈,本地方法栈,程序计数器.我的理解是,方法区的作用类似一个hashTable.里面记录的是各个类的骨架信息,执行方法的程序计数器指令的位置,以及一些其他必要参数.通过这些参数,在方法调用的时候,通过方法区的指引,执行相关的程序指令,创建用于该方法的虚拟机栈或者本地方法栈来处理一些过程数据,最后返回相应的结果给到调用者.这里虚拟机栈创建的对象存放于堆区,方法区修改对象,实际上是修改的堆中的对象.但局部变量在虚拟机栈中,所以方法里面修改局部变量,其实是不影响全局变量的.但是修改对象就会.原因就在这里.<br>所以,虚拟机垃圾回收的主要集中在堆区.对方法区也有可能触发.方法区申请新的内存区域不足是,会抛出相应异常.</p>
+<p>垃圾回收区域:新生代,老年代,永久带(元数据区). 永久带垃圾回收效率低.</p>
+<h2 id="JVM-GC回收机制"><a href="#JVM-GC回收机制" class="headerlink" title="##JVM GC回收机制"></a>##JVM GC回收机制</h2><h1 id="判断是否为垃圾的算法"><a href="#判断是否为垃圾的算法" class="headerlink" title="判断是否为垃圾的算法"></a>判断是否为垃圾的算法</h1><ol>
+<li>引用标计算法<br>每一个对象,对有一个引用计数器.存在引用则计数器+1,缺点:引用计数器不能解决循环引用的问题,而且引用计数器本身存在内存开销.</li>
+<li>根搜索算法<br>将某些特殊的对象定义为GC Root . 某个对象 与其他所有对象的引用关系组成一条链. 如果组成的这条链无限延伸都没有GC根相连,则证明该链上的所有对象都是可以回收的垃圾对象.GC根对象指的是:虚拟机栈中引用的对象,方法区常量引用的对象,方法区静态属性引用的对象,本地方法栈中JNI引用的对象,活跃的线程.(其实就是正在运行的数据+静态数据)</li>
+</ol>
+<h1 id="执行垃圾回收的算法"><a href="#执行垃圾回收的算法" class="headerlink" title="执行垃圾回收的算法"></a>执行垃圾回收的算法</h1><ol>
+<li>copy 算法(年轻代)</li>
+<li>标记-清除/整理 算法</li>
+</ol>
+<h1 id="spothot-提供的垃圾回收器"><a href="#spothot-提供的垃圾回收器" class="headerlink" title="spothot 提供的垃圾回收器"></a>spothot 提供的垃圾回收器</h1><ol>
+<li>SerialGC 串行(copy)垃圾回收器(年轻代)</li>
+<li>SerialOldGC 串行(老年代)</li>
+<li>ParNewGC 并行(copy)垃圾回收器(年轻代)</li>
+<li>ParallelGC 并行(copy),提高吞吐量.(年轻代)</li>
+<li>ParallelOldGC 并行(copy),(老年代)</li>
+<li>ConcMarkSweepGC 标记清除(老年代) ,新生代 ParNewGC</li>
+<li>G1GC 新生代/老年代(G1)</li>
+</ol>
+<p>##JVM 性能调优</p>
+<p>应尽量避免FULL GC</p>
+<ol>
+<li>避免出现Full GC</li>
+<li>根据对应的场景选取适配的垃圾回收器</li>
+<li>配置合理的内存整理次数.</li>
+<li></li>
+</ol>
+<hr>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;JVM-内存模型&quot;&gt;&lt;a href=&quot;#JVM-内存模型&quot; class=&quot;headerlink&quot; title=&quot;##JVM  内存模型&quot;&gt;&lt;/a&gt;##JVM  内存模型&lt;/h2&gt;&lt;p&gt;内存模型分为:方法区,堆区,虚拟机栈,本地方法栈,程序计数器.&lt;/p&gt;
+&lt;ol&gt;
+    
+    </summary>
+    
+      <category term="jvm" scheme="https://lmxy1990.github.io/categories/jvm/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java tensorflow</title>
+    <link href="https://lmxy1990.github.io/2018/02/07/java-tensorflow/"/>
+    <id>https://lmxy1990.github.io/2018/02/07/java-tensorflow/</id>
+    <published>2018-02-07T01:08:51.000Z</published>
+    <updated>2018-02-07T01:38:07.463Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="api"><a href="#api" class="headerlink" title="api"></a>api</h3><p>参考:<a href="https://www.tensorflow.org/api_docs/java/reference/org/tensorflow/package-summary" target="_blank" rel="external">https://www.tensorflow.org/api_docs/java/reference/org/tensorflow/package-summary</a></p>
+<h2 id="常用类说明"><a href="#常用类说明" class="headerlink" title="常用类说明"></a>常用类说明</h2><p>Tensor<t><br>一个静态类型的多维数组，其元素是由T描述的类型</t></p>
+<p>Tensors<br>静态工厂方法创建一个Tensor.</p>
+<p>Shape<br>操作产生的tensor可能的形状。</p>
+<p>Graph<br>TensorFlow计算的数据流图。</p>
+<p>OperationBuilder<br>执行Graph操作的构建器。</p>
+<p>Operation<br>在Tensor上执行计算的Graph节点。</p>
+<p>Output<t><br>由操作产生的tensor处理对象。</t></p>
+<p>SavedModelBundle<br>表示从存储装载的模型。</p>
+<p>Session<br>图形执行的驱动程序。</p>
+<p>Session.Run<br>输出tensors和执行session时获得的元数据。</p>
+<p>Session.Runner<br>运行操作并计算Tensors。</p>
+<p>TensorFlow<br>TensorFlow运行时的静态实用程序方法。</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;api&quot;&gt;&lt;a href=&quot;#api&quot; class=&quot;headerlink&quot; title=&quot;api&quot;&gt;&lt;/a&gt;api&lt;/h3&gt;&lt;p&gt;参考:&lt;a href=&quot;https://www.tensorflow.org/api_docs/java/reference/org
+    
+    </summary>
+    
+      <category term="java tensorflow" scheme="https://lmxy1990.github.io/categories/java-tensorflow/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux svn服务器安装</title>
+    <link href="https://lmxy1990.github.io/2017/12/08/linux-svn%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85/"/>
+    <id>https://lmxy1990.github.io/2017/12/08/linux-svn服务器安装/</id>
+    <published>2017-12-08T02:15:03.000Z</published>
+    <updated>2017-12-18T07:37:57.429Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>官方安装说明:<br><code>https://subversion.apache.org/packages.html#centos</code></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li>创建一个svn库文件夹：<br><code>mkdir -p /opt/svn/repo/</code></li>
+<li><p>将该文件夹初始化为SVN库：<br><code>svnadmin create /opt/svn/repo/</code></p>
+</li>
+<li><p>生成如下目录和文件：<br> 目录：locks<br> 目录：hooks<br> 目录：db<br> 目录：conf<br> 文件：format<br> 文件：README.txt</p>
+</li>
+<li>conf 是配置文件夹<br> svnserve.conf 是 svn 服务综合配置文件<br> passwd 是用户名和密码配置文件<br> authz 是权限配置文件</li>
+<li><p>配置svnserve<br><code>vim /opt/svn/repo/conf/svnserve.conf</code></p>
+<ol>
+<li>anon-access： 对不在授权名单中的用户访问仓库的权限控制，有三个可选性：write、read、none<br>none 表示没有任何权限<br>read 表示只有只读权限<br>write 表示有读写权限</li>
+<li>auth-access：<br>对在授权名单中的用户访问仓库的权限控制，有三个可选性：write、read、none<br>none 表示没有任何权限<br>read 表示只有只读权限<br>write 表示有读写权限</li>
+</ol>
+</li>
+<li><p>password-db：用户数据配置文件</p>
+</li>
+<li><p>authz-db：用户权限配置文件</p>
+</li>
+<li><p>realm：指定版本库的认证域.<br>即在登录时提示的认证域名称。若两个版本库的认证域相同，建议使用相同的用户名口令数据文件<br>当前实例的配置内容：realm = myrepo</p>
+</li>
+<li><p>添加用户<br><code>vim /opt/svn/repo/conf/passwd</code><br>添加一个格式为：用户名 = 密码</p>
+</li>
+<li><p>设置用户/用户组权限<br><code>vim /opt/svn/repo/conf/authz</code></p>
+</li>
+</ol>
+<p>[groups] 配置</p>
+<p>用户组:组名 = 用户1,用户2<br>使用组权限方式：@组名 = rw</p>
+<ul>
+<li>= 表示除了上面设置的权限用户组以外，其他所有用户都设置空权限，空权限表示禁止访问本目录.</li>
+</ul>
+<p>启动服务<br><code>svnserve -d -r /opt/svn/repo/ --listen-port 3690</code></p>
+<p>-d 表示后台运行<br>-r /opt/svn/repo/ 表示指定根目录<br>–listen-port 3690 表示指定端口，默认就是 3690，所以如果要用默认端口这个也是可以省略掉的</p>
+<p>停止服务<br><code>killall svnserve</code></p>
+<h3 id="http服务配置"><a href="#http服务配置" class="headerlink" title="http服务配置"></a>http服务配置</h3><p>安装svn驱动模块<br><code>yum install mod_dav_svn</code></p>
+<p>安装http服务<br><code>yum install httpd</code></p>
+<p>查看http服务配置,是否监听80端口.<br><code>vim /etc/httpd/conf/httpd.conf</code></p>
+<p>配置http的用户密码文件.<br><code>htpasswd -cm /opt/svn/repo/conf/svn-auth-conf admin</code></p>
+<p>该命令,是添加一个用户admin,密码会提示输入.</p>
+<p>修改http的用户密码文件<br><code>htpasswd -m /opt/svn/repo/conf/svn-auth-conf admin</code></p>
+<p>将该密码文件配置到http服务.<br><code>vim /etc/httpd/conf.modules.d/odules.d/10-subversion.conf</code></p>
+<p>这里的配置,是http模块的配置文件,在之前的http的配置里面其实有说明,http服务启动的时候,会加在该目录下的所有文件.<br>编辑这个文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LoadModule dav_svn_module     modules/mod_dav_svn.so</span><br><span class="line">LoadModule authz_svn_module   modules/mod_authz_svn.so</span><br><span class="line">LoadModule dontdothat_module  modules/mod_dontdothat.so</span><br><span class="line">DAV svn</span><br><span class="line">SVNPath /opt/svn/repo</span><br><span class="line">#SVNParentPath /home/svn/data</span><br><span class="line">AuthzSVNAccessFile /opt/svn/repo/conf/passwd</span><br><span class="line">AuthType Basic</span><br><span class="line">AuthName &quot;Subversion repos&quot;</span><br><span class="line">AuthUserFile /opt/svn/repo/conf/svn-auth-conf</span><br><span class="line">Require valid-user</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;官方安装说明:&lt;br&gt;&lt;code&gt;https://subversion.apache.org/packages.html#centos&lt;/c
+    
+    </summary>
+    
+      <category term="svn" scheme="https://lmxy1990.github.io/categories/svn/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>dubbo 源码学习</title>
+    <link href="https://lmxy1990.github.io/2017/11/27/dubbo-%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://lmxy1990.github.io/2017/11/27/dubbo-源码学习/</id>
+    <published>2017-11-27T08:09:56.000Z</published>
+    <updated>2018-03-09T03:17:13.375Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="dubbo-需要解决的问题"><a href="#dubbo-需要解决的问题" class="headerlink" title="dubbo 需要解决的问题"></a>dubbo 需要解决的问题</h3><ol>
+<li>负载均衡</li>
+<li>远程 rpc 调用</li>
+<li>权限控制</li>
+<li>dubbo运行状态监控</li>
+</ol>
+<h3 id="RPC-调用"><a href="#RPC-调用" class="headerlink" title="RPC 调用"></a>RPC 调用</h3><hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;dubbo-需要解决的问题&quot;&gt;&lt;a href=&quot;#dubbo-需要解决的问题&quot; class=&quot;headerlink&quot; title=&quot;dubbo 需要解决的问题&quot;&gt;&lt;/a&gt;dubbo 需要解决的问题&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;负载均衡&lt;/li&gt;
+&lt;li&gt;远程 rpc
+    
+    </summary>
+    
+      <category term="dubbo 源码" scheme="https://lmxy1990.github.io/categories/dubbo-%E6%BA%90%E7%A0%81/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java 泛型</title>
+    <link href="https://lmxy1990.github.io/2017/11/27/Java-%E6%B3%9B%E5%9E%8B/"/>
+    <id>https://lmxy1990.github.io/2017/11/27/Java-泛型/</id>
+    <published>2017-11-27T07:51:28.000Z</published>
+    <updated>2017-11-27T07:59:20.037Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><ol>
+<li>extends</li>
+<li>super<br>extends 确定的是上界,super 约定的是下界.</li>
+</ol>
+<p>上界约束set,下界约束get.</p>
+<h3 id="与-T-E-K-Object"><a href="#与-T-E-K-Object" class="headerlink" title="?与 T,E,K,Object"></a><code>?</code>与 T,E,K,Object</h3><ol>
+<li>? 代表通配符.</li>
+<li>泛型确定类型约束</li>
+<li>Object超类.</li>
+</ol>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>使用场景,接口的定义应该是符合业务逻辑.然后范围竟可能的狭隘.<br>考虑的顺序:<br>泛型 -&gt; 统配类型(带上下界) -&gt; 超类<br>泛型 :约束某一个类型.<br>?:约束某一种类型<br>Object: 无约束</p>
+<hr>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;边界&quot;&gt;&lt;a href=&quot;#边界&quot; class=&quot;headerlink&quot; title=&quot;边界&quot;&gt;&lt;/a&gt;边界&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;extends&lt;/li&gt;
+&lt;li&gt;super&lt;br&gt;extends 确定的是上界,super 约定的是下界.&lt;/li&gt;
+&lt;/ol
+    
+    </summary>
+    
+      <category term="泛型" scheme="https://lmxy1990.github.io/categories/%E6%B3%9B%E5%9E%8B/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>后如何同步更新&#39;</title>
@@ -485,329 +776,6 @@
     
     
       <category term="DB" scheme="https://lmxy1990.github.io/tags/DB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySql 锁机制</title>
-    <link href="https://lmxy1990.github.io/2017/06/28/MySql-%E9%94%81%E6%9C%BA%E5%88%B6/"/>
-    <id>https://lmxy1990.github.io/2017/06/28/MySql-锁机制/</id>
-    <published>2017-06-28T06:23:30.000Z</published>
-    <updated>2017-06-28T06:24:33.038Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="数据库 Mysql" scheme="https://lmxy1990.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/"/>
-    
-    
-      <category term="DB Mysql" scheme="https://lmxy1990.github.io/tags/DB-Mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java中的集合删除方法注意点</title>
-    <link href="https://lmxy1990.github.io/2017/06/15/java%E4%B8%AD%E7%9A%84%E9%9B%86%E5%90%88%E5%88%A0%E9%99%A4%E6%96%B9%E6%B3%95%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
-    <id>https://lmxy1990.github.io/2017/06/15/java中的集合删除方法注意点/</id>
-    <published>2017-06-15T06:45:08.000Z</published>
-    <updated>2017-06-15T07:01:33.026Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="集合类的删除方法"><a href="#集合类的删除方法" class="headerlink" title="集合类的删除方法"></a>集合类的删除方法</h3><hr>
-<ul>
-<li>最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有问题.逻辑检查好几遍都没问题.debug之后,才找出这个问题.看示例代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; pp = new ArrayList&lt;&gt;() ;</span><br><span class="line">pp.add(1) ;</span><br><span class="line">pp.add(2) ;</span><br><span class="line">pp.add(3) ;</span><br><span class="line">pp.add(4) ;</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; pp.size(); i++) &#123;</span><br><span class="line">    Integer integer =  pp.get(i);</span><br><span class="line">    System.out.println(&quot;当前遍历i:&quot; + i + &quot;对应集合数据:&quot; + integer);</span><br><span class="line">    if (integer.equals(3))&#123;</span><br><span class="line">        pp.remove(i) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">当前遍历i:0对应集合数据:1</span><br><span class="line">当前遍历i:1对应集合数据:2</span><br><span class="line">当前遍历i:2对应集合数据:3</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure></p>
-<p>why?数据4去了哪里?<br>这其实是remove之后,size会立即变化.但是遍历的指针却并没有做出相应的变化.依旧是自增了一下.也就是说,当i = 2的时候,remove方法执行.然后对应的size变化为3.这时候i++变为了3<3不成立,不再循环,跳出循环.但实际上,并没有循环完成.因为还有一个数据没循环到.也就是i=2现在是新的数据了. 如何避免?="" 我是这样处理的.="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; pp = new ArrayList&lt;&gt;() ;</span><br><span class="line">pp.add(1) ;</span><br><span class="line">pp.add(2) ;</span><br><span class="line">pp.add(3) ;</span><br><span class="line">pp.add(4) ;</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; pp.size(); i++) &#123;</span><br><span class="line">    Integer integer =  pp.get(i);</span><br><span class="line">    System.out.println(&quot;当前遍历i:&quot; + i + &quot;对应集合数据:&quot; + integer);</span><br><span class="line">    if (integer.equals(3))&#123;</span><br><span class="line">        pp.remove(i);</span><br><span class="line">        i--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></3不成立,不再循环,跳出循环.但实际上,并没有循环完成.因为还有一个数据没循环到.也就是i=2现在是新的数据了.></p>
-<p>输出结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">当前遍历i:0对应集合数据:1</span><br><span class="line">当前遍历i:1对应集合数据:2</span><br><span class="line">当前遍历i:2对应集合数据:3</span><br><span class="line">当前遍历i:2对应集合数据:4</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;集合类的删除方法&quot;&gt;&lt;a href=&quot;#集合类的删除方法&quot; class=&quot;headerlink&quot; title=&quot;集合类的删除方法&quot;&gt;&lt;/a&gt;集合类的删除方法&lt;/h3&gt;&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;最近做的业务遇到一个排名的需求.在remove的时候,数据出来的意志有
-    
-    </summary>
-    
-      <category term="陷阱" scheme="https://lmxy1990.github.io/categories/%E9%99%B7%E9%98%B1/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JAVA中的值类型,引用类型以及克隆</title>
-    <link href="https://lmxy1990.github.io/2017/06/06/JAVA%E4%B8%AD%E7%9A%84%E5%80%BC%E7%B1%BB%E5%9E%8B-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%85%8B%E9%9A%86/"/>
-    <id>https://lmxy1990.github.io/2017/06/06/JAVA中的值类型-引用类型以及克隆/</id>
-    <published>2017-06-06T11:51:10.000Z</published>
-    <updated>2017-06-07T02:28:28.094Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="JAVA中的引用类型与值类型"><a href="#JAVA中的引用类型与值类型" class="headerlink" title="JAVA中的引用类型与值类型"></a>JAVA中的引用类型与值类型</h3><hr>
-<p>1.引用类型<br>数组,集合,接口,类都是引用类型.</p>
-<p>2.值类型<br>所有基本类型:int,short,long 及与之对应的Long,Integer,Double,<br>以及布尔类型boolead,Boolead 也包括Bigdecimal都属于值类型.</p>
-<p>3.区别<br>这里不考虑实现,究其底层.只考虑Java中的二者之间的差异.<br>值类型:也就是改变原值,对其之前赋的变量的值没有影响.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal d1 = BigDecimal.ONE ;</span><br><span class="line">BigDecimal d2 = d1 ;</span><br><span class="line">d1 = d1.add(BigDecimal.ONE) ;</span><br><span class="line"></span><br><span class="line">System.out.println(d1);</span><br><span class="line">System.out.println(d2);</span><br></pre></td></tr></table></figure></p>
-<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure></p>
-<p>引用类型:改变原值,对其之前使用=赋值的变量也会有影响.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int[] ar = &#123;1,2,3&#125; ;</span><br><span class="line">int[] br = ar ;</span><br><span class="line">ar[0] = 2 ;</span><br><span class="line">ar[1] = 3 ;</span><br><span class="line">ar[2] = 4 ;</span><br><span class="line">for (int i = 0; i &lt; ar.length; i++) &#123;</span><br><span class="line">    int i1 = ar[i];</span><br><span class="line">    System.out.println(i1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; br.length; i++) &#123;</span><br><span class="line">    int i1 = br[i];</span><br><span class="line">    System.out.println(i1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
-<p>4.浅析原理.<br>有一种说法是java没有值类型.其实角度不一样.从原理上来说确实没有.但从表象上来说是有的.因为在赋值运算的时候.遇到基本类型是新开辟内存空间.遇到引用类型是改变指针指向的地址.这区别与java对赋值运算的实现.</p>
-<p>所以,java官方说基本类型是值类型.那就是说,赋值运算在对待基本类型的赋值与引用类型时候,会采用不同的方式去处理.这区别于C/C++.</p>
-<p>这一点其实在对待Long Integer 类的赋值的时候,就可以看出来了.至于为什么基本类型赋值是新开辟,而引用类型是修改指针地址.这可能是因为所占对象大小,基本类型占用低,使用修改频繁.所以新增这样的对象所消耗内存少.而引用类型的内存消耗完全取决用用户的定义.故赋值采用的是改变指针的指向.而非new 对象.但是java提供一个克隆的方法.用于新开辟内存而非改变指针指向内存地址.</p>
-<p>至于如果引用类型需要拷贝而不是改变指针的地址进行的赋值时候.可以采用克隆或者直接new 对象.然后进行对基本类型的赋值操作.遇到引用类型,就需要new/克隆去开辟新的内存空间.这样才能改变原对象的值,不会影响克隆的变量.</p>
-<h3 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h3><hr>
-<p>1.实现Cloneable接口<br>2.覆写Object的clone方法.<br>3.如果对象存在非基本类型,还需要修改覆写的方法.<br>eg: Java 自带的Calendar类覆写的clone方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public Object clone()</span><br><span class="line">&#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        Calendar other = (Calendar) super.clone();</span><br><span class="line"></span><br><span class="line">        other.fields = new int[FIELD_COUNT];</span><br><span class="line">        other.isSet = new boolean[FIELD_COUNT];</span><br><span class="line">        other.stamp = new int[FIELD_COUNT];</span><br><span class="line">        for (int i = 0; i &lt; FIELD_COUNT; i++) &#123;</span><br><span class="line">            other.fields[i] = fields[i];</span><br><span class="line">            other.stamp[i] = stamp[i];</span><br><span class="line">            other.isSet[i] = isSet[i];</span><br><span class="line">        &#125;</span><br><span class="line">        other.zone = (TimeZone) zone.clone();</span><br><span class="line">        return other;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (CloneNotSupportedException e) &#123;</span><br><span class="line">        // this shouldn&apos;t happen, since we are Cloneable</span><br><span class="line">        throw new InternalError(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上例子就是覆写clone方法.如果没有引用类型.那只需要调用超类的方法即可.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected Object clone() throws CloneNotSupportedException &#123;</span><br><span class="line">    return super.clone();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;JAVA中的引用类型与值类型&quot;&gt;&lt;a href=&quot;#JAVA中的引用类型与值类型&quot; class=&quot;headerlink&quot; title=&quot;JAVA中的引用类型与值类型&quot;&gt;&lt;/a&gt;JAVA中的引用类型与值类型&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;1.引用类型&lt;br&gt;数组,集合,接
-    
-    </summary>
-    
-      <category term="java基础" scheme="https://lmxy1990.github.io/categories/java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SQL 相关备忘录</title>
-    <link href="https://lmxy1990.github.io/2017/06/06/SQL%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98%E5%BD%95/"/>
-    <id>https://lmxy1990.github.io/2017/06/06/SQL 相关备忘录/</id>
-    <published>2017-06-06T02:33:25.000Z</published>
-    <updated>2017-06-28T06:23:39.691Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><hr>
-<p>GREATEST() 取出多个表达式中最大的值.</p>
-<p>LEAST() 取出多个表达式中最小的值</p>
-<p>在使用形如sum/count函数时候,limit将不起作用.limit是对返回内容的限制.</p>
-<p>定义:</p>
-<p>数据库 用于存储数据的文件.</p>
-<p>数据库实例:用于执行数据增删改查的程序.</p>
-<h3 id="常用语句"><a href="#常用语句" class="headerlink" title="常用语句"></a>常用语句</h3><hr>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;GREATEST() 取出多个表达式中最大的值.&lt;/p&gt;
-&lt;p&gt;LEAST() 取出多个表达式中最小的值&lt;/p&gt;
-&lt;p&gt;在使用形如
-    
-    </summary>
-    
-      <category term="SQL" scheme="https://lmxy1990.github.io/categories/SQL/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java中标志位的使用&#39;</title>
-    <link href="https://lmxy1990.github.io/2017/06/01/java%E6%A0%87%E5%BF%97%E4%BD%8D%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://lmxy1990.github.io/2017/06/01/java标志位的使用/</id>
-    <published>2017-06-01T09:24:11.000Z</published>
-    <updated>2017-06-02T01:37:59.035Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Java-位操作"><a href="#Java-位操作" class="headerlink" title="Java 位操作"></a>Java 位操作</h3><hr>
-<p>1.位左移(符号位不变)<br><code>&lt;&lt;</code><br>2.位右移(符号位不变)<br><code>&gt;&gt;</code><br>3.无符号的位移(空位补零,不考虑符号位)<br><code>&lt;&lt;&lt;</code>  ‘&gt;&gt;&gt;’<br>4.或<br><code>|</code><br>5.与<br><code>&amp;</code><br>6.按位取反<br><code>~</code><br>7.异或<br><code>^</code></p>
-<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><hr>
-<p>用途有点类似控制器上的拨码开关.<code>00001001001</code> .一般来说,用0代表无,1代表有.每一个符号位代表一种权限.这种应用在多权限的场景下很容易解决N权限的问题.</p>
-<h3 id="Java-代码"><a href="#Java-代码" class="headerlink" title="Java 代码"></a>Java 代码</h3><hr>
-<p>判断方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//复合权限判断</span><br><span class="line">   private static boolean isHasAllAuthority(long ready,long authority)&#123;</span><br><span class="line">       return (ready &amp; authority) == authority ? true :false ;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   //添加权限</span><br><span class="line">   private static long addAuthority(long ready,long authority)&#123;</span><br><span class="line"></span><br><span class="line">       return ready | authority;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   //删除权限</span><br><span class="line">   private static long removeAuthority(long ready,long authority)&#123;</span><br><span class="line"></span><br><span class="line">       return (ready | authority) ^ authority ;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>测试方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">long pp1 = 1&lt;&lt;1 ;</span><br><span class="line">long pp2 = 1&lt;&lt;2 ;</span><br><span class="line">long pp3 = 1&lt;&lt;3 ;</span><br><span class="line">long pp4 = 1&lt;&lt;4 ;</span><br><span class="line"></span><br><span class="line">//初始化权限</span><br><span class="line">long ready = 0L ;</span><br><span class="line"></span><br><span class="line">//添加1,4权限</span><br><span class="line">ready = addAuthority(ready,pp1) ;</span><br><span class="line">ready = addAuthority(ready,pp4) ;</span><br><span class="line"></span><br><span class="line">//删除1,3权限</span><br><span class="line">ready = removeAuthority(ready,pp1|pp3) ;</span><br><span class="line"></span><br><span class="line">//判断是否拥有1权限</span><br><span class="line">System.out.println(&quot;判断是否拥有1权限&quot; + isHasAllAuthority(ready,pp1));</span><br><span class="line">//判断是否拥有3权限</span><br><span class="line">System.out.println(&quot;判断是否拥有3权限&quot; + isHasAllAuthority(ready,pp3));</span><br><span class="line">//判断是否拥有4权限</span><br><span class="line">System.out.println(&quot;判断是否拥有4权限&quot; + isHasAllAuthority(ready,pp4));</span><br><span class="line">//判断是否拥有1,4权限</span><br><span class="line">System.out.println(&quot;判断是否拥有1,4权限&quot; + isHasAllAuthority(ready,pp1|pp4));</span><br></pre></td></tr></table></figure></p>
-<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">判断是否拥有1权限false</span><br><span class="line">判断是否拥有3权限false</span><br><span class="line">判断是否拥有4权限true</span><br><span class="line">判断是否拥有1,4权限false</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Java-位操作&quot;&gt;&lt;a href=&quot;#Java-位操作&quot; class=&quot;headerlink&quot; title=&quot;Java 位操作&quot;&gt;&lt;/a&gt;Java 位操作&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;1.位左移(符号位不变)&lt;br&gt;&lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="bit java" scheme="https://lmxy1990.github.io/categories/bit-java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java stream 流处理</title>
-    <link href="https://lmxy1990.github.io/2017/05/16/java-stream-%E6%B5%81%E5%A4%84%E7%90%86/"/>
-    <id>https://lmxy1990.github.io/2017/05/16/java-stream-流处理/</id>
-    <published>2017-05-16T05:56:41.000Z</published>
-    <updated>2017-05-16T09:12:52.401Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Java-Stream-流处理"><a href="#Java-Stream-流处理" class="headerlink" title="Java Stream 流处理"></a>Java Stream 流处理</h3><hr>
-<p>jdk1.8之前,处理文字数字都是赋值给相应变量来进行处理.1.8之后,支持是用流来处理.这里的流处理,是对值进行的聚合处理.里面有python的map影子.</p>
-<ol>
-<li>流的列别.</li>
-</ol>
-<ul>
-<li>IntStream、LongStream、DoubleStream。当然我们也可以用 Stream<integer>、Stream<long> &gt;、Stream<double>，但是 boxing 和 unboxing会很耗时.</double></long></integer></li>
-</ul>
-<ol>
-<li>流的获取.<ol>
-<li>使用集合类.<code>Collection.stream()</code> 或者<code>Collection.parallelStream()</code> </li>
-<li>通过数组获取.<code>Arrays.stream(T array) or Stream.of()</code></li>
-<li>通过java的IO.<code>java.io.BufferedReader.lines()</code></li>
-<li>静态工厂.<code>java.util.stream.IntStream.range()</code> 或<code>java.nio.file.Files.walk()</code></li>
-<li>自己构建. <code>java.util.Spliterator</code></li>
-<li>其他:<ul>
-<li>Random.ints()</li>
-<li>BitSet.stream()</li>
-<li>Pattern.splitAsStream(java.lang.CharSequence)</li>
-<li>JarFile.stream()</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>流处理的分类<ul>
-<li>Intermediate：<ul>
-<li>一个流可以后面跟随零个或多个 intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用。这类操作都是惰性化的（lazy），就是说，仅仅调用到这类方法，并没有真正开始流的遍历。</li>
-<li>包含:map (mapToInt, flatMap 等)、 filter、 distinct、 sorted、 peek、 limit、 skip、 parallel、 sequential、 unordered</li>
-</ul>
-</li>
-<li>Terminal:<ul>
-<li>一个流只能有一个 terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。所以这必定是流的最后一个操作。Terminal 操作的执行，才会真正开始流的遍历，并且会生成一个结果，或者一个 side effect。</li>
-<li>包含:forEach、 forEachOrdered、 toArray、 reduce、 collect、 min、 max、 count、 anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 iterator</li>
-</ul>
-</li>
-<li>short-circuiting:<ul>
-<li>当操作一个无限大的 Stream，而又希望在有限时间内完成操作，则在管道内拥有一个 short-circuiting 操作是必要非充分条件.</li>
-<li>包含:anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 limit</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="常见的流操作"><a href="#常见的流操作" class="headerlink" title="常见的流操作"></a>常见的流操作</h3><ol>
-<li>查询流里面元素是否为null<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().findAny().ifPresent(System.out::print);</code></li>
-</ol>
-<p><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().findFirst().ifPresent(System.out::print);</code></p>
-<p>2.匹配<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().anyMatch(s -&gt; s.equals(&quot;小王&quot;))</code></p>
-<p><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().allMatch(s -&gt; s.equals(&quot;小王&quot;)) ;</code></p>
-<p><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().noneMatch(s -&gt; s.equals(&quot;小王&quot;)) ;</code></p>
-<p>3.过滤<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().filter(va -&gt; !va.equals(&quot;小王&quot;)).forEach(System.out::print);</code></p>
-<p>4.映射(1对1)<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().map(va -&gt; &quot;打豆豆&quot; + va ).forEachOrdered(System.out :: print);</code></p>
-<p>5.映射(多对一)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Arrays.asList(</span><br><span class="line">           Arrays.asList(&quot;小明&quot;),</span><br><span class="line">           Arrays.asList(&quot;小明&quot;, &quot;小王&quot;),</span><br><span class="line">           Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;)</span><br><span class="line">   ).stream().flatMap(va -&gt; va.stream().map(a -&gt; a + &quot;不打豆豆&quot;)).forEach(s -&gt; System.out.println(s + &quot;了&quot;));</span><br></pre></td></tr></table></figure></p>
-<p>6.排序<br><code>Arrays.asList(1, 2, 3).stream().sorted(Comparator.naturalOrder()) ;</code></p>
-<p><code>Arrays.asList(1, 2, 3).stream().sorted(Integer::compareTo) ;</code></p>
-<p>7.截取(limit是截取前N个,skip是丢弃前N个)<br><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().limit(2).forEach(System.out::print);</code></p>
-<p><code>Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().skip(2).forEach(System.out::print);</code></p>
-<p>8.组合 (组合的第一个参数代表截止条件,第二个代表依次处理数据的方法) 类似与python的reduce.只是传参的方式不一样.使用组合可以实现字符串连接,取最大值,最小值,排序..<br><code>String reduce = Arrays.asList(&quot;小明&quot;, &quot;小王&quot;, &quot;小李&quot;).stream().reduce(&quot;&quot;, (v1, v2) -&gt; v1 + v2);</code></p>
-<p><code>Integer reduce = Arrays.asList(1, 2, 3).stream().reduce(Integer.MAX_VALUE, Integer::min);</code></p>
-<h3 id="附录"><a href="#附录" class="headerlink" title="附录:"></a>附录:</h3><p>参考文档:<a href="https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/" target="_blank" rel="external">链接地址</a></p>
-<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Java-Stream-流处理&quot;&gt;&lt;a href=&quot;#Java-Stream-流处理&quot; class=&quot;headerlink&quot; title=&quot;Java Stream 流处理&quot;&gt;&lt;/a&gt;Java Stream 流处理&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;jdk1.8之前,处理文字
-    
-    </summary>
-    
-      <category term="java stream" scheme="https://lmxy1990.github.io/categories/java-stream/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android 开发入门</title>
-    <link href="https://lmxy1990.github.io/2017/05/10/Android-%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/"/>
-    <id>https://lmxy1990.github.io/2017/05/10/Android-开发入门/</id>
-    <published>2017-05-10T06:52:59.000Z</published>
-    <updated>2017-05-16T03:34:46.901Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h2 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;&lt;center&gt;End&lt;/center&gt;&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="Andriod" scheme="https://lmxy1990.github.io/categories/Andriod/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>python 笔记 </title>
-    <link href="https://lmxy1990.github.io/2017/04/13/python-%E7%AC%94%E8%AE%B0/"/>
-    <id>https://lmxy1990.github.io/2017/04/13/python-笔记/</id>
-    <published>2017-04-13T07:06:50.000Z</published>
-    <updated>2017-05-10T08:06:42.573Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><p>python 是弱类型语言.但其也有标准的类型.</p>
-<p>Numbers（12）<br>String（’abc’）<br>List（[1,2]）<br>Tuple（(1,2)）<br>Dictionary（{‘Michael’: 95, ‘Bob’: 75, ‘Tracy’: 85}）<br>Set (([1, 2, 3]))</p>
-<p>变量不需要定义,直接使用变量名进行赋值. 赋值指定格式就是相应的类型.<br>Numbers 相当于java的int,short,long 合集.<br>String 跟java的一样.<br>List 一样<br>Set 一样.<br>Tuple 相当于数组<br>Dict 相当于Map C# 也是dict.</p>
-<p><span style="columns: red;">ps: python 是根据缩进来判断作用域的.</span></p>
-<h3 id="函数定义-调用"><a href="#函数定义-调用" class="headerlink" title="函数定义/调用"></a>函数定义/调用</h3><p>定义函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def functionA(X):</span><br><span class="line">     return x*x ;</span><br></pre></td></tr></table></figure></p>
-<p>调用函数<br><code>print(functionA(3)) ;</code></p>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>1.切片,取出list或者tuple中部分元素.<br>L = [‘aaa’,’bbb’,’ccc’]</p>
-<p>正序取:第一个是取出位置(包括该位置的元素),第二个是截止位置(不包括该位置的元素)<br>取出第一个元素L[0:1]<br>取出前2个元素:L[0:2]<br>倒序取:第一个是倒序截止位置(包括),第二个倒序是开始取值位置(不包括).<br>取出最后一个元素:L[-1]<br>取出倒数第二个元素:L[-1:-2]</p>
-<p>2.迭代.遍历对象<br>for var in object</p>
-<p>可以通过<code>isinstance(checkObject, Iterable)</code>来判断该对象是否可以进行迭代.<br>不推荐使用(objct) is type(object1) 来进行类型检查是因为type不可靠.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class A():</span><br><span class="line">    pass;</span><br><span class="line">class B():</span><br><span class="line">    pass;</span><br><span class="line">type(A) is type(B) ;</span><br><span class="line">&gt;&gt;&gt;True</span><br></pre></td></tr></table></figure></p>
-<p>遍历dict对象的key<br><code>for  key in dict</code></p>
-<p>遍历dict对象的value<br><code>for var in dict.valuse()</code></p>
-<p>遍历key与value<br><code>for k,v in dict.items()</code></p>
-<p>遍历list的下标与值<br><code>for i,v in enumerate(list)</code></p>
-<p>3.构造器<br>生成1,2,3…9的list<br><code>range(1,10)</code><br>生成 1,4,9…81的 list<br><code>[x*x for x in range(1,10)]</code></p>
-<p>4.赋值<br>可以同时多个赋值.<br><code>a,b,c = 1,2,3 ;</code></p>
-<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p>1.map /reduce python的map不同于java..</p>
-<p>map 是对每个子元素进行函数运算.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def f(x) :</span><br><span class="line">    return x*x ;</span><br><span class="line"></span><br><span class="line">map(f,range(1,10));</span><br></pre></td></tr></table></figure></p>
-<p>输出:[1,4,9,25,36,49,64,81]</p>
-<p>reduce 是对没两个元素进行操作.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def fx(x,y):</span><br><span class="line">    return x*y +x+y ;</span><br><span class="line">reduce(fx,range(1,10)) ;</span><br></pre></td></tr></table></figure></p>
-<p>2.filter 过滤函数<br>filter 是对每个元素进行检查,返回true的保留.返回false的删除.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def ff(x):</span><br><span class="line">    if (x &gt; 5):</span><br><span class="line">        return true ;</span><br><span class="line">    else:</span><br><span class="line">    return false ;</span><br><span class="line">filter(ff,range(1,10)) ;</span><br></pre></td></tr></table></figure></p>
-<p>3.sorted 排序<br>升序<br><code>sorted([36, 5, -12, 9, -21])</code><br>绝对值升序排序<br><code>sorted([36, 5, -12, 9, -21],key=abs)</code><br>忽略大小写升序排序<br><code>sorted([&#39;bob&#39;, &#39;about&#39;, &#39;Zoo&#39;, &#39;Credit&#39;], key=str.lower</code><br>倒序<br><code>sorted([36, 5, -12, 9, -21],reverse=true)</code></p>
-<p>4.lambda表达式<br>传入x,y 返回 x<em>y<br>`lambda x,y:x</em>y`</p>
-<p>5.装饰器<br>装饰器是面向切面编程的概念,主要目的是对程序进行相同代码块的冗余去除.</p>
-<p>定义装饰器:<br>参数:<em>args 称作为数组参数，*</em>kwargs 称作为字典参数.表示可以传进来任意类型任意值.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def log(func):</span><br><span class="line">    def proxy_f(*args,**avg):</span><br><span class="line">        return func(*args,**avg) ;</span><br><span class="line">    return proxy_f ;</span><br></pre></td></tr></table></figure></p>
-<p>使用装饰器.<br>在对应的函数前加上@log就可以.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&apos;2015-3-25&apos;) ;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">now() ;</span><br></pre></td></tr></table></figure></p>
-<p>也可以这样使用装饰器<br><code>now = log(now)</code></p>
-<p>6.偏函数<br>目的:把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import functools</span><br><span class="line">&gt;&gt;&gt; int2 = functools.partial(int, base=2)</span><br><span class="line">&gt;&gt;&gt; int2(&apos;1000000&apos;)</span><br><span class="line">64</span><br><span class="line">&gt;&gt;&gt; int2(&apos;1010101&apos;)</span><br><span class="line">85</span><br></pre></td></tr></table></figure></p>
-<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><p>1.概述<br>python 的模块有点类似于java的包–类这样的结构.一个python文件相当于一个模块.不同模块的函数名可以相同.单不要与内置的函数名重名.模块名之外,是包名,类似于java.不过包名目录必须有<em>init</em>.py这个文件.</p>
-<p>2.使用模块<br>导入模块 (模块名不含.py,跟java引入类一样,不含.class)<br><code>import model_name</code></p>
-<p>2.使用模块(模块名.函数名来调用相应模块的函数.)<br><code>model_name.func_name</code></p>
-<p>3.使用pip工具安装模块<br><code>pip install 模块名</code></p>
-<p>4.模块搜索路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line">sys.path</span><br></pre></td></tr></table></figure></p>
-<p>5.添加自定义的搜索路径<br>添加环境变量:PYTHONPATH</p>
-<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><ol>
-<li>类/对象(实例)<br>与一般面向对象语言定义基本一致.</li>
-</ol>
-<p>2.区别(下划线都是两个)<br>可以不定义成员属性,直接使用self.XX来赋值.也可以定义一个默认的成员属性.也可以在实例化后定义…<br>初始化构造器(连续两个下划线):<br><code>def __init__ (paramter1,...)</code></p>
-<p>以<strong>XX</strong> 定义的方法(函数)是特殊函数方法.例如:<strong>init</strong><br>以__XX定义的成员变量/方法(函数) 是私有的(private).不能被外部访问.<br>以_XX定义的变量/方法 外部不应该去访问它.但实际是可以访问到的.</p>
-<p>不能通过实例.__XX 来对私有变量进行赋值.这样赋值是赋值给一个新的变量,而非该实例的内部成员变量.<br>这样是错误代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; bart = Student(&apos;Bart Simpson&apos;, 98)</span><br><span class="line">&gt;&gt;&gt; bart.get_name()</span><br><span class="line">&apos;Bart Simpson&apos;</span><br><span class="line">&gt;&gt;&gt; bart.__name = &apos;New Name&apos; # 设置__name变量！</span><br><span class="line">&gt;&gt;&gt; bart.__name</span><br><span class="line">&apos;New Name&apos;</span><br></pre></td></tr></table></figure></p>
-<p>3.继承与多态<br>继承父类,覆写父类方法.符合李氏替换原则.遵循多态.</p>
-<p>对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类，否则，将无法调用run()方法。</p>
-<p>对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以了：</p>
-<p>4.成员属性限制:<br><code>__slots__ = (&#39;name&#39;, &#39;age&#39;) # 用tuple定义允许绑定的属性名称</code></p>
-<h3 id="IO-编程"><a href="#IO-编程" class="headerlink" title="IO 编程"></a>IO 编程</h3><hr>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a><center>End</center></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;变量类型&quot;&gt;&lt;a href=&quot;#变量类型&quot; class=&quot;headerlink&quot; title=&quot;变量类型&quot;&gt;&lt;/a&gt;变量类型&lt;/h3&gt;&lt;p&gt;python 是弱类型语言.但其也有标准的类型.&lt;/p&gt;
-&lt;p&gt;Numbers（12）&lt;br&gt;String（’abc’）&lt;b
-    
-    </summary>
-    
-      <category term="python" scheme="https://lmxy1990.github.io/categories/python/"/>
-    
     
   </entry>
   

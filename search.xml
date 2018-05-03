@@ -3,6 +3,62 @@
   
     
     <entry>
+      <title><![CDATA[文档根元素_beans_必须匹配_DOCTYPE_根_null]]></title>
+      <url>%2F2018%2F05%2F03%2F%E6%96%87%E6%A1%A3%E6%A0%B9%E5%85%83%E7%B4%A0_beans_%E5%BF%85%E9%A1%BB%E5%8C%B9%E9%85%8D_DOCTYPE_%E6%A0%B9_null%2F</url>
+      <content type="text"><![CDATA[错误原因网上说的是因为:文件名是不能取名为application.xml.(错误)真实原因是spring解析xml的时候死循环了. a.xml -&gt; b.xml … -&gt; a.xml也就是说a.xml 引入了自己.这样,一直加载下一级,当下一级是父级就会抛出该异常.至于为什么有的人说文件名的问题,应该是安卓默认application.xml -&gt; 用户的application.xml -&gt; 安卓默认的application.xml 总之,不要自己引入自己就不会出现这个异常了. End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[idea_artifacts依赖错误]]></title>
+      <url>%2F2018%2F05%2F03%2Fidea-artifacts%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF%2F</url>
+      <content type="text"><![CDATA[idea折腾一天今天搭项目时候,明明pom文件依赖有了,model的依赖也正常.偏偏artifacts的依赖就坑爹了.现象是导出的war包没有依赖.反复检查配置文件,发现.iml没有对应的依赖配置.手动修改.iml也没卵用.又会自动修改回去.后面感觉还是项目配置的问题,反复折腾N个小时.MD,IDEA就是个ZZ,我的maven项目是父项目 -&gt; 3个子项目 ,我添加进来的pom是父项目.然后我要导出的war是子项目.这时候,子项目就拿不到依赖了. 这尼玛坑逼啊,折腾N久才发现者逼东西.后面引入项目的时候,只引入子项目.不引入父项目就OK了.引入子项目的时候,会自动生成*.iml.该文件的依赖是正常的,导出的war也正常了. End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[spring 拦截器]]></title>
+      <url>%2F2018%2F04%2F18%2Fspring-%E6%8B%A6%E6%88%AA%E5%99%A8%2F</url>
+      <content type="text"><![CDATA[拦截器请求的路径:client -&gt; tcp/ip -&gt; 服务器系统层 -&gt; 应用层(nginx -&gt; tomcat -&gt; servlet层 -&gt; DispatcherServlet -&gt; 拦截处理handler/adapter -&gt; controller -&gt; 试图渲染 -&gt;tcp/ip -&gt; 客户端 -&gt;客户端浏览器) 1.拦截器一般实现HandlerInterceptor接口或者继承HandlerInterceptorAdapter.也可以实现WebRequestInterceptor 接口 End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[JVM一些理解:]]></title>
+      <url>%2F2018%2F03%2F17%2FJVM%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3%2F</url>
+      <content type="text"><![CDATA[##JVM 内存模型内存模型分为:方法区,堆区,虚拟机栈,本地方法栈,程序计数器. 方法区(线程共享)存储了每一个类的结构信息，例如运行时常量池（ Runtime Constant Pool）、字段和方法数据、构造函数和普通方法的字节码内容、还包括一些在类、实例、接口初始化时用到的特殊方法.(jdk7 hotspot 中采用来实现永久带,1.8采用元数据区来实现.) 堆区(线程共享)存放对象的区域 虚拟机栈方法运行时创建的栈帧,用于存放局部变量,操作数栈,动态链接,方法出口,每个方法局部变量是隔离的. 本地方法栈native方法运行时,存放局部变量,操作数栈,方法出口的信息. 程序计数器当前程序执行字节码的指示器,通过改变计数器来选取下一条需要执行的字节码指令. 元数据区作用类似用永久带 总结:JVM 内存模型,分为5块.方法区,堆区,虚拟机栈,本地方法栈,程序计数器.我的理解是,方法区的作用类似一个hashTable.里面记录的是各个类的骨架信息,执行方法的程序计数器指令的位置,以及一些其他必要参数.通过这些参数,在方法调用的时候,通过方法区的指引,执行相关的程序指令,创建用于该方法的虚拟机栈或者本地方法栈来处理一些过程数据,最后返回相应的结果给到调用者.这里虚拟机栈创建的对象存放于堆区,方法区修改对象,实际上是修改的堆中的对象.但局部变量在虚拟机栈中,所以方法里面修改局部变量,其实是不影响全局变量的.但是修改对象就会.原因就在这里.所以,虚拟机垃圾回收的主要集中在堆区.对方法区也有可能触发.方法区申请新的内存区域不足是,会抛出相应异常. 垃圾回收区域:新生代,老年代,永久带(元数据区). 永久带垃圾回收效率低. ##JVM GC回收机制判断是否为垃圾的算法 引用标计算法每一个对象,对有一个引用计数器.存在引用则计数器+1,缺点:引用计数器不能解决循环引用的问题,而且引用计数器本身存在内存开销. 根搜索算法将某些特殊的对象定义为GC Root . 某个对象 与其他所有对象的引用关系组成一条链. 如果组成的这条链无限延伸都没有GC根相连,则证明该链上的所有对象都是可以回收的垃圾对象.GC根对象指的是:虚拟机栈中引用的对象,方法区常量引用的对象,方法区静态属性引用的对象,本地方法栈中JNI引用的对象,活跃的线程.(其实就是正在运行的数据+静态数据) 执行垃圾回收的算法 copy 算法(年轻代) 标记-清除/整理 算法 spothot 提供的垃圾回收器 SerialGC 串行(copy)垃圾回收器(年轻代) SerialOldGC 串行(老年代) ParNewGC 并行(copy)垃圾回收器(年轻代) ParallelGC 并行(copy),提高吞吐量.(年轻代) ParallelOldGC 并行(copy),(老年代) ConcMarkSweepGC 标记清除(老年代) ,新生代 ParNewGC G1GC 新生代/老年代(G1) ##JVM 性能调优 应尽量避免FULL GC 避免出现Full GC 根据对应的场景选取适配的垃圾回收器 配置合理的内存整理次数. End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[java tensorflow]]></title>
+      <url>%2F2018%2F02%2F07%2Fjava-tensorflow%2F</url>
+      <content type="text"><![CDATA[api参考:https://www.tensorflow.org/api_docs/java/reference/org/tensorflow/package-summary 常用类说明Tensor一个静态类型的多维数组，其元素是由T描述的类型 Tensors静态工厂方法创建一个Tensor. Shape操作产生的tensor可能的形状。 GraphTensorFlow计算的数据流图。 OperationBuilder执行Graph操作的构建器。 Operation在Tensor上执行计算的Graph节点。 Output由操作产生的tensor处理对象。 SavedModelBundle表示从存储装载的模型。 Session图形执行的驱动程序。 Session.Run输出tensors和执行session时获得的元数据。 Session.Runner运行操作并计算Tensors。 TensorFlowTensorFlow运行时的静态实用程序方法。 End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[linux svn服务器安装]]></title>
+      <url>%2F2017%2F12%2F08%2Flinux-svn%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%2F</url>
+      <content type="text"><![CDATA[安装官方安装说明:https://subversion.apache.org/packages.html#centos 配置 创建一个svn库文件夹：mkdir -p /opt/svn/repo/ 将该文件夹初始化为SVN库：svnadmin create /opt/svn/repo/ 生成如下目录和文件： 目录：locks 目录：hooks 目录：db 目录：conf 文件：format 文件：README.txt conf 是配置文件夹 svnserve.conf 是 svn 服务综合配置文件 passwd 是用户名和密码配置文件 authz 是权限配置文件 配置svnservevim /opt/svn/repo/conf/svnserve.conf anon-access： 对不在授权名单中的用户访问仓库的权限控制，有三个可选性：write、read、nonenone 表示没有任何权限read 表示只有只读权限write 表示有读写权限 auth-access：对在授权名单中的用户访问仓库的权限控制，有三个可选性：write、read、nonenone 表示没有任何权限read 表示只有只读权限write 表示有读写权限 password-db：用户数据配置文件 authz-db：用户权限配置文件 realm：指定版本库的认证域.即在登录时提示的认证域名称。若两个版本库的认证域相同，建议使用相同的用户名口令数据文件当前实例的配置内容：realm = myrepo 添加用户vim /opt/svn/repo/conf/passwd添加一个格式为：用户名 = 密码 设置用户/用户组权限vim /opt/svn/repo/conf/authz [groups] 配置 用户组:组名 = 用户1,用户2使用组权限方式：@组名 = rw = 表示除了上面设置的权限用户组以外，其他所有用户都设置空权限，空权限表示禁止访问本目录. 启动服务svnserve -d -r /opt/svn/repo/ --listen-port 3690 -d 表示后台运行-r /opt/svn/repo/ 表示指定根目录–listen-port 3690 表示指定端口，默认就是 3690，所以如果要用默认端口这个也是可以省略掉的 停止服务killall svnserve http服务配置安装svn驱动模块yum install mod_dav_svn 安装http服务yum install httpd 查看http服务配置,是否监听80端口.vim /etc/httpd/conf/httpd.conf 配置http的用户密码文件.htpasswd -cm /opt/svn/repo/conf/svn-auth-conf admin 该命令,是添加一个用户admin,密码会提示输入. 修改http的用户密码文件htpasswd -m /opt/svn/repo/conf/svn-auth-conf admin 将该密码文件配置到http服务.vim /etc/httpd/conf.modules.d/odules.d/10-subversion.conf 这里的配置,是http模块的配置文件,在之前的http的配置里面其实有说明,http服务启动的时候,会加在该目录下的所有文件.编辑这个文件:1234567891011LoadModule dav_svn_module modules/mod_dav_svn.soLoadModule authz_svn_module modules/mod_authz_svn.soLoadModule dontdothat_module modules/mod_dontdothat.soDAV svnSVNPath /opt/svn/repo#SVNParentPath /home/svn/dataAuthzSVNAccessFile /opt/svn/repo/conf/passwdAuthType BasicAuthName &quot;Subversion repos&quot;AuthUserFile /opt/svn/repo/conf/svn-auth-confRequire valid-user End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[dubbo 源码学习]]></title>
+      <url>%2F2017%2F11%2F27%2Fdubbo-%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%2F</url>
+      <content type="text"><![CDATA[dubbo 需要解决的问题 负载均衡 远程 rpc 调用 权限控制 dubbo运行状态监控 RPC 调用 End]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Java 泛型]]></title>
+      <url>%2F2017%2F11%2F27%2FJava-%E6%B3%9B%E5%9E%8B%2F</url>
+      <content type="text"><![CDATA[边界 extends superextends 确定的是上界,super 约定的是下界. 上界约束set,下界约束get. ?与 T,E,K,Object ? 代表通配符. 泛型确定类型约束 Object超类. 使用场景使用场景,接口的定义应该是符合业务逻辑.然后范围竟可能的狭隘.考虑的顺序:泛型 -&gt; 统配类型(带上下界) -&gt; 超类泛型 :约束某一个类型.?:约束某一种类型Object: 无约束 End]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[后如何同步更新']]></title>
       <url>%2F2017%2F11%2F10%2Ffork%E5%90%8E%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0%2F</url>
       <content type="text"><![CDATA[git fork之后,如何保持代码的更新.第一步:将源添加到一个更新的组里面.(这里认为你已经clone下来你的项目)添加的名字可以随意,与后面操作一致即可.1git remote add updateOrigin https://github.com/更新源的地址.git 第二步:更新 updateOrigin 代码到最新.1git fetch updateOrigin 第三步:合并最新代码到你的master.1git merge updateOrigin/master 第四步:提交变更到master.1git push origin master End]]></content>
